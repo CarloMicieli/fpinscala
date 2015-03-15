@@ -10,7 +10,7 @@ package fpinscala.exercises.chapter03
  *                 case _ => 101
  *               }
  */
-object Es3_1 {
+object Es3_01 {
   def apply(): Any = {
     val res = List(1, 2, 3, 4, 5) match {
       case Cons(x, Cons(2, Cons(4, _))) => x

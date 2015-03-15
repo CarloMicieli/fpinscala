@@ -7,7 +7,7 @@ package fpinscala.exercises.chapter03
  *
  *               def drop[A](l: List[A], n: Int): List[A]
  */
-object Es3_4 {
+object Es3_04 {
   @annotation.tailrec
   def drop[A](l: List[A], n: Int): List[A] = (n, l) match {
     case (i, _) if i <= 0 => l

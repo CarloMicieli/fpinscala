@@ -1,9 +1,9 @@
 package fpinscala.exercises.chapter03
 
 import org.scalatest.FunSuite
-import Es3_5._
+import Es3_05._
 
-class Es3_5Suite extends FunSuite {
+class Es3_05Suite extends FunSuite {
   test("it should return the empty list when working on the empty list") {
     assert(dropWhile[Int](Nil)(_ > 0) == Nil)
   }

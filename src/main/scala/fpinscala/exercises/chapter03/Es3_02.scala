@@ -5,7 +5,7 @@ package fpinscala.exercises.chapter03
  *               function takes constant time. What are different choices you could make in your
  *               implementation if the List is Nil ?
  */
-object Es3_2 {
+object Es3_02 {
   def tail[A](list: List[A]): List[A] = list match {
     case _ :: xs => xs
   }

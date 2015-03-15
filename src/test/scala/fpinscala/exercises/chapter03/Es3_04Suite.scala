@@ -1,9 +1,9 @@
 package fpinscala.exercises.chapter03
 
 import org.scalatest.FunSuite
-import Es3_4._
+import Es3_04._
 
-class Es3_4Suite extends FunSuite {
+class Es3_04Suite extends FunSuite {
   test("it should drop the first n elements from a list") {
     val l = List(1, 2, 3, 4, 5, 6)
     assert(drop(l, 2) == List(3, 4, 5, 6))

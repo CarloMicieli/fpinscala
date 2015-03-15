@@ -1,9 +1,9 @@
 package fpinscala.exercises.chapter03
 
 import org.scalatest.FunSuite
-import Es3_2._
+import Es3_02._
 
-class Es3_2Suite extends FunSuite {
+class Es3_02Suite extends FunSuite {
 
   test("it should return the tail for a non empty list") {
     val l = List(1, 2, 3, 4, 5)
