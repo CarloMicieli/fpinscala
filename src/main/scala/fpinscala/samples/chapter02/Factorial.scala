@@ -17,7 +17,7 @@ object Factorial {
     loop(n, 1)
   }
 
-  def fact3(n: Int): BigInt = (1 to n).toList.product
+  def fact3(n: Int): BigInt = (1 to n).product
 
   def fact4(n: Int): BigInt = {
     var fact: BigInt = 1
