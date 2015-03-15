@@ -6,5 +6,6 @@ package fpinscala.exercises.chapter03
  *                list.
  */
 object Es3_20 {
-  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] = ???
+  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
+    as.foldLeft(List.empty[B])((xs, x) => xs ++ f(x))
 }

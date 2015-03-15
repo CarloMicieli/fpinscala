@@ -5,5 +5,6 @@ package fpinscala.exercises.chapter03
  *                predicate. Use it to remove all odd numbers from a List[Int] .
  */
 object Es3_19 {
-  def filter[A](as: List[A])(f: A => Boolean): List[A] = ???
+  def filter[A](as: List[A])(p: A => Boolean): List[A] =
+    as.foldLeft(List.empty[A])((xs, x) => if (p(x)) x :: xs else xs).reverse
 }

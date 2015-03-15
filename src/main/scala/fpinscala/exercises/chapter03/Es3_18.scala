@@ -5,5 +5,5 @@ package fpinscala.exercises.chapter03
  *                maintaining the structure of the list.
  */
 object Es3_18 {
-  def map[A, B](as: List[A])(f: A => B): List[B] = ???
+  def map[A, B](as: List[A])(f: A => B): List[B] = as.map(f)
 }

@@ -77,12 +77,9 @@ final class ::[A](val head: A, val tail: List[A]) extends List[A] {
 
   override def toString = "[" + mkString(this) + "]"
 
-  private def mkString(xs: List[A]): String = {
-    def rest(xs: List[A]): String = xs match {
-      case y :: ys => s", $y" + rest(ys)
-      case Nil => ""
-    }
-    xs.head + rest(xs.tail)
+  private def mkString(l: List[A]): String = l match {
+    case h :: Nil => h.toString
+    case h :: t => s"$h, ${mkString(t)}"
   }
 }
 
