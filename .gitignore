@@ -1,17 +1,19 @@
-*.class
-*.log
-
-# sbt specific
-.cache/
-.history/
-.lib/
-dist/*
+*~
+*.tgz
+.*.sw*
+.DS_Store
+# Scala
+*.jar
+*.scalac
 target/
-lib_managed/
-src_managed/
-project/boot/
-project/plugins/project/
+## File-based project format:
+*.ipr
+*.iws
 
-# Scala-IDE specific
-.scala_dependencies
-.worksheet
+## Plugin-specific files:
+
+# IntelliJ
+out/
+*.iml
+.idea/
+target/
