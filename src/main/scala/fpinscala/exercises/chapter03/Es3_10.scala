@@ -19,7 +19,7 @@ object Es3_10 {
   }
 
   private def initList: List[Int] = {
-    (10000 to 1 by -1).foldLeft(List.empty[Int])((acc, x) => x :: acc)
+    (100000 to 1 by -1).foldLeft(List.empty[Int])((acc, x) => x :: acc)
   }
 
 }
