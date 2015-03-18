@@ -7,4 +7,6 @@ package fpinscala.exercises.chapter03
  */
 object Es3_15 {
 
+  def concat[A](list: List[List[A]]): List[A] =
+    list.foldRight(List.empty[A])((xss, xs) => xss ++ xs)
 }
