@@ -6,5 +6,8 @@ package fpinscala.exercises.chapter03
  *                and y .)
  */
 object Es3_26 {
-
+  def maximum(t: Tree[Int]): Int = t match {
+    case Leaf(n) => n
+    case Branch(l, r) => maximum(l) max maximum(r)
+  }
 }
