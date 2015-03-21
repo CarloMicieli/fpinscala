@@ -41,6 +41,13 @@ sealed trait List[+A] {
     case Nil     => z
     case x :: xs => xs.foldLeft(f(z, x))(f)
   }
+
+  def foreach[U](f: (A) => U): Unit = this match {
+    case Nil => ()
+    case x :: xs =>
+      f(x)
+      xs.foreach(f)
+  }
 }
 
 object List {

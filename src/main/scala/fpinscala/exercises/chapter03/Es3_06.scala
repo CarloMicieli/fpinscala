@@ -1,8 +1,8 @@
 package fpinscala.exercises.chapter03
 
 /**
- * EXERCISE 3.6] Implement a function, init, that returns a List
- *               consisting of all but the last element of a List.
+ * EXERCISE 3.6] Implement a function, `init`, that returns a `List`
+ *               consisting of all but the last element of a `List`.
  */
 object Es3_06 {
   def init[A](l: List[A]): List[A] = l match {

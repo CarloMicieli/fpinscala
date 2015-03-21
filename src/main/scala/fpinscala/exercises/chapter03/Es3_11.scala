@@ -1,7 +1,8 @@
 package fpinscala.exercises.chapter03
 
 /**
- * EXERCISE 3.11] Write sum, product, and a function to compute the length of a list using foldLeft.
+ * EXERCISE 3.11] Write `sum`, `product`, and a function to compute the length of a
+ *                list using `foldLeft`.
  */
 object Es3_11 {
   def sum[A](as: List[A])(implicit num: Numeric[A]): A = {
