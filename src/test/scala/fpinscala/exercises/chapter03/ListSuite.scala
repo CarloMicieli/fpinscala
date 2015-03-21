@@ -82,4 +82,9 @@ class ListSuite extends FunSuite {
     assert(Nil.length == 0)
     assert(List(1, 2, 4, 5).length == 4)
   }
+
+  test("it should flatten a list of lists") {
+    val list = List(List(1, 2), List(3), List(4, 5))
+    assert(list.flatten == List(1, 2, 3, 4, 5))
+  }
 }
