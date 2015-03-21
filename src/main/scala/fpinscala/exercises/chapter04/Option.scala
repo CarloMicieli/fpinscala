@@ -20,7 +20,7 @@ sealed trait Option[+A] {
   /**
    * It returns the first Option if it’s defined; otherwise, it returns the second Option.
    */
-  def orElse[B >: A](ob: => Option[B]): Option[B] = if (isEmpty) this else ob
+  def orElse[B >: A](ob: => Option[B]): Option[B] = if (isEmpty) ob else this
 
   def filter(p: A => Boolean): Option[A] = if (!isEmpty && p(get)) this else None
 }
@@ -36,5 +36,5 @@ case class Some[+A](get: A) extends Option[A] {
 case object None extends Option[Nothing] {
   def isEmpty = true
 
-  def get = throw new NoSuchElementException("empty")
+  def get = throw new NoSuchElementException("Option.none: empty")
 }
