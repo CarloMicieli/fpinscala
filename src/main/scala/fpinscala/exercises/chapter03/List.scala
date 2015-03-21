@@ -48,6 +48,8 @@ sealed trait List[+A] {
       f(x)
       xs.foreach(f)
   }
+
+  def length: Int = this.foldLeft(0)((n, _) => n + 1)
 }
 
 object List {

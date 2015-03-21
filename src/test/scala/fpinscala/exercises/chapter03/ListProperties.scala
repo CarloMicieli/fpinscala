@@ -7,12 +7,14 @@ object ListProperties extends Properties("list") {
   import Prop.forAll
 
   property("cons increase length by 1") = forAll { (x: Int, xs: List[Int]) =>
-    !(x :: xs).isEmpty
+    val ys = x :: xs
+    !ys.isEmpty
+    xs.length + 1 == ys.length
   }
 
   property("appended list size is the sum of two original lists length") =
     forAll { (xs: List[Int], ys: List[Int]) =>
-      (xs.size + ys.size) == (xs ++ ys).size
+      (xs.length + ys.length) == (xs ++ ys).length
     }
 
   property("map over two functions or over their composition yield the same result") =

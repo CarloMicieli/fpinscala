@@ -70,4 +70,16 @@ class ListSuite extends FunSuite {
     assert(l.foldLeft(0)(_ - _) == -10)
     assert(l.foldRight(0)(_ - _) == -2)
   }
+
+  test("foreach should run for the function side-effect only") {
+    val l = List(1, 2, 3, 4)
+    var sum = 0
+    l.foreach(x => sum = sum + x)
+    assert(sum == 10)
+  }
+
+  test("length should return the number of elements in the list") {
+    assert(Nil.length == 0)
+    assert(List(1, 2, 4, 5).length == 4)
+  }
 }
