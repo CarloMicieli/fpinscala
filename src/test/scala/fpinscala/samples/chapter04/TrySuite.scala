@@ -1,6 +1,7 @@
-package fpinscala.exercises.chapter04
+package fpinscala.samples.chapter04
 
-import org.scalatest.{Matchers, FunSuite}
+import fpinscala.exercises.chapter04.{None, Some}
+import org.scalatest.{FunSuite, Matchers}
 
 import scala.util.control.NoStackTrace
 

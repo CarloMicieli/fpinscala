@@ -1,4 +1,6 @@
-package fpinscala.exercises.chapter04
+package fpinscala.samples.chapter04
+
+import fpinscala.exercises.chapter04.{None, Option, Some}
 
 import scala.util.control.NoStackTrace
 

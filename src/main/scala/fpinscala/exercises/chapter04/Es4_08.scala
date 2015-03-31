@@ -9,6 +9,24 @@ package fpinscala.exercises.chapter04
  *               data type?
  */
 object Es4_08 {
-  def sequence[E, A](es: List[Either[E, A]]): Either[E, List[A]] = ???
-  def traverse[E, A, B](as: List[A])(f: A => Either[E, B]): Either[E, List[B]] = ???
+  case class Person(name: Name, age: Age)
+
+  sealed class Name(val value: String)
+
+  sealed class Age(val value: Int)
+
+  def mkPerson(name: String, age: Int): Validation[List[String], List[Any]] =
+    mkName(name) +++ mkAge(age)
+
+  private def mkName(name: String): Validation[List[String], List[Any]] =
+    if (name == "" || name == null)
+      Failure(List("Name is empty."))
+    else
+      Success(List(name))
+
+  private def mkAge(age: Int): Validation[List[String], List[Any]] =
+    if (age < 0)
+      Failure(List("Age is out of range."))
+    else
+      Success(List(age))
 }
