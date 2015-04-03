@@ -12,5 +12,5 @@ class Es5_03Suite extends FunSuite {
     val s1 = Stream(1, 2, 3, 4, 5).takeWhile(_ >= 10)
     assert(s1.toList == List())
   }
-  
+
 }

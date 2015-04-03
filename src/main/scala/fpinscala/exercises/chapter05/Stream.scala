@@ -1,6 +1,13 @@
 package fpinscala.exercises.chapter05
 
 sealed trait Stream[+A] {
+  def isEmpty: Boolean
+
+  def length: Int = this match {
+    case Empty => 0
+    case Cons(_, t) => 1 + t().length
+  }
+
   def headOption: Option[A] = this match {
     case Empty => None
     case Cons(h, t) => Some(h())
@@ -36,10 +43,20 @@ sealed trait Stream[+A] {
     case (Cons(h, t), i) => t().drop(n - 1)
   }
 
+  def filter(p: A => Boolean): Stream[A] = this match {
+    case Empty => Empty
+    case Cons(h, t) =>
+      lazy val head = h()
+      if (p(head)) Stream.cons[A](head, t().filter(p)) else t().filter(p)
+  }
 }
 
-object Empty extends Stream[Nothing]
-case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
+object Empty extends Stream[Nothing] {
+  val isEmpty = true
+}
+case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A] {
+  var isEmpty = false
+}
 
 object Stream {
   def cons[A](hd: => A, tl: => Stream[A]): Stream[A] = {
@@ -48,12 +65,13 @@ object Stream {
     Cons(() => head, () => tail)
   }
 
+  def range(lo: Int, hi: Int): Stream[Int] =
+    if (lo >= hi) empty[Int]
+    else cons(lo, range(lo + 1, hi))
+
   def empty[A]: Stream[A] = Empty
 
-  def from(n: Int): Stream[Int] = {
-    def loop(v: Int): Stream[Int] = cons(v, loop(v + 1))
-    loop(n)
-  }
+  def from(n: Int): Stream[Int] = cons(n, from(n + 1))
 
   def apply[A](as: A*): Stream[A] =
     if (as.isEmpty)

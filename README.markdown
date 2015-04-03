@@ -5,15 +5,20 @@
 
 Examples and exercises from
 
+![Cover](img/cover.jpg)
+    
     Functional Programming in Scala
     Paul Chiusano and Rúnar Bjarnason
     (2014) Manning Publications
+    http://www.manning.com/bjarnason/
+    
+    
 
 ## How to run
 
 ```
-git clone https://github.com/CarloMicieli/fpinscala
-sbt test
+$ git clone https://github.com/CarloMicieli/fpinscala
+$ sbt test
 ```
 
 ## My study guide
@@ -23,6 +28,9 @@ sbt test
 3. Functional data structures
 4. Handling errors without exceptions
 5. Strictness and laziness
+* [Haskell/Laziness (WikiBook)](http://en.wikibooks.org/wiki/Haskell/Laziness)
+* [Heinrich Apfelmus, The Incomplete Guide to Lazy Evaluation (in Haskell), 2015](https://hackhands.com/guide-lazy-evaluation-haskell/)
+   
 6. Purely functional state
 7. Purely functional parallelism
 8. Property-based testing
