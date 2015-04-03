@@ -52,7 +52,24 @@ class StreamSuite extends FunSuite {
     assert(Stream.from(1).exists(_ > 100))
   }
 
-  test("forAll") {
+  test("it should look for an element in the stream") {
+    val s1 = Stream.of(1, 2, 3, 4, 5)
+    val s2 = Stream.from(42)
+
+    assert(s1.find(_ == 4) == Some(4))
+    assert(s1.find(_ == 99) == None)
+    assert(s2.find(_ == 99) == Some(99))
+  }
+
+  test("it should append two streams together") {
+    val s1 = Stream.of(1, 2, 3, 4)
+    val s2 = Stream.from(5)
+    assert(s1.append(s2).take(5).toList == (1 to 5).toList)
+    assert(s2.append(s1).take(5).toList == (5 until 10).toList)
+    assert(s2.append(s2).take(5).toList == (5 until 10).toList)
+  }
+
+  test("it should check whether all elements match a predicate") {
     val s = Stream.of(1, 2, 3, 4, 5)
     assert(s.forAll(_ < 10))
     assert(!s.forAll(_ % 2 == 0))

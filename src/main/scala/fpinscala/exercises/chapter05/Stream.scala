@@ -43,6 +43,9 @@ sealed trait Stream[+A] {
     case (Cons(h, t), i) => t().drop(n - 1)
   }
 
+  def find(p: A => Boolean): Option[A] =
+    filter(p).headOption
+
   def filter(p: A => Boolean): Stream[A] = {
     this match {
       case Empty => Empty
@@ -64,6 +67,9 @@ sealed trait Stream[+A] {
 
   def forAll(p: A => Boolean): Boolean =
     foldRight(true)((a, b) => p(a) && b)
+
+  def append[B >: A](that: => Stream[B]): Stream[B] =
+    foldRight(that)((a, b) => Stream.cons(a, b))
 }
 
 object Empty extends Stream[Nothing] {
