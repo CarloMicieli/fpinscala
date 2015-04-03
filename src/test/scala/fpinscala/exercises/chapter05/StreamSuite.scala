@@ -89,4 +89,14 @@ class StreamSuite extends FunSuite {
     val s = s1 zip s2
     assert(s.toList == List((1, 10), (2, 11), (3, 12)))
   }
+
+  test("it should map over the elements in a stream") {
+    val s1 = Stream.of(1, 2, 3)
+    val s2 = Stream.from(10)
+
+    val f: Int => Int = _ * 2
+
+    assert(s1.map(f).toList == List(2, 4, 6))
+    assert(s2.map(f).take(3).toList == List(20, 22, 24))
+  }
 }

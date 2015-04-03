@@ -62,6 +62,9 @@ sealed trait Stream[+A] {
     }
   }
 
+  def map[B](f: A => B): Stream[B] =
+    foldRight(Stream.empty[B])((a, b) => Stream.cons(f(a), b))
+
   def exists(p: A => Boolean): Boolean =
     foldRight(false)((a, b) => p(a) || b)
 
