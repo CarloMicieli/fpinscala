@@ -5,5 +5,5 @@ package fpinscala.exercises.chapter05
  *               n + 1, n + 2, and so on.
  */
 object Es5_09 {
-  def from(n: Int): Stream[Int] = ???
+  def from(n: Int): Stream[Int] = Stream.cons(n, from(n + 1))
 }

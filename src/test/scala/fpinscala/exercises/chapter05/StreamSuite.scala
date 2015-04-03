@@ -76,4 +76,9 @@ class StreamSuite extends FunSuite {
 
     assert(!Stream.from(10).forAll(_ < 5))
   }
+
+  test("it should generate a stream using a function") {
+    val f: Int => Option[(Int, Int)] = x => if (x < 5) Some((x * 2, x + 1)) else None
+    assert(Stream.unfold(0)(f).toList == List(0, 2, 4, 6, 8))
+  }
 }

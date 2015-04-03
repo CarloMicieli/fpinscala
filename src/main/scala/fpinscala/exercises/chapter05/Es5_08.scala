@@ -5,5 +5,5 @@ package fpinscala.exercises.chapter05
  *               a given value.
  */
 object Es5_08 {
-  def constant[A](a: A): Stream[A] = ???
+  def constant[A](a: A): Stream[A] = Stream.cons(a, constant(a))
 }

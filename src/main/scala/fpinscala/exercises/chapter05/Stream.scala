@@ -84,6 +84,13 @@ object Stream {
     if (values.isEmpty) Stream.empty[A]
     else cons(values.head, Stream.of(values.tail: _*))
 
+  def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] = {
+    f(z) match {
+      case None => Stream.empty[A]
+      case Some((a, s)) => Stream.cons(a, unfold(s)(f))
+    }
+  }
+
   def cons[A](hd: => A, tl: => Stream[A]): Stream[A] = {
     lazy val head = hd
     lazy val tail = tl
