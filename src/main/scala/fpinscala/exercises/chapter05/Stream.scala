@@ -49,6 +49,17 @@ sealed trait Stream[+A] {
       lazy val head = h()
       if (p(head)) Stream.cons[A](head, t().filter(p)) else t().filter(p)
   }
+
+  def foldRight[B](z: => B)(f: (A, => B) => B): B = this match {
+    case Cons(h, t) => f(h(), t().foldRight(z)(f))
+    case Empty => z
+  }
+
+  def exists(p: A => Boolean): Boolean =
+    foldRight(false)((a, b) => p(a) || b)
+
+  def forAll(p: A => Boolean): Boolean =
+    foldRight(true)((a, b) => p(a) && b)
 }
 
 object Empty extends Stream[Nothing] {
@@ -59,6 +70,10 @@ case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A] {
 }
 
 object Stream {
+  def of[A](values: A*): Stream[A] =
+    if (values.isEmpty) Stream.empty[A]
+    else cons(values.head, Stream.of(values.tail: _*))
+
   def cons[A](hd: => A, tl: => Stream[A]): Stream[A] = {
     lazy val head = hd
     lazy val tail = tl

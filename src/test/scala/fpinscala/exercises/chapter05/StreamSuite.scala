@@ -3,6 +3,11 @@ package fpinscala.exercises.chapter05
 import org.scalatest.FunSuite
 
 class StreamSuite extends FunSuite {
+  test("it should produce a stream from a list of values") {
+    val s = Stream.of(1, 2, 3, 4)
+    assert(s.toList == List(1, 2, 3, 4))
+  }
+
   test("it should produce a range stream") {
     val r1 = Stream.range(40, 45)
     assert(r1.toList == List(40, 41, 42, 43, 44))
@@ -24,5 +29,26 @@ class StreamSuite extends FunSuite {
   test("it should compute a (finite) stream length") {
     val s = Stream.from(1).take(10)
     assert(s.length == 10)
+  }
+
+  test("it should fold a (finite) stream") {
+    val s = Stream.of(1, 2, 3, 4, 5)
+    assert(s.foldRight(0)(_ + _) == 15)
+  }
+
+  test("it should check whether a stream contains one element that matches the predicate") {
+    val s = Stream.of(1, 2, 3, 4, 5)
+    assert(s.exists(_ == 4))
+    assert(!s.exists(_ > 99))
+
+    assert(Stream.from(1).exists(_ > 100))
+  }
+
+  test("forAll") {
+    val s = Stream.of(1, 2, 3, 4, 5)
+    assert(s.forAll(_ < 10))
+    assert(!s.forAll(_ % 2 == 0))
+
+    assert(!Stream.from(10).forAll(_ < 5))
   }
 }
