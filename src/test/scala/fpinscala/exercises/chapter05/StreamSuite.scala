@@ -21,6 +21,14 @@ class StreamSuite extends FunSuite {
     assert(r.toList == List(2, 4, 6, 8))
   }
 
+  test("it should take elements from a stream until they match a predicate") {
+    val s1 = Stream.of(1, 2, 3, 4, 5)
+    assert(s1.takeWhile(_ < 4).toList == List(1, 2, 3))
+
+    val s2 = Stream.from(42)
+    assert(s2.takeWhile(_ < 50).toList == (42 until 50).toList)
+  }
+
   test("it should apply operations to infinite streams") {
     val s = Stream.from(1).filter(_ % 3 == 0).take(4)
     assert(s.toList == List(3, 6, 9, 12))

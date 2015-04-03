@@ -34,7 +34,7 @@ sealed trait Stream[+A] {
       if (p(head))
         Cons(() => head, () => t().takeWhile(p))
       else
-        t().takeWhile(p)
+        Empty
   }
 
   def drop(n: Int): Stream[A] = (this, n) match {
@@ -43,16 +43,20 @@ sealed trait Stream[+A] {
     case (Cons(h, t), i) => t().drop(n - 1)
   }
 
-  def filter(p: A => Boolean): Stream[A] = this match {
-    case Empty => Empty
-    case Cons(h, t) =>
-      lazy val head = h()
-      if (p(head)) Stream.cons[A](head, t().filter(p)) else t().filter(p)
+  def filter(p: A => Boolean): Stream[A] = {
+    this match {
+      case Empty => Empty
+      case Cons(h, t) =>
+        lazy val head = h()
+        if (p(head)) Stream.cons[A](head, t().filter(p)) else t().filter(p)
+    }
   }
 
-  def foldRight[B](z: => B)(f: (A, => B) => B): B = this match {
-    case Cons(h, t) => f(h(), t().foldRight(z)(f))
-    case Empty => z
+  def foldRight[B](z: => B)(f: (A, => B) => B): B = {
+    this match {
+      case Cons(h, t) => f(h(), t().foldRight(z)(f))
+      case Empty => z
+    }
   }
 
   def exists(p: A => Boolean): Boolean =
