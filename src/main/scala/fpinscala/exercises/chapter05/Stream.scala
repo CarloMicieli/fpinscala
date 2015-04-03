@@ -70,6 +70,12 @@ sealed trait Stream[+A] {
 
   def append[B >: A](that: => Stream[B]): Stream[B] =
     foldRight(that)((a, b) => Stream.cons(a, b))
+
+  def zip[B](that: Stream[B]): Stream[(A, B)] = (this, that) match {
+    case (Empty, _) => Empty
+    case (_, Empty) => Empty
+    case (Cons(ah, at), Cons(bh, bt)) => Stream.cons((ah(), bh()), at() zip bt())
+  }
 }
 
 object Empty extends Stream[Nothing] {

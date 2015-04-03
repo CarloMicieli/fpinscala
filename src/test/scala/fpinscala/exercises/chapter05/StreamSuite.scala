@@ -81,4 +81,12 @@ class StreamSuite extends FunSuite {
     val f: Int => Option[(Int, Int)] = x => if (x < 5) Some((x * 2, x + 1)) else None
     assert(Stream.unfold(0)(f).toList == List(0, 2, 4, 6, 8))
   }
+
+  test("it should zip corresponding elements in two streams") {
+    val s1 = Stream.of(1, 2, 3)
+    val s2 = Stream.from(10)
+
+    val s = s1 zip s2
+    assert(s.toList == List((1, 10), (2, 11), (3, 12)))
+  }
 }
