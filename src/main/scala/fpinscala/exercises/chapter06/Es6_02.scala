@@ -6,5 +6,7 @@ package fpinscala.exercises.chapter06
  *               `x.toDouble` to convert an `x: Int` to a `Double`.
  */
 object Es6_02 {
-  def double(rng: RNG): (Double, RNG) = ???
+  def double(rng: RNG): (Double, RNG) = {
+    rng.nextDouble
+  }
 }

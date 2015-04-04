@@ -1,5 +1,7 @@
 package fpinscala.exercises.chapter06
 
+import RNG._
+
 /**
  * EXERCISE 6.8] Implement `flatMap`, and then use it to implement `nonNegativeLessThan`.
  */
