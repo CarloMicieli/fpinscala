@@ -27,6 +27,11 @@ $ sbt test
 2. Getting started with functional programming in Scala
 3. Functional data structures
 4. Handling errors without exceptions
+    * [Adelbert Chang, How do I error handle thee?, 2014](http://typelevel.org/blog/2014/02/21/error-handling.html)
+    * [Daniel Westheide, The Neophyte's Guide to Scala Part 5: The Option Type, 2012](http://danielwestheide.com/blog/2012/12/19/the-neophytes-guide-to-scala-part-5-the-option-type.html)
+    * [Daniel Westheide, The Neophyte's Guide to Scala Part 6: Error Handling With Try, 2012](http://danielwestheide.com/blog/2012/12/26/the-neophytes-guide-to-scala-part-6-error-handling-with-try.html)
+    * [Daniel Westheide, The Neophyte's Guide to Scala Part 7: The Either Type, 2012](http://danielwestheide.com/blog/2013/01/02/the-neophytes-guide-to-scala-part-7-the-either-type.html)
+
 5. Strictness and laziness
     * [Haskell/Laziness (WikiBook)](http://en.wikibooks.org/wiki/Haskell/Laziness)
     * [Heinrich Apfelmus, The Incomplete Guide to Lazy Evaluation (in Haskell), 2015](https://hackhands.com/guide-lazy-evaluation-haskell/)
