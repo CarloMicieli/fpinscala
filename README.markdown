@@ -30,6 +30,7 @@ $ sbt test
 5. Strictness and laziness
     * [Haskell/Laziness (WikiBook)](http://en.wikibooks.org/wiki/Haskell/Laziness)
     * [Heinrich Apfelmus, The Incomplete Guide to Lazy Evaluation (in Haskell), 2015](https://hackhands.com/guide-lazy-evaluation-haskell/)
+    * [Alp Mestanogullari, Oh my laziness!, 2013](http://alpmestan.com/posts/2013-10-02-oh-my-laziness.html)
    
 6. Purely functional state
 7. Purely functional parallelism
