@@ -32,9 +32,14 @@ class RNGSuite extends FunSuite {
     assert(n == 15)
   }
 
-  test("it should map a function over a random value") {
+  test("it should map a function over a random generator") {
     val (str, _) = map(unit(42))(_.toString)(SimpleRNG(1))
     assert(str == "42")
+  }
+
+  test("it should flatMap a function over a random generator") {
+    val (str, _) = flatMap(unit(42))(i => unit(s"($i)"))(SimpleRNG(42))
+    assert(str == "(42)")
   }
 
   test("it should get values from both random generators") {

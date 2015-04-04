@@ -7,7 +7,8 @@ import RNG._
  *               we’re referring to when we say that `flatMap` is more powerful than `map` and `map2`.
  */
 object Es6_09 {
-  def map[A, B](s: Rand[A])(f: A => B): Rand[B] = ???
+  def map[A, B](s: Rand[A])(f: A => B): Rand[B] = flatMap(s)(i => unit(f(i)))
 
-  def map2[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = ???
+  def map2[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] =
+    flatMap(ra)(a => flatMap(rb)(b => unit(f(a, b))))
 }
