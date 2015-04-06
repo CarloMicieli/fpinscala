@@ -1,5 +1,7 @@
 package fpinscala.exercises.chapter07
 
+import Par._
+
 /**
  * EXERCISE 7.12] There’s still something rather arbitrary about choiceN. The choice of List seems
  *                overly specific. Why does it matter what sort of container we have? For instance, what
