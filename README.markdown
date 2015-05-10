@@ -21,7 +21,7 @@ $ git clone https://github.com/CarloMicieli/fpinscala
 $ sbt test
 ```
 
-## My study guide
+## My student guide
 
 1. What is functional programming?
 2. Getting started with functional programming in Scala
