@@ -1,8 +1,10 @@
 package fpinscala.exercises.chapter08
 
-/**
- * Created by carlo on 10/05/15.
- */
-object Gen {
+trait Gen[A]
 
+object Gen {
+  def choose[A](min: A, max: A): A = ???
+  def listOf[A](a: Gen[A]): Gen[List[A]] = ???
+  def listOfN[A](n: Int, a: Gen[A]): Gen[List[A]] = ???
 }
+
