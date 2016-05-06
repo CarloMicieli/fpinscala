@@ -25,6 +25,8 @@ $ sbt test
 
 1. What is functional programming?
 2. Getting started with functional programming in Scala
+    * Hughes, John. "Why functional programming matters." _The computer journal_ 32.2 (1989): 98-107. 
+    * Braithwaite, Reginald. Why Why Functional Programming Matters Matters (blog). 2007. Retrieved from [here](http://raganwald.com/2014/12/20/why-why-functional-programming-matters-matters.html).
 3. Functional data structures
 4. Handling errors without exceptions
     * [Adelbert Chang, How do I error handle thee?, 2014](http://typelevel.org/blog/2014/02/21/error-handling.html)
