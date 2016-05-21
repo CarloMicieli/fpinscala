@@ -15,26 +15,17 @@
 // limitations under the License.
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
+import fpinscala._
 
-class ListTestSpec extends AbstractTestSpec with SampleLists {
-  describe("A List") {
-    it("should produce a string representation") {
-      list.toString shouldBe "[1, 2, 3, 4]"
-      List.empty[Int].toString shouldBe "[]"
-    }
-
-    it("should equals lists") {
-      list.equals(list) shouldBe true
-      emptyList.equals(emptyList) shouldBe true
-      emptyList.equals(list) shouldBe false
-      list.equals(emptyList) shouldBe false
-    }
-
-    it("should find an element by its index") {
-      listFrom1to10(1) shouldBe Some(2)
-      listFrom1to10(100) shouldBe None
-      listFrom1to10(-1) shouldBe None
+/**
+  * EXERCISE 3.3] Using the same idea, implement the function `setHead` for replacing the
+  *               first element of a `List` with a different value.
+  */
+trait Es3_03 {
+  def setHead[A](newHead: A, xs: List[A]): List[A] = {
+    xs match {
+      case Cons(_, ys) => Cons(newHead, ys)
+      case Nil         => error("Nil.setHead: list is empty")
     }
   }
 }

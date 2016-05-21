@@ -15,26 +15,18 @@
 // limitations under the License.
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class ListTestSpec extends AbstractTestSpec with SampleLists {
-  describe("A List") {
-    it("should produce a string representation") {
-      list.toString shouldBe "[1, 2, 3, 4]"
-      List.empty[Int].toString shouldBe "[]"
-    }
-
-    it("should equals lists") {
-      list.equals(list) shouldBe true
-      emptyList.equals(emptyList) shouldBe true
-      emptyList.equals(list) shouldBe false
-      list.equals(emptyList) shouldBe false
-    }
-
-    it("should find an element by its index") {
-      listFrom1to10(1) shouldBe Some(2)
-      listFrom1to10(100) shouldBe None
-      listFrom1to10(-1) shouldBe None
+/**
+  * EXERCISE 3.4] Generalize `tail` to the function `drop`, which removes the first n elements from
+  *               a list. Note that this function takes time proportional only to the number of
+  *               elements being dropped — we don't need to make a copy of the entire `List`.
+  */
+trait Es3_04 {
+  @annotation.tailrec
+  final def drop[A](l: List[A], n: Int): List[A] = {
+    (l, n) match {
+      case (_, i) if i <= 0 => l
+      case (Cons(x, xs), i) => drop(xs, i - 1)
+      case (Nil, _)         => Nil
     }
   }
 }

@@ -17,24 +17,22 @@ package io.github.carlomicieli.fpinscala.chapter03
 
 import io.github.carlomicieli.AbstractTestSpec
 
-class ListTestSpec extends AbstractTestSpec with SampleLists {
-  describe("A List") {
-    it("should produce a string representation") {
-      list.toString shouldBe "[1, 2, 3, 4]"
-      List.empty[Int].toString shouldBe "[]"
+class Es3_05TestSpec extends AbstractTestSpec with Es3_05 with SampleLists {
+  describe("dropWhile()") {
+    it("should return the empty list when working on the empty list") {
+      dropWhile[Int](Nil)(_ > 0) shouldBe Nil
     }
 
-    it("should equals lists") {
-      list.equals(list) shouldBe true
-      emptyList.equals(emptyList) shouldBe true
-      emptyList.equals(list) shouldBe false
-      list.equals(emptyList) shouldBe false
+    it("should drop elements from a list when the predicate is true") {
+      dropWhile(listFrom1to10)(_ < 5) shouldBe List(5, 6, 7, 8, 9, 10)
     }
 
-    it("should find an element by its index") {
-      listFrom1to10(1) shouldBe Some(2)
-      listFrom1to10(100) shouldBe None
-      listFrom1to10(-1) shouldBe None
+    it("should return the empty list when all elements match the predicate") {
+      dropWhile(listFrom1to10)(_ < 100) shouldBe List.empty[Int]
+    }
+
+    it("should return the original list when no element matches the predicate") {
+      dropWhile(listFrom1to10)(_ > 100) shouldBe listFrom1to10
     }
   }
 }

@@ -15,26 +15,16 @@
 // limitations under the License.
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class ListTestSpec extends AbstractTestSpec with SampleLists {
-  describe("A List") {
-    it("should produce a string representation") {
-      list.toString shouldBe "[1, 2, 3, 4]"
-      List.empty[Int].toString shouldBe "[]"
-    }
-
-    it("should equals lists") {
-      list.equals(list) shouldBe true
-      emptyList.equals(emptyList) shouldBe true
-      emptyList.equals(list) shouldBe false
-      list.equals(emptyList) shouldBe false
-    }
-
-    it("should find an element by its index") {
-      listFrom1to10(1) shouldBe Some(2)
-      listFrom1to10(100) shouldBe None
-      listFrom1to10(-1) shouldBe None
+/**
+  * EXERCISE 3.5] Implement `dropWhile`, which removes elements from the `List` prefix as long
+  *               as they match a predicate.
+  */
+trait Es3_05 {
+  @annotation.tailrec
+  final def dropWhile[A](xs: List[A])(p: A => Boolean): List[A] = {
+    xs match {
+      case Cons(h, t) if p(h) => dropWhile(t)(p)
+      case _                  => xs
     }
   }
 }

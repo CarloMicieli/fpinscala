@@ -15,10 +15,43 @@
 // limitations under the License.
 package io.github.carlomicieli.fpinscala.chapter03
 
+import io.github.carlomicieli.fpinscala._
+
+/**
+  * An immutable linked list. The list is either a constructed list or the empty list.
+  * @tparam A
+  */
 sealed trait List[+A] extends Product with Serializable {
+  /**
+    * Selects the first element of this list.
+    * @return
+    */
   def head: A
+
+  /**
+    * Selects all elements except the first.
+    * @return
+    */
   def tail: List[A]
+
+  /**
+    * Checks whether this list is empty.
+    * @return
+    */
   def isEmpty: Boolean
+
+  def apply(ind: Int): Option[A] = {
+    @annotation.tailrec
+    def loop(i: Int, xs: List[A]): Option[A] = {
+      (i, xs) match {
+        case (0, Cons(h, _)) => Some(h)
+        case (n, Cons(_, t)) => loop(n - 1, t)
+        case (_, Nil)        => None
+      }
+    }
+
+    loop(ind, this)
+  }
 
   def length: Long = {
     foldLeft(0L)((out, x) => out + 1)
@@ -91,8 +124,8 @@ object List {
 }
 
 case object Nil extends List[Nothing] {
-  def head: Nothing = throw new NoSuchElementException("Nil.head")
-  def tail: Nothing = throw new NoSuchElementException("Nil.tail")
+  def head: Nothing = error("Nil.head")
+  def tail: Nothing = error("Nil.tail")
   def isEmpty: Boolean = true
 }
 

@@ -17,24 +17,20 @@ package io.github.carlomicieli.fpinscala.chapter03
 
 import io.github.carlomicieli.AbstractTestSpec
 
-class ListTestSpec extends AbstractTestSpec with SampleLists {
-  describe("A List") {
-    it("should produce a string representation") {
-      list.toString shouldBe "[1, 2, 3, 4]"
-      List.empty[Int].toString shouldBe "[]"
+class Es3_02TestSpec extends AbstractTestSpec with Es3_02 with SampleLists {
+  describe("tail") {
+    it("should throw an exception for the empty list") {
+      val thrown = the[NoSuchElementException] thrownBy {
+        tail(List.empty[Int])
+      } should have message "List.tail: list is empty"
     }
 
-    it("should equals lists") {
-      list.equals(list) shouldBe true
-      emptyList.equals(emptyList) shouldBe true
-      emptyList.equals(list) shouldBe false
-      list.equals(emptyList) shouldBe false
+    it("should reduce the List length by 1") {
+      tail(list).length shouldBe (list.length - 1)
     }
 
-    it("should find an element by its index") {
-      listFrom1to10(1) shouldBe Some(2)
-      listFrom1to10(100) shouldBe None
-      listFrom1to10(-1) shouldBe None
+    it("should return Some(tail) when the list is not empty") {
+      tailOption(list) shouldBe Some(tail(list))
     }
   }
 }

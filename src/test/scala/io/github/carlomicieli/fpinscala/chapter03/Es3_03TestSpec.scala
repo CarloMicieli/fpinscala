@@ -13,23 +13,22 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-import fpinscala._
+import io.github.carlomicieli.AbstractTestSpec
 
-/**
-  * EXERCISE 3.2] Implement the function `tail` for removing the first element of a `List`. Note that the
-  *               function takes constant time. What are different choices you could make in your
-  *               implementation if the `List` is `Nil`?
-  */
-object Es3_02 {
-  def tail[A](list: List[A]): List[A] = list match {
-    case Cons(_, xs) => xs
-    case _           => error("tail: list empty")
-  }
+class Es3_03TestSpec extends AbstractTestSpec with Es3_03 with SampleLists {
+  describe("Es3.3") {
+    it("should replace the head of a list") {
+      val NewHead = 42
+      val l = setHead(NewHead, list)
+      l.head shouldBe NewHead
+    }
 
-  def tailOption[A](list: List[A]): List[A] = list match {
-    case _ Cons xs => xs
-    case _         => Nil
+    it("should throw an exception for the empty list") {
+      val thrown = the[NoSuchElementException] thrownBy {
+        setHead(42, List.empty[Int])
+      } should have message "Nil.setHead: list is empty"
+    }
   }
 }

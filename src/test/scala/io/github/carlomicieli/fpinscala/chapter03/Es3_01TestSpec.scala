@@ -13,18 +13,14 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.4] Generalize `tail` to the function `drop`, which removes the first n elements from
-  *               a list. Note that this function takes time proportional only to the number of
-  *               elements being dropped — we don't need to make a copy of the entire `List`.
-  */
-object Es3_04 {
-  @annotation.tailrec
-  def drop[A](l: List[A], n: Int): List[A] = (n, l) match {
-    case (i, _) if i <= 0 => l
-    case (_, _ Cons xs)   => drop(xs, n - 1)
-    case (_, Nil)         => Nil
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es3_01TestSpec extends AbstractTestSpec with Es3_01 {
+  describe("Es3.01") {
+    it("should evaluate to 3") {
+      apply(List(1, 2, 3, 4, 5)) shouldBe 3
+    }
   }
 }

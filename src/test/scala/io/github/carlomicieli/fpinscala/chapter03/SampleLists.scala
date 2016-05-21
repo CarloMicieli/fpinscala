@@ -16,7 +16,13 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 trait SampleLists {
-  val list: List[Int] = List(1, 2, 3, 4)
-
   val emptyList: List[Int] = List.empty[Int]
+
+  val list: List[Int] = range2List(1 to 4)
+
+  val listFrom1to10: List[Int] = range2List(1 to 10)
+
+  private def range2List(r: Range): List[Int] = {
+    r.foldRight(List.empty[Int])((x, xs) => Cons(x, xs))
+  }
 }

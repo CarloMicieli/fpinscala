@@ -15,26 +15,25 @@
 // limitations under the License.
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
+import fpinscala._
 
-class ListTestSpec extends AbstractTestSpec with SampleLists {
-  describe("A List") {
-    it("should produce a string representation") {
-      list.toString shouldBe "[1, 2, 3, 4]"
-      List.empty[Int].toString shouldBe "[]"
+/**
+  * EXERCISE 3.2] Implement the function `tail` for removing the first element of a `List`. Note that the
+  *               function takes constant time. What are different choices you could make in your
+  *               implementation if the `List` is `Nil`?
+  */
+trait Es3_02 {
+  def tail[A](xs: List[A]): List[A] = {
+    xs match {
+      case Cons(_, ys) => ys
+      case Nil         => error("List.tail: list is empty")
     }
+  }
 
-    it("should equals lists") {
-      list.equals(list) shouldBe true
-      emptyList.equals(emptyList) shouldBe true
-      emptyList.equals(list) shouldBe false
-      list.equals(emptyList) shouldBe false
-    }
-
-    it("should find an element by its index") {
-      listFrom1to10(1) shouldBe Some(2)
-      listFrom1to10(100) shouldBe None
-      listFrom1to10(-1) shouldBe None
+  def tailOption[A](xs: List[A]): Option[List[A]] = {
+    xs match {
+      case Cons(_, ys) => Some(ys)
+      case Nil         => None
     }
   }
 }

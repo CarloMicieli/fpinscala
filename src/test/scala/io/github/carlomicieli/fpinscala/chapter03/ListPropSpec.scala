@@ -32,6 +32,12 @@ class ListPropSpec extends AbstractPropSpec {
     })
   }
 
+  property("appended list size is the sum of two original lists length") {
+    check(forAll { (xs: List[Int], ys: List[Int]) =>
+      (xs append ys).length ?= xs.length + ys.length
+    })
+  }
+
   property("length: must return a non negative result") {
     check(forAll { (xs: List[Int]) =>
       xs.length >= 0

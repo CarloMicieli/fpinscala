@@ -13,15 +13,22 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.3] Using the same idea, implement the function `setHead` for replacing the
-  *               first element of a `List` with a different value.
-  */
-object Es3_03 {
-  def setHead[A](newHead: A, list: List[A]): List[A] = list match {
-    case x Cons xs => newHead :: xs
-    case Nil       => Nil
+import io.github.carlomicieli.AbstractPropSpec
+import org.scalacheck.Prop.{ forAll, AnyOperators }
+
+class Es3_03PropSpec extends AbstractPropSpec with Es3_03 {
+  property("setHead: it shouldn't increase the list length") {
+    check(forAll(nonEmptyList[Int]) { (xs: List[Int]) =>
+      setHead(0, xs).length ?= xs.length
+    })
+  }
+
+  property("setHead: it should replace the head") {
+    check(forAll { (x: Int, xs: List[Int]) =>
+      val list = Cons(x, xs)
+      setHead(x + 1, list).head ?= x + 1
+    })
   }
 }

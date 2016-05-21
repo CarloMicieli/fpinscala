@@ -17,24 +17,26 @@ package io.github.carlomicieli.fpinscala.chapter03
 
 import io.github.carlomicieli.AbstractTestSpec
 
-class ListTestSpec extends AbstractTestSpec with SampleLists {
-  describe("A List") {
-    it("should produce a string representation") {
-      list.toString shouldBe "[1, 2, 3, 4]"
-      List.empty[Int].toString shouldBe "[]"
+class Es3_04TestSpec extends AbstractTestSpec with Es3_04 with SampleLists {
+  describe("Es3.4: drop()") {
+    it("should drop the first n elements from a list") {
+      drop(list, 2) shouldBe List(3, 4)
     }
 
-    it("should equals lists") {
-      list.equals(list) shouldBe true
-      emptyList.equals(emptyList) shouldBe true
-      emptyList.equals(list) shouldBe false
-      list.equals(emptyList) shouldBe false
+    it("should return the same list when dropping 0 elements") {
+      drop(list, 0) shouldBe list
     }
 
-    it("should find an element by its index") {
-      listFrom1to10(1) shouldBe Some(2)
-      listFrom1to10(100) shouldBe None
-      listFrom1to10(-1) shouldBe None
+    it("should return the empty list when dropping n elements from the empty list") {
+      drop(Nil, 4) shouldBe Nil
+    }
+
+    it("should return the empty list when the number of dropped elements is more the list length") {
+      drop(list, list.length.toInt + 1) shouldBe Nil
+    }
+
+    it("should return the original list dropping a negative number of elements") {
+      drop(list, -2) shouldBe list
     }
   }
 }
