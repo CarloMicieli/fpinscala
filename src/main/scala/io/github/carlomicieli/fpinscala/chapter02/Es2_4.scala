@@ -13,23 +13,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.samples.chapter02
+package io.github.carlomicieli.fpinscala.chapter02
 
-object FindFirst {
-  def apply[A](array: Array[A])(p: A => Boolean): Option[Int] = {
-    @annotation.tailrec
-    def loop(i: Int): Option[Int] = {
-      if (i == array.length) {
-        None
-      } else {
-        if (p(array(i))) {
-          Some(i)
-        } else {
-          loop(i + 1)
-        }
-      }
-    }
-
-    loop(0)
+/**
+  * EXERCISE 2.4] Implement `unCurry`, which reverses the transformation of `curry`.
+  *               Note that since `=>` associates to the right, `A => (B => C)` can
+  *               be written as `A => B => C`.
+  */
+trait Es2_4 {
+  def unCurry[A, B, C](f: A => (B => C)): (A, B) => C = {
+    (a, b) => f(a)(b)
   }
 }

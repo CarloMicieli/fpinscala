@@ -13,23 +13,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.samples.chapter02
+package io.github.carlomicieli.fpinscala.chapter02
 
-object FindFirst {
-  def apply[A](array: Array[A])(p: A => Boolean): Option[Int] = {
-    @annotation.tailrec
-    def loop(i: Int): Option[Int] = {
-      if (i == array.length) {
-        None
-      } else {
-        if (p(array(i))) {
-          Some(i)
-        } else {
-          loop(i + 1)
-        }
-      }
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es2_4TestSpec extends AbstractTestSpec with Es2_4 {
+  describe("unCurry") {
+    it("should un-curry functions") {
+      def sum(x: Int)(y: Int): Int = x + y
+      unCurry(sum)(21, 21) shouldBe sum(21)(21)
     }
-
-    loop(0)
   }
 }

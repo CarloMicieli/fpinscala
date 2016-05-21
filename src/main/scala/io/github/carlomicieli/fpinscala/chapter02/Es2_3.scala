@@ -1,4 +1,3 @@
-// Copyright (C) 2016 the original author or authors.
 // See the LICENCE.txt file distributed with this work for additional
 // information regarding copyright ownership.
 //
@@ -13,23 +12,19 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.samples.chapter02
+package io.github.carlomicieli.fpinscala.chapter02
 
-object FindFirst {
-  def apply[A](array: Array[A])(p: A => Boolean): Option[Int] = {
-    @annotation.tailrec
-    def loop(i: Int): Option[Int] = {
-      if (i == array.length) {
-        None
-      } else {
-        if (p(array(i))) {
-          Some(i)
-        } else {
-          loop(i + 1)
-        }
-      }
-    }
-
-    loop(0)
+/**
+  * EXERCISE 2.3] Let’s look at another example, currying, which converts a
+  *               function `f` of two arguments into a function of one argument
+  *               that partially applies `f`. Here again there’s only one
+  *               implementation that compiles. Write this implementation.
+  */
+trait Es2_3 {
+  def curry[A, B, C](f: (A, B) => C): A => (B => C) = {
+    a => partial(a, f)
   }
+
+  private def partial[A, B, C](a: A, f: (A, B) => C): B => C =
+    b => f(a, b)
 }

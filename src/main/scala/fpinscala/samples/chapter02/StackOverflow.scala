@@ -23,7 +23,10 @@ package fpinscala.samples.chapter02
 object StackOverflow {
 
   // sum from math (Gauss formula)
-  def sum(n: Int): Long = (n * (n + 1) / 2).toLong
+  def sum(n: Int): Long = {
+    val ln = n.toLong
+    ln * (ln + 1) / 2
+  }
 
   // recursive sum of integer from 0 to n
   def sum1(n: Int): Long = n match {

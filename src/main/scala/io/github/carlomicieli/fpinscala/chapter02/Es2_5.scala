@@ -13,23 +13,17 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.samples.chapter02
+package io.github.carlomicieli.fpinscala.chapter02
 
-object FindFirst {
-  def apply[A](array: Array[A])(p: A => Boolean): Option[Int] = {
-    @annotation.tailrec
-    def loop(i: Int): Option[Int] = {
-      if (i == array.length) {
-        None
-      } else {
-        if (p(array(i))) {
-          Some(i)
-        } else {
-          loop(i + 1)
-        }
-      }
-    }
+/**
+  * EXERCISE 2.5] Implement the higher-order function that composes two functions.
+  */
+trait Es2_5 {
+  def compose[A, B, C](f: B => C, g: A => B): A => C = {
+    a => f(g(a))
+  }
 
-    loop(0)
+  def andThen[A, B, C](f: A => B, g: B => C): A => C = {
+    compose(g, f)
   }
 }

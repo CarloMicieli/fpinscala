@@ -25,8 +25,11 @@ object Factorial {
   def fact2(n: Int): BigInt = {
     @annotation.tailrec
     def loop(i: Int, acc: BigInt): BigInt = {
-      if (i <= 1) acc
-      else loop(i - 1, i * acc)
+      if (i <= 1) {
+        acc
+      } else {
+        loop(i - 1, i * acc)
+      }
     }
 
     loop(n, 1)
@@ -61,7 +64,7 @@ object Factorial {
 object BinCoefficient {
 
   implicit class IntFact(val n: Int) extends AnyVal {
-    def ! = Factorial.fact2(n)
+    def ! : BigInt = Factorial.fact2(n)
   }
 
   import scala.language.postfixOps

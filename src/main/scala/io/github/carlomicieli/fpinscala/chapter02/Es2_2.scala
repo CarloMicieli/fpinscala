@@ -13,23 +13,22 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.samples.chapter02
+package io.github.carlomicieli.fpinscala.chapter02
 
-object FindFirst {
-  def apply[A](array: Array[A])(p: A => Boolean): Option[Int] = {
-    @annotation.tailrec
-    def loop(i: Int): Option[Int] = {
-      if (i == array.length) {
-        None
-      } else {
-        if (p(array(i))) {
-          Some(i)
-        } else {
-          loop(i + 1)
-        }
-      }
+/**
+  * EXERCISE 2.2] Implement `isSorted`, which checks whether an `Array[A]` is sorted according to a
+  *               given comparison function:
+  *
+  * {{{
+  *   def isSorted[A](as: Array[A], ordered: (A, A) => Boolean): Boolean
+  * }}}
+  */
+trait Es2_2 {
+  def isSorted[A](as: Array[A], ordered: (A, A) => Boolean): Boolean = {
+    if (as.length <= 1) {
+      true
+    } else {
+      as.zip(as.tail).forall(ordered.tupled)
     }
-
-    loop(0)
   }
 }
