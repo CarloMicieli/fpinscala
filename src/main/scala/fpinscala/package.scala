@@ -13,12 +13,10 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter07
 
-import org.scalatest.FunSuite
-
-class Es7_11Suite extends FunSuite {
-  test("not_implemented_yet") {
-    assert(1 == 1)
-  }
+/**
+  * Created by carlo on 21/05/16.
+  */
+package object fpinscala {
+  def error[A](err: String): A = throw new NoSuchElementException(err)
 }

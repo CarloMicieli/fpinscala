@@ -1,8 +1,23 @@
+// Copyright (C) 2016 the original author or authors.
+// See the LICENCE.txt file distributed with this work for additional
+// information regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 package fpinscala.samples.chapter08
 
 /**
- * A skew heap (a representation of priority queues), following Chris Okasaki's implementation.
- */
+  * A skew heap (a representation of priority queues), following Chris Okasaki's implementation.
+  */
 sealed trait SkewHeap[+A] {
 
   def isEmpty: Boolean
@@ -17,7 +32,7 @@ sealed trait SkewHeap[+A] {
     def join(a: SkewHeap[B], b: SkewHeap[B]): SkewHeap[B] = {
       a match {
         case Fork(x, l, r) => Fork(x, r, merge(l, b))
-        case Empty => Empty
+        case Empty         => Empty
       }
     }
 
@@ -34,10 +49,10 @@ sealed trait SkewHeap[+A] {
   }
 
   /**
-   * Checks whether the current heap is roughly balanced.
-   */
+    * Checks whether the current heap is roughly balanced.
+    */
   def isBalanced[B >: A](implicit ord: Ordering[B]): Boolean = this match {
-    case Empty         => true
+    case Empty => true
     case Fork(_, l, r) => {
 
       val almostSameWeight: Boolean = {
@@ -55,26 +70,26 @@ sealed trait SkewHeap[+A] {
   }
 
   def credits: Int = this match {
-    case Empty           => 0
-    case h@Fork(_, l, r) => l.credits + r.credits + (if (h.good) 0 else 1)
+    case Empty             => 0
+    case h @ Fork(_, l, r) => l.credits + r.credits + (if (h.good) 0 else 1)
   }
 
   /**
-   * It returns the current heap weight.
-   */
+    * It returns the current heap weight.
+    */
   def weight: Int = this match {
     case Empty         => 0
     case Fork(_, l, r) => 1 + l.weight + r.weight
   }
 
   /**
-   * It inserts elements into the two subtrees alternately.
-   */
+    * It inserts elements into the two subtrees alternately.
+    */
   def insert[B >: A](x: B)(implicit ord: Ordering[B]): SkewHeap[B] = {
     def minMax(x: B, y: B): (B, B) = if (ord.lt(x, y)) (x, y) else (y, x)
 
     this match {
-      case Empty         => Fork(x, Empty, Empty)
+      case Empty => Fork(x, Empty, Empty)
       case Fork(y, l, r) => {
         val (min, max) = minMax(x, y)
         Fork(min, r, l.insert(max))
@@ -83,22 +98,22 @@ sealed trait SkewHeap[+A] {
   }
 
   /**
-   * It extract the minimum element (i.e. the first element in the queue)
-   */
+    * It extract the minimum element (i.e. the first element in the queue)
+    */
   def minOption: Option[A] = this match {
     case Empty         => None
     case Fork(x, _, _) => Some(x)
   }
 
   /**
-   * It extract the minimum element (i.e. the first element in the queue)
-   */
+    * It extract the minimum element (i.e. the first element in the queue)
+    */
   def min: A = minOption.getOrElse(throw new NoSuchElementException("no elements"))
 
   /**
-   * It checks the heap invariant: the value in each node is
-   * less than any value in its subtrees.
-   */
+    * It checks the heap invariant: the value in each node is
+    * less than any value in its subtrees.
+    */
   def isValid[B >: A](implicit ord: Ordering[B]): Boolean = {
     def smaller(v: B, t: SkewHeap[B]): Boolean = {
       (v, t) match {

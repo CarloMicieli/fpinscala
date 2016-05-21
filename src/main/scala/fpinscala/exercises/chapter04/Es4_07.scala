@@ -1,9 +1,24 @@
+// Copyright (C) 2016 the original author or authors.
+// See the LICENCE.txt file distributed with this work for additional
+// information regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 package fpinscala.exercises.chapter04
 
 /**
- * EXERCISE 4.7] Implement `sequence` and `traverse` for `Either`. These should return
- *               the first error that's encountered, if there is one.
- */
+  * EXERCISE 4.7] Implement `sequence` and `traverse` for `Either`. These should return
+  *               the first error that's encountered, if there is one.
+  */
 object Es4_07 {
   def sequence[E, A](es: List[Either[E, A]]): Either[E, List[A]] =
     traverse(es)(x => x)
@@ -17,8 +32,8 @@ object Es4_07 {
 
   private def step[E, A, B](f: A => Either[E, B])(x: A, acc: Either[E, List[B]]): Either[E, List[B]] = {
     (f(x), acc) match {
-      case (l@Left(y), _) => l
-      case (_, l@Left(y)) => l
+      case (l @ Left(y), _)      => l
+      case (_, l @ Left(y))      => l
       case (Right(y), Right(ys)) => Right(y :: ys)
 
     }

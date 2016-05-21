@@ -1,6 +1,21 @@
+// Copyright (C) 2016 the original author or authors.
+// See the LICENCE.txt file distributed with this work for additional
+// information regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 package fpinscala.exercises.chapter07
 
-import java.util.concurrent.{Callable, TimeUnit, ExecutorService, Future}
+import java.util.concurrent.{ Callable, TimeUnit, ExecutorService, Future }
 
 object Par {
   type Par[A] = ExecutorService => Future[A]
@@ -21,11 +36,12 @@ object Par {
     })
 
   def map2[A, B, C](a: Par[A], b: Par[B])(f: (A, B) => C): Par[C] = {
-    (es: ExecutorService) => {
-      val fa = a(es)
-      val fb = b(es)
-      UnitFuture(f(fa.get, fb.get))
-    }
+    (es: ExecutorService) =>
+      {
+        val fa = a(es)
+        val fb = b(es)
+        UnitFuture(f(fa.get, fb.get))
+      }
   }
 
   def asyncF[A, B](f: A => B): A => Par[B] = a => lazyUnit(f(a))
@@ -33,7 +49,7 @@ object Par {
   def sequence[A](ps: List[Par[A]]): Par[List[A]] =
     ps.foldLeft(unit(List.empty[A]))((as, a) => map2(a, as)(_ :: _))
 
-  def parMap[A,B](ps: List[A])(f: A => B): Par[List[B]] = fork {
+  def parMap[A, B](ps: List[A])(f: A => B): Par[List[B]] = fork {
     val pars: List[Par[B]] = ps.map(asyncF(f))
     sequence(pars)
   }

@@ -1,35 +1,50 @@
+// Copyright (C) 2016 the original author or authors.
+// See the LICENCE.txt file distributed with this work for additional
+// information regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 package fpinscala.samples.chapter04
 
-import fpinscala.exercises.chapter04.{None, Option, Some}
+import fpinscala.exercises.chapter04.{ None, Option, Some }
 
 import scala.util.control.NoStackTrace
 
 /**
- * It represent a container object that may or may not complete with a valid result.
- */
+  * It represent a container object that may or may not complete with a valid result.
+  */
 sealed trait Try[+A] {
   /**
-   * Checks whether it represents a computation that ends with a failure.
-   * @return `true` if this is a failure; `false` otherwise.
-   */
+    * Checks whether it represents a computation that ends with a failure.
+    * @return `true` if this is a failure; `false` otherwise.
+    */
   def isFailure: Boolean = !isSuccess
 
   /**
-   * Checks whether it represents a computation that ends successfully.
-   * @return `true` if this is a success; `false` otherwise.
-   */
+    * Checks whether it represents a computation that ends successfully.
+    * @return `true` if this is a success; `false` otherwise.
+    */
   def isSuccess: Boolean
 
   /**
-   * Returns the inner cause for failure. `None` for success.
-   * @return the inner cause for failure.
-   */
+    * Returns the inner cause for failure. `None` for success.
+    * @return the inner cause for failure.
+    */
   def exception[B >: Throwable]: Option[B]
 
   /**
-   * Returns the result value from the computation if completed successfully, or
-   * throws an Exception for the failure case.
-   */
+    * Returns the result value from the computation if completed successfully, or
+    * throws an Exception for the failure case.
+    */
   def get: A
 
   def flatten[B](implicit ev: B => Try[B]): Try[B] = get.asInstanceOf[Try[B]]
@@ -59,20 +74,20 @@ sealed trait Try[+A] {
       Failure(new NoSuchElementException with NoStackTrace)
 
   /**
-   * Returns <em>empty</em> if this is a Failure or an <em>Optional</em>
-   * containing the value if this is a <em>Success</em>.
-   *
-   * @return an Optional that contains the computation result if Success, <em>empty</em> otherwise.
-   */
+    * Returns <em>empty</em> if this is a Failure or an <em>Optional</em>
+    * containing the value if this is a <em>Success</em>.
+    *
+    * @return an Optional that contains the computation result if Success, <em>empty</em> otherwise.
+    */
   def toOption: Option[A] = if (isSuccess) Some(get) else None
 
   /**
-   * Return the computation result if <em>Success</em>, or the value provided
-   * by the given function.
-   *
-   * @param default the function to supply a computation result for <em>Failure</em>
-   * @return the computation result if <em>Supplier</em>, or a default value supplied by a function.
-   */
+    * Return the computation result if <em>Success</em>, or the value provided
+    * by the given function.
+    *
+    * @param default the function to supply a computation result for <em>Failure</em>
+    * @return the computation result if <em>Supplier</em>, or a default value supplied by a function.
+    */
   def getOrElse[B >: A](default: => B): B = if (isSuccess) get else default
 }
 

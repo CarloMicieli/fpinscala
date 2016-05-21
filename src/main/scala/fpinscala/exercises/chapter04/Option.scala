@@ -1,14 +1,29 @@
+// Copyright (C) 2016 the original author or authors.
+// See the LICENCE.txt file distributed with this work for additional
+// information regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 package fpinscala.exercises.chapter04
 
 sealed trait Option[+A] {
   /**
-   * Apply f if the Option is not None.
-   */
+    * Apply f if the Option is not None.
+    */
   def map[B](f: A => B): Option[B] = if (isEmpty) None else Some(f(get))
 
   /**
-   * Apply f, which may fail, to the Option if not None.
-   */
+    * Apply f, which may fail, to the Option if not None.
+    */
   def flatMap[B](f: A => Option[B]): Option[B] = if (isEmpty) None else f(get)
 
   def get: A
@@ -18,8 +33,8 @@ sealed trait Option[+A] {
   def getOrElse[B >: A](default: => B): B = if (isEmpty) default else get
 
   /**
-   * It returns the first Option if it’s defined; otherwise, it returns the second Option.
-   */
+    * It returns the first Option if it’s defined; otherwise, it returns the second Option.
+    */
   def orElse[B >: A](ob: => Option[B]): Option[B] = if (isEmpty) ob else this
 
   def filter(p: A => Boolean): Option[A] = if (!isEmpty && p(get)) this else None

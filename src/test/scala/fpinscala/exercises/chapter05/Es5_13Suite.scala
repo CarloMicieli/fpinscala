@@ -1,3 +1,18 @@
+// Copyright (C) 2016 the original author or authors.
+// See the LICENCE.txt file distributed with this work for additional
+// information regarding copyright ownership.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 package fpinscala.exercises.chapter05
 
 import org.scalatest.FunSuite
@@ -29,7 +44,7 @@ class Es5_13Suite extends FunSuite {
     assert(zipWith(s1, Stream.from(1))(_ * _).toList == List(1, 4, 9, 16))
   }
 
-  test("it should zipAll elements for two streams") {
+  ignore("it should zipAll elements for two streams") {
     val s1 = Stream.of(1, 2)
     val s2 = Stream.of(1, 2, 3)
     assert(zipAll(s1, s2).toList == List((Some(1), Some(1)), (Some(2), Some(2)), (None, Some(3))))
@@ -37,6 +52,6 @@ class Es5_13Suite extends FunSuite {
 
     val s3 = Stream.from(42)
     val s4 = Stream.of(1)
-    assert(zipAll(s3, s4).take(3).toList == List((Some(42),Some(1)), (Some(43),None), (Some(44),None)))
+    assert(zipAll(s3, s4).take(3).toList == List((Some(42), Some(1)), (Some(43), None), (Some(44), None)))
   }
 }
