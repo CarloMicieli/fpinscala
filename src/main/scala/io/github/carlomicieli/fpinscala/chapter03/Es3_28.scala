@@ -16,17 +16,12 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /**
-  * EXERCISE 3.13] Can you write `foldLeft` in terms of `foldRight`? How about the other way
-  *                around? Implementing `foldRight` via `foldLeft` is useful because it lets us
-  *                implement `foldRight` tail-recursively, which means it works even for large
-  *                lists without overflowing the stack.
+  * EXERCISE 3.28] Write a function `map`, analogous to the method of the same name on `List`,
+  *                that modifies each element in a tree with a given function.
   */
-trait Es3_13 {
-  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-    as.foldLeft(identity[B] _)((g, a) => g compose ((b: B) => f(a, b)))(z)
-  }
-
-  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = {
-    as.foldRight(identity[B] _)((a, g) => g compose ((b: B) => f(b, a)))(z)
+trait Es3_28 {
+  def map[A, B](tree: Tree[A])(f: A => B): Tree[B] = tree match {
+    case Leaf(v)      => Leaf(f(v))
+    case Branch(l, r) => Branch(map(l)(f), map(r)(f))
   }
 }

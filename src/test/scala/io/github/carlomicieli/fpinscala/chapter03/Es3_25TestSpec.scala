@@ -13,19 +13,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.20] Write a function `flatMap` that works like `map` except that the function
-  *                given will return a list instead of a single result, and that list should
-  *                be inserted into the final resulting list.
-  */
-object Es3_20 {
-  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
-    as.foldRight(List.empty[B])((x, xs) => f(x) ++ xs)
+import io.github.carlomicieli.AbstractTestSpec
 
-  def flatMapV2[A, B](as: List[A])(f: A => List[B]): List[B] =
-    as.foldLeft(List.empty[B])((xs, x) => xs ++ f(x))
-
-  def flatMapV3[A, B](as: List[A])(f: A => List[B]): List[B] = as.map(f).flatten
+class Es3_25TestSpec extends AbstractTestSpec with Es3_25 {
+  describe("Es3.25") {
+    it("should count the number of nodes in a tree") {
+      size(Leaf(42)) shouldBe 1
+      size(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))) shouldBe 3
+    }
+  }
 }

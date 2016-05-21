@@ -13,15 +13,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.27] Write a function `depth` that returns the maximum path length from the root
-  *                of a tree to any leaf.
-  */
-object Es3_27 {
-  def depth[A](t: Tree[A]): Int = t match {
-    case Leaf(_)      => 0
-    case Branch(l, r) => 1 + (depth(l) max depth(r))
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es3_16TestSpec extends AbstractTestSpec with Es3_16 with SampleLists {
+  describe("Es3.16") {
+    it("should add one to list elements") {
+      addOne(List(41, 42, 43)) shouldBe List(42, 43, 44)
+      addOne(emptyList) shouldBe emptyList
+    }
   }
 }

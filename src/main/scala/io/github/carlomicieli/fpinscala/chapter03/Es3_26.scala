@@ -13,15 +13,16 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
 /**
-  * EXERCISE 3.23] Generalize the function you just wrote so that it's not specific to integers
-  *                or addition. Name your generalized function `zipWith`.
+  * EXERCISE 3.26] Write a function `maximum` that returns the maximum element in a `Tree[Int]`.
+  *                (Note: In Scala, you can use `x.max(y)` or `x max y` to compute the maximum
+  *                of two integers `x` and `y`.)
   */
-object Es3_23 {
-  def zipWith[A, B](as: List[A], bs: List[A])(f: (A, A) => B): List[B] = (as, bs) match {
-    case (x Cons xs, y Cons ys) => f(x, y) :: zipWith(xs, ys)(f)
-    case _                      => Nil
+trait Es3_26 {
+  def maximum(t: Tree[Int]): Int = t match {
+    case Leaf(n)      => n
+    case Branch(l, r) => maximum(l) max maximum(r)
   }
 }

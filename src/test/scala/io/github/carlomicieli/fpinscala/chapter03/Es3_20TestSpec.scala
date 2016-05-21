@@ -13,16 +13,17 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.26] Write a function `maximum` that returns the maximum element in a `Tree[Int]`.
-  *                (Note: In Scala, you can use `x.max(y)` or `x max y` to compute the maximum
-  *                of two integers `x` and `y`.)
-  */
-object Es3_26 {
-  def maximum(t: Tree[Int]): Int = t match {
-    case Leaf(n)      => n
-    case Branch(l, r) => maximum(l) max maximum(r)
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es3_20TestSpec extends AbstractTestSpec with Es3_20 {
+  describe("Es3.20") {
+    it("should apply a function to each list element and then flatten the result") {
+      val f = (i: Int) => List(i, i + 10)
+
+      flatMap(List.empty[Int])(f) shouldBe Nil
+      flatMap(List(1, 2, 3))(f) shouldBe List(1, 11, 2, 12, 3, 13)
+    }
   }
 }

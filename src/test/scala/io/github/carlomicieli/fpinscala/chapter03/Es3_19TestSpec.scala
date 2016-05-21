@@ -13,18 +13,24 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.19] Write a function `filter` that removes elements from a list unless they satisfy
-  *                a given predicate. Use it to remove all odd numbers from a `List[Int]`.
-  */
-object Es3_19 {
-  def filter[A](as: List[A])(p: A => Boolean): List[A] =
-    as.foldLeft(List.empty[A])((xs, x) => if (p(x)) x :: xs else xs).reverse
+import io.github.carlomicieli.AbstractTestSpec
 
-  def removeOdd(list: List[Int]): List[Int] = {
-    val isEven: Int => Boolean = x => x % 2 == 0
-    filter(list)(isEven)
+class Es3_19TestSpec extends AbstractTestSpec with Es3_19 with SampleLists {
+  describe("Es3.19") {
+    it("should filter out elements that don't match the predicate") {
+      filter(List(1, 2, 3, 4, 5))(_ % 2 == 0) shouldBe List(2, 4)
+      filter(emptyList)(_ % 2 == 0) shouldBe emptyList
+    }
+
+    it("should return the empty list if no element is matching the predicate") {
+      filter(listFrom1to10)(_ > 100) shouldBe emptyList
+    }
+
+    it("should remove of the odd numbers from a list") {
+      val l = List(1, 2, 3, 4, 5)
+      removeOdd(l) shouldBe List(2, 4)
+    }
   }
 }

@@ -13,7 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
 /**
   * EXERCISE 3.29] Generalize `size`, `maximum`, `depth`, and `map`, writing a new
@@ -22,7 +22,7 @@ package fpinscala.exercises.chapter03
   *                you draw an analogy between this fold function and the left and right
   *                folds for List ?
   */
-object Es3_29 {
+trait Es3_29 {
   def fold[A, B](t: Tree[A])(f: (A) => B)(g: (B, B) => B): B = t match {
     case Leaf(n) => f(n)
     case Branch(l, r) =>

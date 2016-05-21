@@ -13,16 +13,16 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
 /**
   * EXERCISE 3.15] Hard: Write a function that concatenates a list of lists into a single list.
   *                Its runtime should be linear in the total length of all lists. Try to use
   *                functions we have already defined.
   */
-object Es3_15 {
+trait Es3_15 {
   def concat[A](list: List[List[A]]): List[A] =
-    list.foldRight(List.empty[A])((xss, xs) => xss ++ xs)
+    list.foldRight(List.empty[A])((xss, xs) => xss append xs)
 
   /*
 

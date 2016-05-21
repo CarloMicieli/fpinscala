@@ -13,16 +13,10 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.14] Implement `append` in terms of either `foldLeft` or `foldRight`.
-  */
-object Es3_14 {
-  def append[A](as: List[A], bs: List[A]): List[A] = appendL(as, bs)
+sealed trait Tree[+A]
 
-  def appendR[A](as: List[A], bs: List[A]): List[A] = as.foldRight(bs)(_ :: _)
+case class Leaf[A](value: A) extends Tree[A]
 
-  def appendL[A](as: List[A], bs: List[A]): List[A] =
-    as.reverse.foldLeft(bs)((xs, x) => x :: xs)
-}
+case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]

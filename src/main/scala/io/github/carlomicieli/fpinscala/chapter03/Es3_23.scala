@@ -13,12 +13,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
 /**
-  * EXERCISE 3.21] Use `flatMap` to implement `filter`.
+  * EXERCISE 3.23] Generalize the function you just wrote so that it's not specific to integers
+  *                or addition. Name your generalized function `zipWith`.
   */
-object Es3_21 {
-  def filter[A](as: List[A])(p: A => Boolean): List[A] =
-    as.flatMap(x => if (p(x)) List(x) else List())
+trait Es3_23 {
+  def zipWith[A, B](as: List[A], bs: List[A])(f: (A, A) => B): List[B] = (as, bs) match {
+    case (Cons(x, xs), Cons(y, ys)) => Cons(f(x, y), zipWith(xs, ys)(f))
+    case _                          => Nil
+  }
 }

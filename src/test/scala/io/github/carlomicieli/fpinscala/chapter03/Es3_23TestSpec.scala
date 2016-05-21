@@ -15,18 +15,21 @@
 // limitations under the License.
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.13] Can you write `foldLeft` in terms of `foldRight`? How about the other way
-  *                around? Implementing `foldRight` via `foldLeft` is useful because it lets us
-  *                implement `foldRight` tail-recursively, which means it works even for large
-  *                lists without overflowing the stack.
-  */
-trait Es3_13 {
-  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-    as.foldLeft(identity[B] _)((g, a) => g compose ((b: B) => f(a, b)))(z)
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es3_23TestSpec extends AbstractTestSpec with Es3_23 {
+  describe("Es3.23") {
+    it("should apply a function to corresponding elements in two lists") {
+      zipWith(List(1, 2, 3), List(4, 5, 6))(_ + _) shouldBe List(5, 7, 9)
+      zipWith(List("1", "2", "3"), List("4", "5", "6"))(_ + _) shouldBe List("14", "25", "36")
+    }
+
+    it("should produce a list with the same number of elements as the shortest list") {
+      zipWith(List(1, 2), List(4, 5, 6))(_ + _) shouldBe List(5, 7)
+      zipWith(List(1, 2, 3), List(4, 5))(_ + _) shouldBe List(5, 7)
+      zipWith(List(1, 2), Nil)(_ + _) shouldBe Nil
+      zipWith(Nil, List(4, 5, 6))(_ + _) shouldBe Nil
+    }
   }
 
-  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = {
-    as.foldRight(identity[B] _)((a, g) => g compose ((b: B) => f(b, a)))(z)
-  }
 }

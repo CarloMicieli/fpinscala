@@ -13,7 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
 /**
   * EXERCISE 3.24] Hard: As an example, implement `hasSubsequence` for checking whether a `List`
@@ -24,7 +24,7 @@ package fpinscala.exercises.chapter03
   *
   *                Note: Any two values `x` and `y` can be compared for equality in Scala using the expression `x == y`.
   */
-object Es3_24 {
+trait Es3_24 {
   def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean = {
     val zero = (false, sub)
     val step: ((Boolean, List[A]), A) => (Boolean, List[A]) = (acc, x) => {

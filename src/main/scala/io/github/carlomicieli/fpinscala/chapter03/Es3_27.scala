@@ -16,17 +16,12 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /**
-  * EXERCISE 3.13] Can you write `foldLeft` in terms of `foldRight`? How about the other way
-  *                around? Implementing `foldRight` via `foldLeft` is useful because it lets us
-  *                implement `foldRight` tail-recursively, which means it works even for large
-  *                lists without overflowing the stack.
+  * EXERCISE 3.27] Write a function `depth` that returns the maximum path length from the root
+  *                of a tree to any leaf.
   */
-trait Es3_13 {
-  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-    as.foldLeft(identity[B] _)((g, a) => g compose ((b: B) => f(a, b)))(z)
-  }
-
-  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = {
-    as.foldRight(identity[B] _)((a, g) => g compose ((b: B) => f(b, a)))(z)
+trait Es3_27 {
+  def depth[A](t: Tree[A]): Int = t match {
+    case Leaf(_)      => 0
+    case Branch(l, r) => 1 + (depth(l) max depth(r))
   }
 }

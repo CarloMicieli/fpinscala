@@ -15,18 +15,20 @@
 // limitations under the License.
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.13] Can you write `foldLeft` in terms of `foldRight`? How about the other way
-  *                around? Implementing `foldRight` via `foldLeft` is useful because it lets us
-  *                implement `foldRight` tail-recursively, which means it works even for large
-  *                lists without overflowing the stack.
-  */
-trait Es3_13 {
-  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-    as.foldLeft(identity[B] _)((g, a) => g compose ((b: B) => f(a, b)))(z)
-  }
+import io.github.carlomicieli.AbstractTestSpec
 
-  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = {
-    as.foldRight(identity[B] _)((a, g) => g compose ((b: B) => f(b, a)))(z)
+class Es3_24TestSpec extends AbstractTestSpec with Es3_24 {
+  describe("Es3.24") {
+    it("should check whether a list is a subsequence") {
+      val list = List(1, 2, 3, 4)
+      val sub1 = List(1, 4)
+      val sub2 = List(3, 4, 5)
+      val sub3 = List(3, 4)
+
+      hasSubsequence(list, sub1) shouldBe false
+      hasSubsequence(list, sub2) shouldBe false
+      hasSubsequence(list, sub3) shouldBe true
+      hasSubsequence(list, List()) shouldBe true
+    }
   }
 }

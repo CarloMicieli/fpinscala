@@ -16,17 +16,12 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /**
-  * EXERCISE 3.13] Can you write `foldLeft` in terms of `foldRight`? How about the other way
-  *                around? Implementing `foldRight` via `foldLeft` is useful because it lets us
-  *                implement `foldRight` tail-recursively, which means it works even for large
-  *                lists without overflowing the stack.
+  * EXERCISE 3.17] Write a function that turns each value in a `List[Double]` into a `String`.
+  *                You can use the expression `d.toString` to convert some `d: Double`
+  *                to a `String`.
   */
-trait Es3_13 {
-  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-    as.foldLeft(identity[B] _)((g, a) => g compose ((b: B) => f(a, b)))(z)
-  }
-
-  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = {
-    as.foldRight(identity[B] _)((a, g) => g compose ((b: B) => f(b, a)))(z)
+trait Es3_17 {
+  def convert(as: List[Double]): List[String] = {
+    as.foldRight(List.empty[String])((x, xs) => Cons(x.toString, xs))
   }
 }

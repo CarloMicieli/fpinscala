@@ -83,6 +83,10 @@ sealed trait List[+A] extends Product with Serializable {
     loop(this, z)
   }
 
+  def flatMap[B](f: A => List[B]): List[B] = {
+    foldRight(List.empty[B])((x, xs) => f(x) append xs)
+  }
+
   def reverse: List[A] = {
     foldLeft(List.empty[A])((xs, x) => Cons(x, xs))
   }
@@ -104,6 +108,10 @@ sealed trait List[+A] extends Product with Serializable {
 }
 
 object List {
+
+  def fill[A](n: Int)(x: A): List[A] = {
+    (1 to n).foldRight(List.empty[A])((_, xs) => Cons(x, xs))
+  }
 
   def empty[A]: List[A] = Nil
 

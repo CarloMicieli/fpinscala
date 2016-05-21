@@ -13,14 +13,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
 /**
-  * EXERCISE 3.17] Write a function that turns each value in a `List[Double]` into a `String`.
-  *                You can use the expression `d.toString` to convert some `d: Double`
-  *                to a `String`.
+  * EXERCISE 3.25] Write a function `size` that counts the number of nodes (leaves and branches)
+  *                in a tree.
   */
-object Es3_17 {
-  def convert(as: List[Double]): List[String] =
-    as.foldLeft(List.empty[String])((xs, x) => x.toString :: xs).reverse
+trait Es3_25 {
+  def size[A](t: Tree[A]): Int = t match {
+    case Leaf(_)      => 1
+    case Branch(l, r) => size(l) + size(r)
+  }
 }

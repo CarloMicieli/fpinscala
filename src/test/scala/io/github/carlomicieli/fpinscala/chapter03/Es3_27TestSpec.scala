@@ -13,12 +13,18 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.18] Write a function `map` that generalizes modifying each element in a list while
-  *                maintaining the structure of the `list`.
-  */
-object Es3_18 {
-  def map[A, B](as: List[A])(f: A => B): List[B] = as.map(f)
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es3_27TestSpec extends AbstractTestSpec with Es3_27 {
+  describe("Es3.27") {
+    it("should find the max depth in a tree") {
+      val t1 = Leaf(42)
+      val t2 = Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))
+      depth(t1) shouldBe 0
+      depth(t2) shouldBe 2
+    }
+  }
+
 }

@@ -16,17 +16,20 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /**
-  * EXERCISE 3.13] Can you write `foldLeft` in terms of `foldRight`? How about the other way
-  *                around? Implementing `foldRight` via `foldLeft` is useful because it lets us
-  *                implement `foldRight` tail-recursively, which means it works even for large
-  *                lists without overflowing the stack.
+  * EXERCISE 3.19] Write a function `filter` that removes elements from a list unless they satisfy
+  *                a given predicate. Use it to remove all odd numbers from a `List[Int]`.
   */
-trait Es3_13 {
-  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
-    as.foldLeft(identity[B] _)((g, a) => g compose ((b: B) => f(a, b)))(z)
+trait Es3_19 {
+  def filter[A](as: List[A])(p: A => Boolean): List[A] = {
+    val zero = List.empty[A]
+    val step = (x: A, xs: List[A]) => {
+      if (p(x)) Cons(x, xs) else xs
+    }
+    as.foldRight(zero)(step)
   }
 
-  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = {
-    as.foldRight(identity[B] _)((a, g) => g compose ((b: B) => f(b, a)))(z)
+  def removeOdd(list: List[Int]): List[Int] = {
+    val isEven: Int => Boolean = x => x % 2 == 0
+    filter(list)(isEven)
   }
 }

@@ -13,16 +13,17 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.22] Write a function that accepts two lists and constructs a new list by adding
-  *                corresponding elements. For example, `List(1, 2, 3)` and `List(4, 5, 6)`
-  *                become `List(5, 7, 9)`.
-  */
-object Es3_22 {
-  def add(as: List[Int], bs: List[Int]): List[Int] = (as, bs) match {
-    case (x Cons xs, y Cons ys) => (x + y) :: add(xs, ys)
-    case _                      => Nil
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es3_26TestSpec extends AbstractTestSpec with Es3_26 {
+  describe("Es3.26") {
+    it("should find the maximum value from a tree") {
+      val t1 = Leaf(42)
+      val t2 = Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))
+      maximum(t1) shouldBe 42
+      maximum(t2) shouldBe 3
+    }
   }
 }
