@@ -24,7 +24,8 @@ scalacOptions ++= Seq(
   "-Ywarn-infer-any",
   "-Ywarn-value-discard",
   "-Ywarn-inaccessible",
-  "-Ywarn-dead-code"
+  "-Ywarn-dead-code",
+  "-J-Xss6M"
 )
 
 libraryDependencies ++= Seq(

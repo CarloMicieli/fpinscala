@@ -13,20 +13,19 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.13] Can you write `foldLeft` in terms of `foldRight`? How about the other way
-  *                around? Implementing `foldRight` via `foldLeft` is useful because it lets us
-  *                implement `foldRight` tail-recursively, which means it works even for large
-  *                lists without overflowing the stack.
-  */
-object Es3_13 {
-  def foldRight[A, B](list: List[A], z: B)(f: (A, B) => B): B = {
-    list.reverse.foldLeft(z)((xs, x) => f(x, xs))
-  }
+import io.github.carlomicieli.AbstractTestSpec
 
-  def foldLeft[A, B](list: List[A], z: B)(f: (B, A) => B): B = {
-    list.reverse.foldRight(z)((x, xs) => f(xs, x))
+class Es3_07TestSpec extends AbstractTestSpec with Es3_07 with SampleLists {
+  describe("product()") {
+    it("should calculate the product") {
+      val l1 = List(1, 2, 3, 4, 5, 6, 7)
+      val l2 = List(1, 2, 3, 4, 5, 0, 7)
+      val l3 = List(1.0, 2.0, 3.0, 4.0, 5.0, 0.0, 7.0)
+      product(l1) shouldBe 5040
+      product(l2) shouldBe 0
+      product(l3) shouldBe 0.0
+    }
   }
 }

@@ -13,20 +13,32 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
 /**
   * EXERCISE 3.7] Can `product`, implemented using `foldRight`, immediately halt the recursion and
   *               return `0.0` if it encounters a `0.0`? Why or why not? Consider how any
   *               short-circuiting might work if you call `foldRight` with a large list.
   */
-object Es3_07 {
-  def product(list: List[Int]): Int = list.foldLeft(1)(_ * _)
+trait Es3_07 {
+  def product[A, B >: A](xs: List[A])(implicit num: Numeric[B]): B = {
+    def continue(x: B, acc: => B): B = {
+      if (x == num.zero) {
+        x
+      } else {
+        acc
+      }
+    }
 
-  def lazyProduct[A, B >: A](list: List[A])(implicit num: Numeric[B]): B = {
-    def continue(x: B, acc: => B): B =
-      if (x == num.zero) x
-      else acc
-    list.foldRight(continue, num.one)(num.times)
+    foldRight(xs)(continue, num.one)(num.times)
+  }
+
+  // Lazy variant for the foldRight function
+  // (source: http://voidmainargs.blogspot.de/2011/08/folding-stream-with-scala.html)
+  def foldRight[A, B](xs: List[A])(continue: (A, => B) => B, z: B)(f: (A, B) => B): B = {
+    xs match {
+      case Nil        => z
+      case Cons(h, t) => continue(h, f(h, foldRight(t)(continue, z)(f)))
+    }
   }
 }

@@ -13,16 +13,26 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.6] Implement a function, `init`, that returns a `List`
-  *               consisting of all but the last element of a `List`.
-  */
-object Es3_06 {
-  def init[A](l: List[A]): List[A] = l match {
-    case Nil        => throw new NoSuchElementException("List.init: list is empty")
-    case x Cons Nil => Nil
-    case x Cons xs  => x :: init(xs)
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es3_06TestSpec extends AbstractTestSpec with Es3_06 with SampleLists {
+  describe("init()") {
+    it("should throw an exception when the list is empty") {
+      the[NoSuchElementException] thrownBy {
+        init(emptyList)
+      } should have message "init: list is empty"
+    }
+
+    it("should reduce the list length by 1") {
+      val xs = init(listFrom1to10)
+      xs.length shouldBe listFrom1to10.length - 1
+    }
+
+    it("should return all the elements but the last one") {
+      val xs = init(listFrom1to10)
+      xs shouldBe List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    }
   }
 }

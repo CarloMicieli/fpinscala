@@ -56,7 +56,7 @@ class ListPropSpec extends AbstractPropSpec {
     })
   }
 
-  property("reverse: doesn't change the list elements") {
+  property("reverse: reversing two times doesn't change the list elements") {
     check(forAll { (xs: List[Int]) =>
       xs.reverse.reverse ?= xs
     })

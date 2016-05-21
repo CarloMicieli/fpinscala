@@ -13,7 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
 /**
   * EXERCISE 3.10] Our implementation of `foldRight` is not tail-recursive and will result in a StackOverflowError
@@ -21,20 +21,26 @@ package fpinscala.exercises.chapter03
   *                case, and then write another general list-recursion function, `foldLeft`, that is
   *                tail-recursive, using the techniques we discussed in the previous chapter.
   */
-object Es3_10 {
+trait Es3_10 {
   private val veryLongList = initList
 
-  def blowTheStack(): Unit = {
-    // with a size of 1000000 elements this call blows the stack on my box.
-    val res = veryLongList.foldRight(0L)(_ + _)
+  def blowTheStack(): Long = {
+    foldRight(veryLongList, 0L)(_ + _)
   }
 
   def stackSafeCount(): Long = {
     veryLongList.foldLeft(0L)(_ + _)
   }
 
+  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
+    as match {
+      case Nil         => z
+      case Cons(x, xs) => f(x, foldRight(xs, z)(f))
+    }
+  }
+
   private def initList: List[Int] = {
-    (1000000 to 1 by -1).foldLeft(List.empty[Int])((acc, x) => x :: acc)
+    (1000000 to 1 by -1).foldLeft(List.empty[Int])((acc, x) => Cons(x, acc))
   }
 
 }

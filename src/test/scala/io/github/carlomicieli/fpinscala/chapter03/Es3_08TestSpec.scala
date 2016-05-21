@@ -13,19 +13,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.8] See what happens when you pass `Nil` and `Cons` themselves to `foldRight`,
-  *               like this:
-  * @example {{{
-  *         foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_))
-  * }}}
-  *               What do you think this says about the relationship between
-  *               `foldRight` and the data constructors of `List`?
-  */
-object Es3_08 {
-  def apply(): List[Int] = {
-    List(1, 2, 3).foldRight(Nil: List[Int])(_ :: _)
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es3_08TestSpec extends AbstractTestSpec with Es3_08 {
+  describe("Es3.8") {
+    it("foldRight is constructing a list") {
+      val ys = List(1, 2, 3).foldRight(Nil: List[Int])(Cons(_, _))
+      ys shouldBe List(1, 2, 3)
+    }
   }
 }

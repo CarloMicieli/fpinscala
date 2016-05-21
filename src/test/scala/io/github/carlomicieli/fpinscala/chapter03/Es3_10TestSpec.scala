@@ -13,16 +13,20 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.5] Implement `dropWhile`, which removes elements from the `List` prefix as long
-  *               as they match a predicate.
-  */
-object Es3_05 {
-  @annotation.tailrec
-  def dropWhile[A](l: List[A])(p: A => Boolean): List[A] = l match {
-    case x Cons xs => if (p(x)) dropWhile(xs)(p) else l
-    case Nil       => Nil
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es3_10TestSpec extends AbstractTestSpec with Es3_10 {
+  describe("Es3.10") {
+    it("foldRight is not stack-safe: it should blow the stack with long lists") {
+      val thrown = intercept[StackOverflowError] {
+        blowTheStack()
+      }
+    }
+
+    it("foldLeft is tail call optimized: it won't blow the stack") {
+      stackSafeCount() shouldBe 500000500000L
+    }
   }
 }

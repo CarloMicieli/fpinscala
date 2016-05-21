@@ -13,13 +13,13 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
 /**
   * EXERCISE 3.11] Write `sum`, `product`, and a function to compute the length of a
   *                list using `foldLeft`.
   */
-object Es3_11 {
+trait Es3_11 {
   def sum[A](as: List[A])(implicit num: Numeric[A]): A = {
     as.foldLeft(num.zero)(sum(_, _))
   }
@@ -28,15 +28,17 @@ object Es3_11 {
     as.foldLeft(num.one)(times(_, _))
   }
 
-  def length[A](as: List[A]): Int = as.foldLeft(0)((n, _) => n + 1)
+  def length[A](as: List[A]): Int = {
+    as.foldLeft(0)((n, _) => n + 1)
+  }
 
   private def times[A: Numeric](a: A, b: A): A = {
-    val numeric = implicitly[Numeric[A]]
-    numeric.times(a, b)
+    val num = implicitly[Numeric[A]]
+    num.times(a, b)
   }
 
   private def sum[A: Numeric](a: A, b: A): A = {
-    val numeric = implicitly[Numeric[A]]
-    numeric.plus(a, b)
+    val num = implicitly[Numeric[A]]
+    num.plus(a, b)
   }
 }

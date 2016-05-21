@@ -13,13 +13,13 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
 /**
-  * EXERCISE 3.12] Write a function that returns the reverse of a list (given `List(1,2,3)` it
-  *                returns `List(3,2,1)`). See if you can write it using a `fold`.
+  * EXERCISE 3.9] Compute the `length` of a list using `foldRight`.
   */
-object Es3_12 {
-  def reverse[A](as: List[A]): List[A] =
-    as.foldLeft(List.empty[A])((xs, x) => x :: xs)
+trait Es3_09 {
+  def length[A](xs: List[A]): Int = {
+    xs.foldRight(0)((_, n) => n + 1)
+  }
 }
