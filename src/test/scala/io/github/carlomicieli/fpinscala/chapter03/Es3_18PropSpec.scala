@@ -15,26 +15,29 @@
 // limitations under the License.
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.15] Hard: Write a function that concatenates a list of lists into a single list.
-  *                Its runtime should be linear in the total length of all lists. Try to use
-  *                functions we have already defined.
-  */
-trait Es3_15 {
-  def concat[A](list: List[List[A]]): List[A] = {
-    list.foldRight(List.empty[A])((xss, xs) => xss append xs)
+import org.scalacheck.Prop.{ forAll, AnyOperators }
+import io.github.carlomicieli.AbstractPropSpec
+
+class Es3_18PropSpec extends AbstractPropSpec with Es3_18 {
+  property("map(): identity law") {
+    check(forAll { (cs: List[Char]) =>
+      map(cs)(identity) ?= cs
+    })
   }
 
-  /*
+  property("map(): composition law") {
+    check(forAll { (xs: List[Int]) =>
+      val f: Int => Int = _ * 2
+      val g: Int => Int = _ - 42
 
-    concat(List(List(1, 2), List(3), List(4, 5)) evaluate to
-    (List(1, 2) ++ (List(3) ++ (Nil ++ List(4,5))))
+      map(map(xs)(g))(f) ?= map(xs)(f compose g)
+      map(map(xs)(f))(g) ?= map(xs)(f andThen g)
+    })
+  }
 
-    Nil ++ List(4,5)            => 0 steps
-    List(3) ++ List(4,5)        => 1 step
-    List(1, 2) ++ List(3, 4, 5) => 2 steps
-                                   --------
-                                   3 steps ~ O(n)
-
-   */
+  property("map(): doesn't change the resulting list length") {
+    check(forAll { (cs: List[Char]) =>
+      map(cs)(_.toUpper).length ?= cs.length
+    })
+  }
 }

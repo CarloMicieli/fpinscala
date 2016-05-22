@@ -28,6 +28,10 @@ abstract class AbstractPropSpec extends PropSpec with Checkers {
     Gen.nonEmptyContainerOf[List, A](a.arbitrary)
   }
 
+  def nonEmptyNegativeList[A](implicit n: Numeric[A], c: Gen.Choose[A]): Gen[List[A]] = {
+    Gen.nonEmptyContainerOf[List, A](Gen.negNum[A])
+  }
+
   def nonEmptyPosIntArray: Gen[Array[Int]] = {
     Gen.nonEmptyContainerOf[Array, Int](Gen.posNum[Int])
   }

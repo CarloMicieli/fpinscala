@@ -13,10 +13,23 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter03
+package io.github.carlomicieli.fpinscala.chapter03
 
-sealed trait Tree[+A]
+import org.scalacheck.Prop.forAll
+import io.github.carlomicieli.AbstractPropSpec
 
-case class Leaf[A](value: A) extends Tree[A]
+class Es3_21PropSpec extends AbstractPropSpec with Es3_21 {
+  property("filter(): shouldn't add new elements to the list") {
+    check(forAll { (cs: List[Char]) =>
+      filter(cs)(_.isLetter).length <= cs.length
+    })
+  }
+  /*
+  property("filter(): produces the empty list when no element matches the predicate") {
+    check(forAll(nonEmptyList[Char]) {(cs: List[Char]) =>
 
-case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
+    })
+  }
+*/
+  val greaterThan42: Int => Boolean = _ > 42
+}

@@ -15,18 +15,19 @@
 // limitations under the License.
 package io.github.carlomicieli.fpinscala.chapter03
 
-import org.scalacheck.Prop.{ forAll, AnyOperators }
+import org.scalacheck.Prop.{ AnyOperators, forAll }
 import io.github.carlomicieli.AbstractPropSpec
+import org.scalacheck.Gen
 
 class ListPropSpec extends AbstractPropSpec {
 
-  property("cons: increase the list length by 1") {
+  property("cons(): increase the list length by 1") {
     check(forAll { (x: Int, xs: List[Int]) =>
       Cons(x, xs).length ?= xs.length + 1
     })
   }
 
-  property("cons: new element should be the resulting list head") {
+  property("cons(): new element should be the resulting list head") {
     check(forAll { (x: Int, xs: List[Int]) =>
       Cons(x, xs).head ?= x
     })
@@ -65,6 +66,36 @@ class ListPropSpec extends AbstractPropSpec {
   property("fold: with an associative operation folding left and right yield the same result") {
     check(forAll { (xs: List[Int]) =>
       xs.foldLeft(0)(_ + _) ?= xs.foldRight(0)(_ + _)
+    })
+  }
+
+  property("max(): return the max value no matter what is the max position") {
+    check(forAll(nonEmptyNegativeList[Int], Gen.posNum[Int]) { (xs: List[Int], x: Int) =>
+      val l1 = Cons(x, xs)
+      val l2 = xs append List(x)
+
+      l1.max ?= l2.max
+      l1.max ?= Some(x)
+    })
+  }
+
+  property("max() returns a value that is actually the maximum value") {
+    check(forAll { (xs: List[Int]) =>
+      xs.max match {
+        case None    => xs.isEmpty
+        case Some(v) => !xs.exists(_ > v)
+      }
+    })
+  }
+
+  property("max(): max of the two list max values is equals to the max for the two lists appended") {
+    check(forAll(nonEmptyList[Int], nonEmptyList[Int]) { (xs: List[Int], ys: List[Int]) =>
+      val max1 = for {
+        mx <- xs.max
+        my <- ys.max
+      } yield math.max(mx, my)
+
+      (xs append ys).max ?= max1
     })
   }
 

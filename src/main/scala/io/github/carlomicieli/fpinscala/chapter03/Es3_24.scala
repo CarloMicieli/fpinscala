@@ -30,13 +30,14 @@ trait Es3_24 {
     val step: ((Boolean, List[A]), A) => (Boolean, List[A]) = (acc, x) => {
       val (isSub, matched) = acc
       matched match {
-        case Nil       => (isSub, sub)
-        case y Cons ys => if (x == y) (true, ys) else (false, sub)
+        case Nil         => (isSub, sub)
+        case Cons(y, ys) => if (x == y) (true, ys) else (false, sub)
       }
     }
 
-    if (sub.isEmpty) true
-    else {
+    if (sub.isEmpty) {
+      true
+    } else {
       val (isSub, notMatched) = sup.foldLeft(zero)(step)
       isSub && notMatched.isEmpty
     }

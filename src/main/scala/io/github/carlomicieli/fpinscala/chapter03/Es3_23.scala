@@ -20,8 +20,23 @@ package io.github.carlomicieli.fpinscala.chapter03
   *                or addition. Name your generalized function `zipWith`.
   */
 trait Es3_23 {
-  def zipWith[A, B](as: List[A], bs: List[A])(f: (A, A) => B): List[B] = (as, bs) match {
-    case (Cons(x, xs), Cons(y, ys)) => Cons(f(x, y), zipWith(xs, ys)(f))
-    case _                          => Nil
+  def zipWith[A, B](as: List[A], bs: List[A])(f: (A, A) => B): List[B] = {
+    (as, bs) match {
+      case (Cons(x, xs), Cons(y, ys)) => Cons(f(x, y), zipWith(xs, ys)(f))
+      case _                          => Nil
+    }
+  }
+
+  def zip[A, B](as: List[A], bs: List[B]): List[(A, B)] = {
+    @annotation.tailrec
+    def loop(xs: List[A], ys: List[B], acc: List[(A, B)]): List[(A, B)] = {
+      (xs, ys) match {
+        case (Nil, _)                     => acc
+        case (_, Nil)                     => acc
+        case (Cons(h1, t1), Cons(h2, t2)) => loop(t1, t2, Cons((h1, h2), acc))
+      }
+    }
+
+    loop(as, bs, List.empty[(A, B)]).reverse
   }
 }

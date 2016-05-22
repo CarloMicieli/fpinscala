@@ -15,27 +15,32 @@
 // limitations under the License.
 package io.github.carlomicieli.fpinscala.chapter03
 
+import scala.collection.immutable.{ List => SList }
 import io.github.carlomicieli.fpinscala._
 
 /**
   * An immutable linked list. The list is either a constructed list or the empty list.
+  *
   * @tparam A
   */
 sealed trait List[+A] extends Product with Serializable {
   /**
     * Selects the first element of this list.
+    *
     * @return
     */
   def head: A
 
   /**
     * Selects all elements except the first.
+    *
     * @return
     */
   def tail: List[A]
 
   /**
     * Checks whether this list is empty.
+    *
     * @return
     */
   def isEmpty: Boolean
@@ -83,8 +88,14 @@ sealed trait List[+A] extends Product with Serializable {
     loop(this, z)
   }
 
-  def flatMap[B](f: A => List[B]): List[B] = {
-    foldRight(List.empty[B])((x, xs) => f(x) append xs)
+  def exists(p: A => Boolean): Boolean = {
+    @annotation.tailrec
+    def loop(xs: List[A]): Boolean = xs match {
+      case Cons(h, _) if p(h) => true
+      case Cons(_, t)         => loop(t)
+      case _                  => false
+    }
+    loop(this)
   }
 
   def reverse: List[A] = {
@@ -94,6 +105,16 @@ sealed trait List[+A] extends Product with Serializable {
   def append[A1 >: A](that: List[A1]): List[A1] = {
     foldRight(that)((x, xs) => Cons(x, xs))
   }
+
+  def max[A1 >: A](implicit ord: Ordering[A1]): Option[A1] = {
+    val step: (Option[A1], A) => Option[A1] = (maxV, x) => {
+      maxV.map(v => if (ord.gt(x, v)) x else v).orElse(Some(x))
+    }
+
+    this.foldLeft(Option.empty[A1])(step)
+  }
+
+  def toScalaList: SList[A] = this.foldRight(SList.empty[A])(_ :: _)
 
   override def toString: String = {
     def print(xs: List[A]): String = {

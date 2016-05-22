@@ -18,8 +18,8 @@ package io.github.carlomicieli.fpinscala.chapter03
 /**
   * EXERCISE 3.21] Use `flatMap` to implement `filter`.
   */
-trait Es3_21 {
+trait Es3_21 extends Es3_20 {
   def filter[A](as: List[A])(p: A => Boolean): List[A] = {
-    as.flatMap(x => if (p(x)) List(x) else List())
+    flatMap(as)(x => if (p(x)) List(x) else List())
   }
 }
