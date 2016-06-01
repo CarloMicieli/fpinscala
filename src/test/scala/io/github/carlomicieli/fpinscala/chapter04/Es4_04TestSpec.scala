@@ -13,15 +13,24 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter04
+package io.github.carlomicieli.fpinscala.chapter04
 
-import org.scalatest.{ Matchers, FunSuite }
-import Es4_02._
+import io.github.carlomicieli.AbstractTestSpec
+import Option._
 
-class Es4_02Suite extends FunSuite with Matchers {
-  test("it should find the variance of a sequence") {
-    val numbers = Seq(1.0, 5.0, 15.0, 42.0, 52.0, 99.0)
-    mean(numbers) should be(Some(36.0))
-    variance(numbers) should be(Some(1148.0))
+class Es4_04TestSpec extends AbstractTestSpec with Es4_04 {
+  describe("Es4.4") {
+    describe("sequence()") {
+      it("should combine a sequence of Some values") {
+        val l = List(just(1), just(2), just(3), just(4))
+        sequence(l) shouldBe just(List(1, 2, 3, 4))
+      }
+
+      it("should combine a sequence of Option values") {
+        val l = List(just(1), just(2), none[Int], just(4))
+        sequence(l) shouldBe none[Int]
+      }
+    }
   }
+
 }

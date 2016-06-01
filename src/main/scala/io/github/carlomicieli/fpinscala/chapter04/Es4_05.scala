@@ -13,23 +13,21 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter04
+package io.github.carlomicieli.fpinscala.chapter04
 
-import org.scalatest.{ Matchers, FunSuite }
-import Es4_03._
+trait Es4_05 {
+  def sequence[A](a: List[Option[A]]): Option[List[A]] = traverse(a)(x => x)
 
-class Es4_03Suite extends FunSuite with Matchers {
-  test("it should map over two Option values") {
-    val some1 = Some(40)
-    val some2 = Some(2)
-    val none = None
+  def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] = {
+    val step = mapOpt(f) _
+    a.foldRight(Option.just(List.empty[B]))(step)
+  }
 
-    val f: (Int, Int) => Int = _ + _
-
-    map2(some1, some2)(f) should be(Some(42))
-    map2(some1, none)(f) should be(None)
-    map2(none, some2)(f) should be(None)
-    map2V2(some1, some2)(f) should be(Some(42))
-    map2V2(none, some2)(f) should be(None)
+  private def mapOpt[A, B](f: A => Option[B])(x: A, acc: Option[List[B]]): Option[List[B]] = {
+    (f(x), acc) match {
+      case (None, _)           => None
+      case (_, None)           => None
+      case (Some(y), Some(ys)) => Some(y :: ys)
+    }
   }
 }

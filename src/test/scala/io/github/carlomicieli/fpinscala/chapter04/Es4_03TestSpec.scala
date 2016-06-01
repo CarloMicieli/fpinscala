@@ -13,22 +13,25 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter04
+package io.github.carlomicieli.fpinscala.chapter04
 
-/**
-  * EXERCISE 4.3] Write a generic function `map2` that combines two `Option`s values using a binary function.
-  *               If either `Option` value is `None`, then the return value is too.
-  */
-object Es4_03 {
-  def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] = {
-    for {
-      x <- a
-      y <- b
-    } yield f(x, y)
-  }
+import io.github.carlomicieli.AbstractTestSpec
+import Option._
 
-  def map2V2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] = {
-    a.flatMap(x =>
-      b.map(y => f(x, y)))
+class Es4_03TestSpec extends AbstractTestSpec with Es4_03 {
+  describe("Es4.3") {
+    describe("map2()") {
+      it("should map over two Option values") {
+        val some1 = just(40)
+        val some2 = just(2)
+        val noneV = none[Int]
+
+        val f = (x: Int, y: Int) => x + y
+
+        map2(some1, some2)(f) shouldBe just(42)
+        map2(some1, noneV)(f) shouldBe noneV
+        map2(noneV, some2)(f) shouldBe noneV
+      }
+    }
   }
 }
