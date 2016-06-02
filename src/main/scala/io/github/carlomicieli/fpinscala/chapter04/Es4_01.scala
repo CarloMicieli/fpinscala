@@ -13,12 +13,12 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter04
+package io.github.carlomicieli.fpinscala.chapter04
 
 /**
-  * EXERCISE 4.6] Implement versions of `map`, `flatMap`, `orElse`, and `map2` on
-  *               `Either` that operate on the `Right` value.
+  * EXERCISE 4.1] Implement all of the preceding functions on `Option`. As you implement each function,
+  *               try to think about what it means and in what situations you'd use it.
   */
-object Es4_06 {
-  // see Either.scala
+trait Es4_01 {
+
 }

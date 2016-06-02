@@ -13,20 +13,9 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter04
+package io.github.carlomicieli.fpinscala.chapter04
 
-/**
-  * EXERCISE 4.1] Implement all of the preceding functions on `Option`. As you implement each function,
-  *               try to think about what it means and in what situations you'd use it.
-  */
-object Es4_01 {
+import io.github.carlomicieli.AbstractTestSpec
 
-  def answer(n: Int): Option[String] =
-    step1(n).map(v => 84 / v).flatMap(step2)
-
-  private def step1(n: Int): Option[Int] =
-    if (n > 0) Some(n) else None
-
-  private def step2(n: Int): Option[String] =
-    if (n == 42) Some("life universe and everything") else None
+class Es4_06TestSpec extends AbstractTestSpec with Es4_06 {
 }

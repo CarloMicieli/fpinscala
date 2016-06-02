@@ -13,23 +13,25 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter04
+package io.github.carlomicieli.fpinscala.chapter04
 
-import org.scalatest.{ Matchers, FunSuite }
+import io.github.carlomicieli.AbstractTestSpec
 
-class ValidationSuite extends FunSuite with Matchers {
-  test("it should append two validation values") {
-    (success(41) +++ success(1)) should be(Success(42))
-    (failure("error") +++ success(1)) should be(Failure("error"))
-    (success(1) +++ failure("error")) should be(Failure("error"))
-    (failure("danger.") +++ failure("danger")) should be(Failure("danger.danger"))
-  }
+class ValidationTestSpec extends AbstractTestSpec {
+  describe("Validation") {
+    it("should append two validation values") {
+      (success(41) +++ success(1)) shouldBe Success(42)
+      (failure("error") +++ success(1)) shouldBe Failure("error")
+      (success(1) +++ failure("error")) shouldBe Failure("error")
+      (failure("danger.") +++ failure("danger")) shouldBe Failure("danger.danger")
+    }
 
-  test("it should check whether a validation is success") {
-    success(1).isSuccess should be(true)
-    success(1).isFailure should be(false)
-    failure("error").isSuccess should be(false)
-    failure("error").isFailure should be(true)
+    it("check whether a validation is success") {
+      success(1).isSuccess shouldBe true
+      success(1).isFailure shouldBe false
+      failure("error").isSuccess shouldBe false
+      failure("error").isFailure shouldBe true
+    }
   }
 
   def success(n: Int): Validation[String, Int] = Success(n)

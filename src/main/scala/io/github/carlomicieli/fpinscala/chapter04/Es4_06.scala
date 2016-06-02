@@ -13,24 +13,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.samples.chapter05
+package io.github.carlomicieli.fpinscala.chapter04
 
-object LazyEval {
-  def cond1[A](cond: Boolean, onTrue: A, onFalse: A): A =
-    if (cond) onTrue else onFalse
-
-  def cond2[A](cond: Boolean, onTrue: () => A, onFalse: () => A): A =
-    if (cond) onTrue() else onFalse()
-
-  def cond3[A](cond: Boolean, onTrue: => A, onFalse: => A): A =
-    if (cond) onTrue else onFalse
-
-  def maybeTwice(cond: Boolean, i: => Int): Int = if (cond) i + i else 0
-
-  def maybeTwice2(cond: Boolean, i: => Int): Int = {
-    lazy val n = i
-    if (cond) {
-      n + n
-    } else 0
-  }
+/**
+  * EXERCISE 4.6] Implement versions of `map`, `flatMap`, `orElse`, and `map2` on
+  *               `Either` that operate on the `Right` value.
+  */
+trait Es4_06 {
 }

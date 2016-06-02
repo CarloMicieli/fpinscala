@@ -13,15 +13,14 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter04
+package io.github.carlomicieli.fpinscala.chapter04
 
 /**
   * EXERCISE 4.7] Implement `sequence` and `traverse` for `Either`. These should return
   *               the first error that's encountered, if there is one.
   */
-object Es4_07 {
-  def sequence[E, A](es: List[Either[E, A]]): Either[E, List[A]] =
-    traverse(es)(x => x)
+trait Es4_07 {
+  def sequence[E, A](es: List[Either[E, A]]): Either[E, List[A]] = traverse(es)(identity)
 
   def traverse[E, A, B](as: List[A])(f: A => Either[E, B]): Either[E, List[B]] = {
     val fu = step[E, A, B](f) _

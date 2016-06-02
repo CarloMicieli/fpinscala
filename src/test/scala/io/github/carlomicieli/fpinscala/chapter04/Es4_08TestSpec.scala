@@ -13,23 +13,31 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.samples.chapter02
+package io.github.carlomicieli.fpinscala.chapter04
 
-object FindFirst {
-  def apply[A](array: Array[A])(p: A => Boolean): Option[Int] = {
-    @annotation.tailrec
-    def loop(i: Int): Option[Int] = {
-      if (i == array.length) {
-        None
-      } else {
-        if (p(array(i))) {
-          Some(i)
-        } else {
-          loop(i + 1)
-        }
-      }
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es4_08TestSpec extends AbstractTestSpec with Es4_08 {
+  describe("Es4.8") {
+    it("should append validation values") {
+      val Success(n) = positive(7) +++ positive(10) +++ positive(25)
+      n shouldBe 42
     }
 
-    loop(0)
+    it("should validate a Person") {
+      val Success(values) = mkPerson("John Doe", 42)
+      values shouldBe List("John Doe", 42)
+
+      val Failure(errors) = mkPerson("", -10)
+      errors shouldBe List("Name is empty.", "Age is out of range.")
+    }
+
+    def positive(i: Int): Validation[List[String], Int] = {
+      if (i > 0) {
+        Success(i)
+      } else {
+        Failure(List(s"Non positive integer $i"))
+      }
+    }
   }
 }
