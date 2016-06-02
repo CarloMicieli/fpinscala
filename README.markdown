@@ -42,8 +42,8 @@ $ sbt test
 6. Purely functional state
 7. Purely functional parallelism
 8. Property-based testing
-    * Koen Claessen, John Hughes - QuickCheck: A Lightweight Tool for Random Testing of Haskell Programs
-    * John Hughes - QuickCheck Testing for Fun and Profit
+    * Claessen, Koen, and Hughes, John. "QuickCheck: a lightweight tool for random testing of Haskell programs." Acm sigplan notices 46.4 (2011): 53-64.
+    * Hughes, John. "QuickCheck testing for fun and profit." Practical Aspects of Declarative Languages. Springer Berlin Heidelberg, 2007. 1-32.
     
 9. Parser combinators
 10. Monoids
