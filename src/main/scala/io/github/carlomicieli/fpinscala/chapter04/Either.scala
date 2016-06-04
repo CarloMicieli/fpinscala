@@ -22,7 +22,11 @@ package io.github.carlomicieli.fpinscala.chapter04
   * @tparam E
   * @tparam A
   */
-sealed trait Either[+E, +A] {
+sealed trait Either[+E, +A] extends Product with Serializable {
+
+  def isRight: Boolean
+  def isLeft: Boolean = !isRight
+
   def map[B](f: A => B): Either[E, B] = {
     this match {
       case Left(_)  => this.asInstanceOf[Either[E, B]]
@@ -57,6 +61,10 @@ object Either {
   def right[A](x: A): Either[Nothing, A] = Right(x)
 }
 
-final case class Left[+E](value: E) extends Either[E, Nothing]
+final case class Left[+E](value: E) extends Either[E, Nothing] {
+  def isRight: Boolean = false
+}
 
-final case class Right[+A](value: A) extends Either[Nothing, A]
+final case class Right[+A](value: A) extends Either[Nothing, A] {
+  def isRight: Boolean = true
+}

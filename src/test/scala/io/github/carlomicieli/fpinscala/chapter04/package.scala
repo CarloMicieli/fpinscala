@@ -25,4 +25,10 @@ package object chapter04 {
 
     Gen.oneOf(genNone, genJust)
   }
+
+  implicit def arbitraryEither[E, T](implicit arbE: Arbitrary[E], arbT: Arbitrary[T]): Arbitrary[Either[E, T]] = Arbitrary {
+    val genLeft = for { e <- arbE.arbitrary } yield Either.left(e)
+    val genRight = for { t <- arbT.arbitrary } yield Either.right(t)
+    Gen.oneOf(genLeft, genRight)
+  }
 }
