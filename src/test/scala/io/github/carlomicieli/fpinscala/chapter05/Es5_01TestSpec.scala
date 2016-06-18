@@ -13,20 +13,20 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.2] Write the function take(n) for returning the first n elements of a Stream, and
-  *               drop(n) for skipping the first n elements of a Stream.
-  */
-object Es5_02 {
+import io.github.carlomicieli.AbstractTestSpec
 
-  def takeFromStream[A](s: Stream[A], n: Int): List[A] = {
-    s.take(n).toList
+class Es5_01TestSpec extends AbstractTestSpec {
+  describe("Es5.1") {
+    describe("toList") {
+      it("should produce the empty list from the empty stream") {
+        Stream.empty[Int].toList shouldBe List.empty[Int]
+      }
+
+      it("should produce a list with the same length as the original stream") {
+        Stream(1, 2, 3, 4).toList shouldBe List(1, 2, 3, 4)
+      }
+    }
   }
-
-  def dropFromStream[A](s: Stream[A], n: Int): List[A] = {
-    s.drop(n).toList
-  }
-
 }

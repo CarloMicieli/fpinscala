@@ -16,6 +16,21 @@
 package io.github.carlomicieli.fpinscala.chapter05
 
 trait Stream[+A] {
+
+  def isEmpty: Boolean = {
+    this match {
+      case Cons(_, _) => false
+      case _          => true
+    }
+  }
+
+  def headOption: Option[A] = {
+    this match {
+      case Cons(h, _) => Some(h())
+      case _          => None
+    }
+  }
+
   def length: Int = {
     this match {
       case Cons(_, tail) => 1 + tail().length
@@ -31,13 +46,37 @@ trait Stream[+A] {
   }
 
   def foreach[U](f: A => U): Unit = {
-    foldRight(())((a, _) => { val d = f(a); () })
+    foldRight(())((a, b) => {
+      val discarded = f(a)
+      b
+    })
   }
 
   def foldRight[B](z: => B)(f: (A, => B) => B): B = {
     this match {
       case Cons(h, t) => f(h(), t().foldRight(z)(f))
       case Empty      => z
+    }
+  }
+
+  def drop(n: Int): Stream[A] = {
+    this match {
+      case Cons(_, t) if n > 0 => t().drop(n - 1)
+      case _                   => this
+    }
+  }
+
+  def take(n: Int): Stream[A] = {
+    this match {
+      case Cons(h, t) if n > 0 => Stream.cons(h(), t().take(n - 1))
+      case _                   => Stream.empty[A]
+    }
+  }
+
+  def takeWhile(p: A => Boolean): Stream[A] = {
+    this match {
+      case Cons(h, t) if p(h()) => Stream.cons(h(), t().takeWhile(p))
+      case _                    => Stream.empty[A]
     }
   }
 }

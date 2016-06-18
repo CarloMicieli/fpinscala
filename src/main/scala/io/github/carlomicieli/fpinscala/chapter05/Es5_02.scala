@@ -13,22 +13,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
-import Es5_02._
-
-class Es5_02Suite extends FunSuite {
-  test("it should take n elements from a stream") {
-    assert(takeFromStream(Stream(1, 2, 3, 4), 2) == List(1, 2))
-    assert(Stream(1, 2, 3).take(0).toList == List())
-    assert(Stream(1, 2, 3).take(1).toList == List(1))
-    assert(Stream(1, 2, 3).take(6).toList == List(1, 2, 3))
-  }
-
-  test("it should drop n elements from a stream") {
-    assert(dropFromStream(Stream(1, 2, 3, 4), 2) == List(3, 4))
-    assert(Stream(1, 2, 3).drop(0).toList == List(1, 2, 3))
-    assert(Stream(1, 2, 3).drop(4).toList == List())
-  }
+/**
+  * EXERCISE 5.2] Write the function `take(n)` for returning the first n elements of a `Stream`, and
+  *               `drop(n)` for skipping the first `n` elements of a `Stream`.
+  */
+trait Es5_02 {
 }

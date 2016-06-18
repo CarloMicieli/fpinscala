@@ -13,18 +13,13 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.3] Write the function `takeWhile` for returning all starting elements of a `Stream` that
-  *               match the given predicate.
-  */
-object Es5_03 {
-
-  def takeElementsWhile(): List[Int] = {
-    numbersStream.take(5).toList
+trait SampleStreams {
+  val emptyStream: Stream[Int] = Stream.empty[Int]
+  def numbersStream: Stream[Int] = Stream(1, 2, 3, 4, 5, 6, 7)
+  def stream: Stream[Int] = {
+    import Stream._
+    cons(1, cons(2, cons(throw new Exception, empty[Int])))
   }
-
-  def numbersStream: Stream[Int] = Stream.from(1)
-
 }

@@ -13,16 +13,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
 /**
-  * EXERCISE 5.1] Write a function to convert a `Stream` to a `List`, which will force its evaluation and let
-  *               you look at it in the Repl. You can convert to the regular `List` type in the standard
-  *               library. You can place this and other functions that operate on a `Stream` inside the
-  *               Stream trait.
+  * EXERCISE 5.3] Write the function `takeWhile` for returning all starting elements of a `Stream` that
+  *               match the given predicate.
   */
-object Es5_01 {
-  def streamToList(): List[Int] = {
-    Stream(1, 2, 3).toList
-  }
+trait Es5_03 {
 }

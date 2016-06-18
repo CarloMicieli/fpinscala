@@ -17,23 +17,36 @@ package io.github.carlomicieli.fpinscala.chapter05
 
 import io.github.carlomicieli.AbstractTestSpec
 
-class StreamTestSpec extends AbstractTestSpec {
+class StreamTestSpec extends AbstractTestSpec with SampleStreams {
   describe("A Stream") {
+    describe("headOption") {
+      it("should return None for the empty stream") {
+        emptyStream.headOption shouldBe None
+      }
+
+      it("should return Some for non empty streams") {
+        numbersStream.headOption shouldBe Some(1)
+      }
+    }
+
     describe("Cons") {
       it("should increase the Stream length by 1") {
-        val s = Stream(1, 2, 3)
-        Stream.cons(1, s).length shouldBe (s.length + 1)
+        Stream.cons(1, numbersStream).length shouldBe (numbersStream.length + 1)
+      }
+
+      it("should change the Stream head") {
+        val s = Stream.cons(99, numbersStream)
+        s.headOption shouldBe Some(99)
       }
     }
 
     describe("length") {
       it("should return 0 for the empty stream") {
-        Stream.empty[Int].length shouldBe 0
+        emptyStream.length shouldBe 0
       }
 
       it("should return the number of elements in the stream") {
-        val s = Stream(1, 2, 3)
-        s.length shouldBe 3
+        numbersStream.length shouldBe 7
       }
     }
   }

@@ -13,15 +13,20 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
-import Es5_01._
+import io.github.carlomicieli.AbstractTestSpec
 
-class Es5_01Suite extends FunSuite {
-  test("it should convert a Stream to lists") {
-    assert(streamToList() == List(1, 2, 3))
-    assert(Stream.empty[Int].toList == List())
-    assert(Stream("a", "b", "c").toList == List("a", "b", "c"))
+class Es5_03TestSpec extends AbstractTestSpec with SampleStreams {
+  describe("Es5.3") {
+    describe("takeWhile") {
+      it("should take elements while predicate match") {
+        numbersStream.takeWhile(n => n < 3).toList shouldBe List(1, 2)
+      }
+
+      it("should return an empty stream when predicate doesn't match any element") {
+        numbersStream.takeWhile(n => n > 999) shouldBe emptyStream
+      }
+    }
   }
 }

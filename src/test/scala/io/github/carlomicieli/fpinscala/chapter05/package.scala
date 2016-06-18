@@ -35,17 +35,15 @@ package object chapter05 {
     import Arbitrary._
     import Gen._
 
-    val genEmptyStream = Gen.const(Stream.empty[T])
+    val genEmptyStream: Gen[Stream[T]] = Gen.const(Stream.empty[T])
 
-    val genSingletonStream = for { x <- arbitrary[T] } yield Stream(x)
+    def genSingletonStream: Gen[Stream[T]] = for {
+      x <- arbitrary[T]
+      s <- genStream
+    } yield Stream.cons(x, s)
 
-    def genStream(sz: Int): Gen[Stream[T]] = containerOfN[Stream, T](sz, arbitrary[T])
-
-    def sizedStream(sz: Int) =
-      if (sz <= 0) genEmptyStream
-      else Gen.frequency((1, genEmptyStream), (1, genSingletonStream), (8, genStream(sz)))
-
-    Gen.sized(sz => sizedStream(sz))
+    def genStream = oneOf(genEmptyStream, genSingletonStream)
+    genStream
   }
 
   implicit def buildableStream[T]: Buildable[T, Stream[T]] = new Buildable[T, Stream[T]] {
@@ -58,7 +56,9 @@ package object chapter05 {
       }
 
       override def result(): Stream[T] = stream
-      override def clear(): Unit = stream = Stream.empty[T]
+      override def clear(): Unit = {
+        stream = Stream.empty[T]
+      }
     }
   }
 }
