@@ -28,5 +28,15 @@ class Es5_03TestSpec extends AbstractTestSpec with SampleStreams {
         numbersStream.takeWhile(n => n > 999) shouldBe emptyStream
       }
     }
+
+    describe("dropWhile") {
+      it("should drop elements while predicate match") {
+        numbersStream.dropWhile(n => n < 3).toList shouldBe List(3, 4, 5, 6, 7)
+      }
+
+      it("should return all the original stream elements when predicate doesn't match any element") {
+        numbersStream.dropWhile(n => n > 999).toList shouldBe numbersStream.toList
+      }
+    }
   }
 }

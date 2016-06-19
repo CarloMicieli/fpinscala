@@ -66,6 +66,13 @@ trait Stream[+A] {
     }
   }
 
+  def dropWhile(p: A => Boolean): Stream[A] = {
+    this match {
+      case Cons(h, t) if p(h()) => t().dropWhile(p)
+      case _                    => this
+    }
+  }
+
   def take(n: Int): Stream[A] = {
     this match {
       case Cons(h, t) if n > 0 => Stream.cons(h(), t().take(n - 1))
@@ -77,6 +84,13 @@ trait Stream[+A] {
     this match {
       case Cons(h, t) if p(h()) => Stream.cons(h(), t().takeWhile(p))
       case _                    => Stream.empty[A]
+    }
+  }
+
+  def append[A1 >: A](that: Stream[A1]): Stream[A1] = {
+    this match {
+      case Cons(h, t) => Stream.cons(h(), t().append(that))
+      case Empty      => that
     }
   }
 }
