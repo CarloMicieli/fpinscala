@@ -37,12 +37,14 @@ package object chapter05 {
 
     val genEmptyStream: Gen[Stream[T]] = Gen.const(Stream.empty[T])
 
-    def genSingletonStream: Gen[Stream[T]] = for {
+    val genSingletonStream: Gen[Stream[T]] = for { x <- arbitrary[T] } yield Stream(x)
+
+    def genConsStream: Gen[Stream[T]] = for {
       x <- arbitrary[T]
       s <- genStream
     } yield Stream.cons(x, s)
 
-    def genStream = oneOf(genEmptyStream, genSingletonStream)
+    def genStream = frequency((1, genEmptyStream), (1, genSingletonStream), (10, genConsStream))
     genStream
   }
 
