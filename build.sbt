@@ -1,6 +1,8 @@
 import scalariform.formatter.preferences._
 import com.typesafe.sbt.SbtScalariform
 import com.typesafe.sbt.SbtScalariform.ScalariformKeys
+import de.heikoseeberger.sbtheader.HeaderPlugin
+import de.heikoseeberger.sbtheader.license._
 
 name := "fpinscala"
 
@@ -34,14 +36,17 @@ scalacOptions in (Compile, console) --= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.scalatest"  %% "scalatest" % "2.2.6" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.12.5" % "test"
+  "org.scalatest"  %% "scalatest" % "3.0.0" % "test",
+  "org.scalacheck" %% "scalacheck" % "1.13.2" % "test"
 )
 
 // Scalariform settings
-lazy val scalaProject = (project in file(".")).enablePlugins(SbtScalariform)
+lazy val scalaProject = (project in file(".")).enablePlugins(SbtScalariform).enablePlugins(AutomateHeaderPlugin)
 
 SbtScalariform.scalariformSettings
+
+// Header settings
+HeaderPlugin.autoImport.headers := Map("scala" -> Apache2_0("2016", "Carlo Micieli"))
 
 ScalariformKeys.preferences := ScalariformKeys.preferences.value
   .setPreference(AlignSingleLineCaseStatements, true)
