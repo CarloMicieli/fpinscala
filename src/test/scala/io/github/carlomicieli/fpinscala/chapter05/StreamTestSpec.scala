@@ -28,6 +28,10 @@ class StreamTestSpec extends AbstractTestSpec with SampleStreams {
       it("should return Some for non empty streams") {
         numbersStream.headOption shouldBe Some(1)
       }
+
+      it("should not evaluate the tail of the Stream") {
+        stream.headOption shouldBe Some(1)
+      }
     }
 
     describe("Cons") {

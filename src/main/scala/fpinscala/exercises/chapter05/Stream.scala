@@ -122,17 +122,21 @@ object Stream {
     Cons(() => head, () => tail)
   }
 
-  def range(lo: Int, hi: Int): Stream[Int] =
-    if (lo >= hi) empty[Int]
-    else cons(lo, range(lo + 1, hi))
+  def range(lo: Int, hi: Int): Stream[Int] = {
+    if (lo >= hi) {
+      empty[Int]
+    } else {
+      cons(lo, range(lo + 1, hi))
+    }
+  }
 
   def empty[A]: Stream[A] = Empty
 
-  def from(n: Int): Stream[Int] = cons(n, from(n + 1))
+  def from(n: Int): Stream[Int] = {
+    cons(n, from(n + 1))
+  }
 
-  def apply[A](as: A*): Stream[A] =
-    if (as.isEmpty)
-      empty
-    else
-      cons(as.head, apply(as.tail: _*))
+  def apply[A](items: A*): Stream[A] = {
+    items.foldRight(empty[A])((a, b) => Stream.cons(a, b))
+  }
 }

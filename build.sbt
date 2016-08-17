@@ -32,6 +32,7 @@ scalacOptions ++= Seq(
 
 scalacOptions in (Compile, console) --= Seq(
   "-Xfatal-warnings",
+  "-Ywarn-dead-code",
   "-Ywarn-unused-import"
 )
 
@@ -40,8 +41,13 @@ libraryDependencies ++= Seq(
   "org.scalacheck" %% "scalacheck" % "1.13.2" % "test"
 )
 
+initialCommands := """|import io.github.carlomicieli.fpinscala._
+                      |""".stripMargin
+
 // Scalariform settings
-lazy val scalaProject = (project in file(".")).enablePlugins(SbtScalariform).enablePlugins(AutomateHeaderPlugin)
+lazy val scalaProject = (project in file("."))
+  .enablePlugins(SbtScalariform)
+  .enablePlugins(AutomateHeaderPlugin)
 
 SbtScalariform.scalariformSettings
 

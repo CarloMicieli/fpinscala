@@ -31,8 +31,22 @@
 // limitations under the License.
 package io.github.carlomicieli
 
+import scala.util.control.NoStackTrace
+
 package object fpinscala {
-  def error[A](err: String): A = throw new NoSuchElementException(err)
+  type List[A] = io.github.carlomicieli.fpinscala.chapter03.List[A]
+  val List = io.github.carlomicieli.fpinscala.chapter03.List
+
+  type Stream[A] = io.github.carlomicieli.fpinscala.chapter05.Stream[A]
+  val Stream = io.github.carlomicieli.fpinscala.chapter05.Stream
+
+  def error[A](err: String): A = {
+    throw new NoSuchElementException(err) with NoStackTrace
+  }
 
   def const[A](x: A): A = x
+
+  def undefined[A]: A = {
+    throw new Exception("BOOM!") with NoStackTrace
+  }
 }

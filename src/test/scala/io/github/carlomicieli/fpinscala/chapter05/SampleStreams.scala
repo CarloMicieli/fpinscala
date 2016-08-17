@@ -16,11 +16,18 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
+import io.github.carlomicieli.fpinscala.undefined
+
 trait SampleStreams {
   val emptyStream: Stream[Int] = Stream.empty[Int]
-  def numbersStream: Stream[Int] = Stream(1, 2, 3, 4, 5, 6, 7)
-  def stream: Stream[Int] = {
-    import Stream._
-    cons(1, cons(2, cons(throw new Exception, empty[Int])))
+
+  def numbersStream: Stream[Int] = {
+    (1 to 7).foldRight(Stream.empty[Int])(Stream.cons(_, _))
   }
+
+  def stream: Stream[Int] = {
+    Stream(1, 2, undefined, 4)
+  }
+
+  def infiniteStream: Stream[Int] = Stream.enumFrom(0)(_ + 1)
 }
