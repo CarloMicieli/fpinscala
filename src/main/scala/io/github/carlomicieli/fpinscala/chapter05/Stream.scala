@@ -15,6 +15,7 @@
  */
 
 package io.github.carlomicieli.fpinscala.chapter05
+import Stream._
 
 /**
   * A lazy list.
@@ -39,7 +40,7 @@ sealed trait Stream[+A] {
   def tail: Stream[A] = {
     this match {
       case Cons(_, t) => t()
-      case _          => Stream.empty[A]
+      case _          => empty[A]
     }
   }
 
@@ -62,6 +63,14 @@ sealed trait Stream[+A] {
       val discarded = f(a)
       b
     })
+  }
+
+  @annotation.tailrec
+  final def foldLeft[B](z: => B)(op: (=> B, A) ⇒ B): B = {
+    this match {
+      case Cons(h, t) => t().foldLeft(op(z, h()))(op)
+      case Empty      => z
+    }
   }
 
   def foldRight[B](z: => B)(f: (A, => B) => B): B = {
@@ -87,15 +96,15 @@ sealed trait Stream[+A] {
 
   def take(n: Int): Stream[A] = {
     this match {
-      case Cons(h, t) if n > 0 => Stream.cons(h(), t().take(n - 1))
-      case _                   => Stream.empty[A]
+      case Cons(h, t) if n > 0 => cons(h(), t().take(n - 1))
+      case _                   => empty[A]
     }
   }
 
   def takeWhile(p: A => Boolean): Stream[A] = {
     this match {
-      case Cons(h, t) if p(h()) => Stream.cons(h(), t().takeWhile(p))
-      case _                    => Stream.empty[A]
+      case Cons(h, t) if p(h()) => cons(h(), t().takeWhile(p))
+      case _                    => empty[A]
     }
   }
 
