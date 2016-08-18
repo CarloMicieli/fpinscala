@@ -44,6 +44,14 @@ sealed trait Stream[+A] {
     }
   }
 
+  @annotation.tailrec
+  final def exists(p: A => Boolean): Boolean = {
+    this match {
+      case Cons(h, t) => p(h()) || t().exists(p)
+      case _          => false
+    }
+  }
+
   def length: Int = {
     this match {
       case Cons(_, tail) => 1 + tail().length
@@ -167,4 +175,8 @@ object Stream {
   }
 
   val positiveNumbers: Stream[Int] = enumFrom(1)(_ + 1)
+
+  def fromRange(r: Range): Stream[Int] = {
+    r.foldRight(Stream.empty[Int])((x, xs) => Stream.cons(x, xs))
+  }
 }

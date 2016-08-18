@@ -14,23 +14,20 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
+/**
+  * EXERCISE 5.5] Use `foldRight` to implement `takeWhile`.
+  */
+trait Es5_05 {
+  def takeWhile[A](stream: Stream[A])(p: A => Boolean): Stream[A] = {
+    def step(x: A, xs: => Stream[A]): Stream[A] =
+      if (p(x)) {
+        Stream.cons(x, xs)
+      } else {
+        Stream.empty[A]
+      }
 
-class Es5_04Suite extends FunSuite {
-  test("it should return true when all elements match the predicate") {
-    val s = Stream.range(1, 100)
-    assert(s.forAll(_ < 1000))
-  }
-
-  test("it should return false as soon as it find a non matching element") {
-    val s = Stream.range(1, 100)
-    assert(!s.forAll(_ > 1000))
-  }
-
-  test("it should manage infinite stream if a non matching element exists") {
-    val s = Stream.from(42)
-    assert(!s.forAll(_ == 0))
+    stream.foldRight(Stream.empty[A])(step)
   }
 }

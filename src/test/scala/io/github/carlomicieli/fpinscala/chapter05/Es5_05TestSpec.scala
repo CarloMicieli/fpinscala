@@ -14,12 +14,20 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.4] Implement `forAll`, which checks that all elements in the `Stream` match a given predicate.
-  *               Your implementation should terminate the traversal as soon as it encounters a
-  *               non matching value.
-  */
-object Es5_04 {
+import io.github.carlomicieli.AbstractTestSpec
+
+class Es5_05TestSpec extends AbstractTestSpec with Es5_05 with SampleStreams {
+  describe("Es5.5") {
+    describe("takeWhile") {
+      it("should take elements while they match predicate") {
+        takeWhile(streamFrom1To100)(_ < 10) shouldBe Stream.fromRange(1 until 10)
+      }
+
+      it("should work for infinite streams") {
+        takeWhile(infiniteStream)(_ < 10) shouldBe Stream.fromRange(0 until 10)
+      }
+    }
+  }
 }

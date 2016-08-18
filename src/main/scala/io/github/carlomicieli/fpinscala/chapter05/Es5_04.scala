@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
 /**
-  * EXERCISE 5.5] Use `foldRight` to implement `takeWhile`.
+  * EXERCISE 5.4] Implement `forAll`, which checks that all elements in the `Stream` match a given predicate.
+  *               Your implementation should terminate the traversal as soon as it encounters a
+  *               non matching value.
   */
-object Es5_05 {
-  def takeWhile[A](stream: Stream[A])(p: A => Boolean): Stream[A] = {
-    def step(x: A, xs: => Stream[A]): Stream[A] =
-      if (p(x))
-        Stream.cons(x, xs)
-      else
-        Stream.empty[A]
-
-    stream.foldRight(Stream.empty[A])(step)
+trait Es5_04 {
+  def forAll[A](s: Stream[A])(p: A => Boolean): Boolean = {
+    s.foldRight(true)((a, b) => p(a) && b)
   }
 }

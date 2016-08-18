@@ -16,20 +16,22 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.fpinscala.undefined
+import io.github.carlomicieli.AbstractTestSpec
 
-trait SampleStreams {
-  val emptyStream: Stream[Int] = Stream.empty[Int]
+class Es5_04TestSpec extends AbstractTestSpec with Es5_04 with SampleStreams {
+  describe("Es5.4") {
+    describe("forAll") {
+      it("should return true when all elements match the predicate") {
+        forAll(streamFrom1To100)(_ < 1000) shouldBe true
+      }
 
-  val numbersStream: Stream[Int] = {
-    (1 to 7).foldRight(Stream.empty[Int])(Stream.cons(_, _))
+      it("should return false as soon as it find a non matching element") {
+        forAll(streamWithUndefinedElement)(_ < 2) shouldBe false
+      }
+
+      it("should manage infinite stream if a non matching element exists") {
+        forAll(infiniteStream)(_ < 1000) shouldBe false
+      }
+    }
   }
-
-  val streamWithUndefinedElement: Stream[Int] = {
-    Stream(1, 2, undefined, 4)
-  }
-
-  val infiniteStream: Stream[Int] = Stream.enumFrom(0)(_ + 1)
-
-  val streamFrom1To100: Stream[Int] = Stream.positiveNumbers.take(100)
 }

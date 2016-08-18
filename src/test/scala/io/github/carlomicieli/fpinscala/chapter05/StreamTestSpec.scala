@@ -20,6 +20,16 @@ import io.github.carlomicieli.AbstractTestSpec
 
 class StreamTestSpec extends AbstractTestSpec with SampleStreams {
   describe("A Stream") {
+    describe("fromRange") {
+      it("should build a stream from a range") {
+        val rangeIncl = 1 to 5
+        val rangeEscl = 1 until 5
+
+        Stream.fromRange(rangeIncl) shouldBe Stream(1, 2, 3, 4, 5)
+        Stream.fromRange(rangeEscl) shouldBe Stream(1, 2, 3, 4)
+      }
+    }
+
     describe("headOption") {
       it("should return None for the empty stream") {
         emptyStream.headOption shouldBe None
@@ -55,6 +65,20 @@ class StreamTestSpec extends AbstractTestSpec with SampleStreams {
 
       it("should evaluate only the head element") {
         streamWithUndefinedElement.tail.tail.length shouldBe 2
+      }
+    }
+
+    describe("exists") {
+      it("should return false for empty streams") {
+        emptyStream.exists(_ == 99) shouldBe false
+      }
+
+      it("should return false whether no element match the predicate") {
+        numbersStream.exists(_ > 1000) shouldBe false
+      }
+
+      it("should return true whether no element match the predicate") {
+        numbersStream.exists(_ < 10) shouldBe true
       }
     }
 
