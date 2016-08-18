@@ -18,25 +18,25 @@ package io.github.carlomicieli.fpinscala.chapter05
 
 import io.github.carlomicieli.AbstractTestSpec
 
-class Es5_03TestSpec extends AbstractTestSpec with SampleStreams {
+class Es5_03TestSpec extends AbstractTestSpec with Es5_03 with SampleStreams {
   describe("Es5.3") {
     describe("takeWhile") {
       it("should take elements while predicate match") {
-        numbersStream.takeWhile(n => n < 3).toList shouldBe List(1, 2)
+        takeWhile(numbersStream)(n => n < 3) shouldBe Stream(1, 2)
       }
 
       it("should return an empty stream when predicate doesn't match any element") {
-        numbersStream.takeWhile(n => n > 999) shouldBe emptyStream
+        takeWhile(numbersStream)(n => n > 999) shouldBe emptyStream
       }
     }
 
     describe("dropWhile") {
       it("should drop elements while predicate match") {
-        numbersStream.dropWhile(n => n < 3).toList shouldBe List(3, 4, 5, 6, 7)
+        dropWhile(numbersStream)(n => n < 3) shouldBe Stream(3, 4, 5, 6, 7)
       }
 
       it("should return all the original stream elements when predicate doesn't match any element") {
-        numbersStream.dropWhile(n => n > 999).toList shouldBe numbersStream.toList
+        dropWhile(numbersStream)(n => n > 999) shouldBe numbersStream
       }
     }
   }

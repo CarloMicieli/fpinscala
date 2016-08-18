@@ -21,13 +21,13 @@ import io.github.carlomicieli.fpinscala.undefined
 trait SampleStreams {
   val emptyStream: Stream[Int] = Stream.empty[Int]
 
-  def numbersStream: Stream[Int] = {
+  val numbersStream: Stream[Int] = {
     (1 to 7).foldRight(Stream.empty[Int])(Stream.cons(_, _))
   }
 
-  def stream: Stream[Int] = {
+  val streamWithUndefinedElement: Stream[Int] = {
     Stream(1, 2, undefined, 4)
   }
 
-  def infiniteStream: Stream[Int] = Stream.enumFrom(0)(_ + 1)
+  val infiniteStream: Stream[Int] = Stream.enumFrom(0)(_ + 1)
 }

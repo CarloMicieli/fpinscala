@@ -30,7 +30,31 @@ class StreamTestSpec extends AbstractTestSpec with SampleStreams {
       }
 
       it("should not evaluate the tail of the Stream") {
-        stream.headOption shouldBe Some(1)
+        streamWithUndefinedElement.headOption shouldBe Some(1)
+      }
+    }
+
+    describe("isEmpty") {
+      it("should return true for Empty streams") {
+        emptyStream.isEmpty shouldBe true
+      }
+
+      it("should return false for non-empty streams") {
+        streamWithUndefinedElement.isEmpty shouldBe false
+      }
+    }
+
+    describe("tail") {
+      it("should return the Empty stream when the starting stream is empty") {
+        emptyStream.tail shouldBe Stream.empty[Int]
+      }
+
+      it("should return the tail") {
+        streamWithUndefinedElement.tail.headOption shouldBe Some(2)
+      }
+
+      it("should evaluate only the head element") {
+        streamWithUndefinedElement.tail.tail.length shouldBe 2
       }
     }
 
@@ -52,6 +76,43 @@ class StreamTestSpec extends AbstractTestSpec with SampleStreams {
 
       it("should return the number of elements in the stream") {
         numbersStream.length shouldBe 7
+      }
+    }
+
+    describe("equals") {
+      it("should return true comparing two empty streams") {
+        (Stream.empty[Int] equals Stream.empty[Int]) shouldBe true
+      }
+
+      it("should return true comparing two equal non empty streams") {
+        (Stream(1, 2, 3, 4, 5) equals Stream(1, 2, 3, 4, 5)) shouldBe true
+      }
+
+      it("should return false comparing one empty stream with a non empty one") {
+        (Stream.empty equals Stream(1, 2, 3, 4, 5)) shouldBe false
+        (Stream(1, 2, 3, 4, 5) equals Stream.empty) shouldBe false
+      }
+    }
+
+    describe("foldLeft") {
+      it("should return the initial element for empty streams") {
+        emptyStream.foldLeft(42)(_ + _) shouldBe 42
+      }
+
+      it("should apply the function to all elements") {
+        Stream(1, 2, 3, 4, 5).foldLeft(1)(_ * _) shouldBe 120
+      }
+
+      it("should produce StackOverflow when the stream is not small") {
+        an[StackOverflowError] should be thrownBy {
+          Stream.positiveNumbers.take(25000).foldLeft(0)(_ + _)
+        }
+      }
+    }
+
+    describe("foldLeftStrict") {
+      it("should be stack safe") {
+        Stream.positiveNumbers.take(25000).foldLeftStrict(0)(_ + _) shouldBe 312512500
       }
     }
   }

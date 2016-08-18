@@ -21,4 +21,17 @@ package io.github.carlomicieli.fpinscala.chapter05
   *               match the given predicate.
   */
 trait Es5_03 {
+  def takeWhile[A](s: Stream[A])(p: A => Boolean): Stream[A] = {
+    s match {
+      case Cons(h, t) if p(h()) => Stream.cons(h(), takeWhile(t())(p))
+      case _                    => Stream.empty[A]
+    }
+  }
+
+  def dropWhile[A](s: Stream[A])(p: A => Boolean): Stream[A] = {
+    s match {
+      case Cons(h, t) if p(h()) => dropWhile(t())(p)
+      case _                    => s
+    }
+  }
 }

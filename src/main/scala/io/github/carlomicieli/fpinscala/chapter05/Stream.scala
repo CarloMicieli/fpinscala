@@ -88,13 +88,6 @@ sealed trait Stream[+A] {
     }
   }
 
-  def dropWhile(p: A => Boolean): Stream[A] = {
-    this match {
-      case Cons(h, t) if p(h()) => t().dropWhile(p)
-      case _                    => this
-    }
-  }
-
   def take(n: Int): Stream[A] = {
     this match {
       case Cons(h, t) if n > 0 => cons(h(), t().take(n - 1))
@@ -102,24 +95,10 @@ sealed trait Stream[+A] {
     }
   }
 
-  def takeWhile(p: A => Boolean): Stream[A] = {
-    this match {
-      case Cons(h, t) if p(h()) => cons(h(), t().takeWhile(p))
-      case _                    => empty[A]
-    }
-  }
-
   def append[A1 >: A](that: Stream[A1]): Stream[A1] = {
     this match {
       case Cons(h, t) => Stream.cons(h(), t().append(that))
       case Empty      => that
-    }
-  }
-
-  def toList: List[A] = {
-    this match {
-      case Cons(h, t) => h() :: t().toList
-      case Empty      => List.empty[A]
     }
   }
 }
@@ -145,7 +124,7 @@ final case class Cons[A] private (h: () => A, t: () => Stream[A]) extends Stream
 
 object Cons {
   @annotation.tailrec
-  private[chapter05] def sameStream(s1: Stream[_], s2: Stream[_]): Boolean = {
+  private def sameStream(s1: Stream[_], s2: Stream[_]): Boolean = {
     (s1, s2) match {
       case (Cons(h1, t1), Cons(h2, t2)) if h1() == h2() => sameStream(t1(), t2())
       case (Empty, Empty) => true

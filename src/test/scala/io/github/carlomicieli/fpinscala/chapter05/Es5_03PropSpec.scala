@@ -20,12 +20,12 @@ import org.scalacheck.Gen
 import org.scalacheck.Prop.{ forAll, AnyOperators }
 import io.github.carlomicieli.AbstractPropSpec
 
-class Es5_03PropSpec extends AbstractPropSpec {
+class Es5_03PropSpec extends AbstractPropSpec with Es5_03 {
   property("takeWhile and dropWhile results appended produce back all the initial stream elements") {
     check(forAll(functions) { (p: Int => Boolean) =>
       forAll { (s: Stream[Int]) =>
-        val s2 = s.takeWhile(p) append s.dropWhile(p)
-        s2.toList ?= s.toList
+        val s2 = takeWhile(s)(p) append dropWhile(s)(p)
+        s2 ?= s
       }
     })
   }
