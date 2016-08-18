@@ -51,13 +51,6 @@ sealed trait Stream[+A] {
     }
   }
 
-  def toList: List[A] = {
-    this match {
-      case Cons(h, t) => h() :: t().toList
-      case Empty      => List.empty[A]
-    }
-  }
-
   def foreach[U](f: A => U): Unit = {
     foldRight(())((a, b) => {
       val discarded = f(a)
@@ -69,6 +62,14 @@ sealed trait Stream[+A] {
   final def foldLeft[B](z: => B)(op: (=> B, A) ⇒ B): B = {
     this match {
       case Cons(h, t) => t().foldLeft(op(z, h()))(op)
+      case Empty      => z
+    }
+  }
+
+  @annotation.tailrec
+  final def foldLeftStrict[B](z: B)(op: (B, A) ⇒ B): B = {
+    this match {
+      case Cons(h, t) => t().foldLeftStrict(op(z, h()))(op)
       case Empty      => z
     }
   }
@@ -114,10 +115,44 @@ sealed trait Stream[+A] {
       case Empty      => that
     }
   }
+
+  def toList: List[A] = {
+    this match {
+      case Cons(h, t) => h() :: t().toList
+      case Empty      => List.empty[A]
+    }
+  }
 }
 
-case object Empty extends Stream[Nothing]
-final case class Cons[A] private (h: () => A, t: () => Stream[A]) extends Stream[A]
+case object Empty extends Stream[Nothing] {
+  override def equals(o: Any): Boolean = {
+    o match {
+      case _: Empty.type => true
+      case _             => false
+    }
+  }
+}
+
+final case class Cons[A] private (h: () => A, t: () => Stream[A]) extends Stream[A] {
+  override def equals(o: Any): Boolean = {
+    o match {
+      case _: Empty.type   => false
+      case that: Stream[_] => Cons.sameStream(this, that)
+      case _               => false
+    }
+  }
+}
+
+object Cons {
+  @annotation.tailrec
+  private[chapter05] def sameStream(s1: Stream[_], s2: Stream[_]): Boolean = {
+    (s1, s2) match {
+      case (Cons(h1, t1), Cons(h2, t2)) if h1() == h2() => sameStream(t1(), t2())
+      case (Empty, Empty) => true
+      case _ => false
+    }
+  }
+}
 
 object Stream {
   def cons[A](hd: => A, tl: => Stream[A]): Stream[A] = {
@@ -151,4 +186,6 @@ object Stream {
   def enumFrom[A](a0: A)(f: A => A): Stream[A] = {
     cons(a0, enumFrom(f(a0))(f))
   }
+
+  val positiveNumbers: Stream[Int] = enumFrom(1)(_ + 1)
 }

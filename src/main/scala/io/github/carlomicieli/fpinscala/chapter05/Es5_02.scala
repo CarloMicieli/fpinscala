@@ -21,4 +21,7 @@ package io.github.carlomicieli.fpinscala.chapter05
   *               `drop(n)` for skipping the first `n` elements of a `Stream`.
   */
 trait Es5_02 {
+  def take[A](s: Stream[A])(n: Int): Stream[A] = s take n
+
+  def drop[A](s: Stream[A])(n: Int): Stream[A] = s drop n
 }

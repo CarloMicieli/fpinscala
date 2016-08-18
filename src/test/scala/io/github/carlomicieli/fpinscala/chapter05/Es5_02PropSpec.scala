@@ -20,12 +20,12 @@ import org.scalacheck.Prop.{ forAll, AnyOperators }
 import org.scalacheck.Gen._
 import io.github.carlomicieli.AbstractPropSpec
 
-class Es5_02PropSpec extends AbstractPropSpec {
+class Es5_02PropSpec extends AbstractPropSpec with Es5_01 with Es5_02 {
   property("appending the results from take and drop returns the original stream elements") {
     check(forAll { (s: Stream[Int]) =>
       forAll(choose(0, s.length)) { (n: Int) =>
-        val s2 = s.take(n) append s.drop(n)
-        s2.toList ?= s.toList
+        val s2 = take(s)(n) append drop(s)(n)
+        toList(s2) ?= toList(s)
       }
     })
   }

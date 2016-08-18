@@ -24,7 +24,7 @@ import io.github.carlomicieli.fpinscala._
   *
   * @tparam A
   */
-sealed trait List[+A] extends Product with Serializable {
+sealed trait List[+A] {
   /**
     * Selects the first element of this list.
     *
@@ -118,14 +118,12 @@ sealed trait List[+A] extends Product with Serializable {
   def toScalaList: SList[A] = this.foldRight(SList.empty[A])(_ :: _)
 
   override def toString: String = {
-    def print(xs: List[A]): String = {
-      xs match {
-        case Nil          => ""
-        case Cons(y, Nil) => s"$y"
-        case Cons(y, ys)  => s"$y, ${print(ys)}"
+    val elems =
+      this match {
+        case Cons(x, xs) => xs.foldLeft(x.toString)(_ + ", " + _)
+        case Nil         => ""
       }
-    }
-    s"[${print(this)}]"
+    s"[$elems]"
   }
 }
 
@@ -134,6 +132,8 @@ object List {
   def fill[A](n: Int)(x: A): List[A] = {
     (1 to n).foldRight(List.empty[A])((_, xs) => Cons(x, xs))
   }
+
+  def cons[A](x: A, xs: List[A]): List[A] = Cons(x, xs)
 
   def empty[A]: List[A] = Nil
 
@@ -159,6 +159,6 @@ case object Nil extends List[Nothing] {
   def isEmpty: Boolean = true
 }
 
-final case class Cons[A](head: A, tail: List[A]) extends List[A] {
+final case class Cons[A] private (head: A, tail: List[A]) extends List[A] {
   def isEmpty: Boolean = false
 }

@@ -18,15 +18,20 @@ package io.github.carlomicieli.fpinscala.chapter05
 
 import io.github.carlomicieli.AbstractTestSpec
 
-class Es5_01TestSpec extends AbstractTestSpec {
+class Es5_01TestSpec extends AbstractTestSpec with Es5_01 {
   describe("Es5.1") {
     describe("toList") {
       it("should produce the empty list from the empty stream") {
-        Stream.empty[Int].toList shouldBe List.empty[Int]
+        toList(Stream.empty[Int]) shouldBe List.empty[Int]
       }
 
       it("should produce a list with the same length as the original stream") {
-        Stream(1, 2, 3, 4).toList shouldBe List(1, 2, 3, 4)
+        toList(Stream(1, 2, 3, 4)) shouldBe List(1, 2, 3, 4)
+      }
+
+      it("should be stack-safe") {
+        val size = 25000
+        toList(Stream.positiveNumbers.take(size)).length shouldBe size
       }
     }
   }

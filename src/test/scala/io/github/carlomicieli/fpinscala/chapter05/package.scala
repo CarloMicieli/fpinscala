@@ -16,20 +16,15 @@
 
 package io.github.carlomicieli.fpinscala
 
-import scala.language.implicitConversions
-
 import org.scalacheck.Gen
 import org.scalacheck.Arbitrary
 import org.scalacheck.util.Buildable
 import org.scalatest.enablers.Length
 
 package object chapter05 {
+
   implicit val streamLength: Length[Stream[_]] = new Length[Stream[_]] {
     def lengthOf(obj: Stream[_]): Long = obj.length.toLong
-  }
-
-  implicit def streamToTraversable[T](stream: Stream[T]): Traversable[T] = new Traversable[T] {
-    override def foreach[U](f: (T) => U): Unit = stream foreach f
   }
 
   implicit def arbitraryStream[T](implicit a: Arbitrary[T]): Arbitrary[Stream[T]] = Arbitrary {
@@ -64,4 +59,5 @@ package object chapter05 {
       }
     }
   }
+
 }

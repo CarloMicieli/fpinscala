@@ -19,23 +19,23 @@ package io.github.carlomicieli.fpinscala.chapter05
 import org.scalacheck.Prop.{ forAll, AnyOperators }
 import io.github.carlomicieli.AbstractPropSpec
 
-class Es5_01PropSpec extends AbstractPropSpec {
+class Es5_01PropSpec extends AbstractPropSpec with Es5_01 {
   property("toList: produced list should have the same length as the original stream") {
     check(forAll { (s: Stream[Int]) =>
-      s.toList.length ?= s.length
+      toList(s).length ?= s.length
     })
   }
 
   property("toList: the produced list should have the same head as the original stream") {
     check(forAll { (x: Int, s: Stream[Int]) =>
       val stream = Stream.cons(x, s)
-      stream.headOption ?= stream.toList.headOption
+      stream.headOption ?= toList(stream).headOption
     })
   }
 
   property("toList: if the stream is empty the resulting list will be empty too") {
     check(forAll { (s: Stream[Int]) =>
-      s.toList.isEmpty ?= s.isEmpty
+      toList(s).isEmpty ?= s.isEmpty
     })
   }
 }

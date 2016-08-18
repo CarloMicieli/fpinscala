@@ -18,11 +18,11 @@ package io.github.carlomicieli.fpinscala.chapter05
 
 import io.github.carlomicieli.AbstractTestSpec
 
-class Es5_02TestSpec extends AbstractTestSpec with SampleStreams {
+class Es5_02TestSpec extends AbstractTestSpec with Es5_01 with Es5_02 with SampleStreams {
   describe("Es5.2") {
     describe("drop") {
       it("drop(0) should return the original stream") {
-        numbersStream.drop(0).toList shouldBe numbersStream.toList
+        numbersStream.drop(0) should equal(numbersStream)
       }
 
       it("drop(3) should reduce the resulting stream length by 3") {
@@ -36,7 +36,7 @@ class Es5_02TestSpec extends AbstractTestSpec with SampleStreams {
 
     describe("take") {
       it("take(length) should return the original stream") {
-        numbersStream.take(numbersStream.length).toList shouldBe numbersStream.toList
+        toList(numbersStream.take(numbersStream.length)) shouldBe toList(numbersStream)
       }
 
       it("take(0) should return the empty stream") {

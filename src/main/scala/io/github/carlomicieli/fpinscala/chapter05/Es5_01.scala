@@ -23,4 +23,12 @@ package io.github.carlomicieli.fpinscala.chapter05
   *               Stream trait.
   */
 trait Es5_01 {
+  def toList[A](s: Stream[A]): List[A] = {
+    s match {
+      case Empty => List.empty[A]
+      case Cons(_, _) =>
+        val l = s.foldLeftStrict(List.empty[A])((xs, x) => x :: xs)
+        l.reverse
+    }
+  }
 }
