@@ -14,13 +14,16 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
-import Es5_08._
+import io.github.carlomicieli.AbstractTestSpec
 
-class Es5_08Suite extends FunSuite {
-  test("it should product an infinite stream of a given value") {
-    assert(constant(42).take(10).toList.forall(_ == 42))
+class Es5_08TestSpec extends AbstractTestSpec with Es5_08 with SampleStreams {
+  describe("Es5.8") {
+    describe("constant") {
+      it("should product an infinite stream of a given value") {
+        constant(42).take(5) shouldBe Stream(42, 42, 42, 42, 42)
+      }
+    }
   }
 }

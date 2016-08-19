@@ -14,25 +14,32 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
-import Es5_12._
-
-class Es5_12Suite extends FunSuite {
-  test("it should implement ones in terms of unfold") {
-    assert(ones.take(100).toList.forall(_ == 1))
+/**
+  * EXERCISE 5.12] Write `fibs`, `from`, `constant`, and `ones` in terms of `unfold`.
+  */
+trait Es5_12 extends Es5_11 {
+  def fibs: Stream[Int] = {
+    unfold((0, 1))(s => {
+      val (n1, n2) = s
+      Some((n1, (n2, n1 + n2)))
+    })
   }
 
-  test("it should implement constant in terms of unfold") {
-    assert(constant("42").take(100).toList.forall(_ == "42"))
+  def from(n: Int): Stream[Int] = {
+    unfold(n)(s => Some((s, s + 1)))
   }
 
-  test("it should implement from in terms of unfold") {
-    assert(from(1).take(10).toList == (1 to 10).toList)
+  def constant[A](n: A): Stream[A] = {
+    unfold(n)(same)
   }
 
-  test("it should implement fibs in terms of unfold") {
-    assert(fibs.take(10).toList == List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34))
+  def ones: Stream[Int] = {
+    constant(1)
+  }
+
+  private def same[A](default: A): Option[(A, A)] = {
+    Some((default, default))
   }
 }

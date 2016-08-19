@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
-import Es5_11._
+import io.github.carlomicieli.AbstractTestSpec
 
-class Es5_11Suite extends FunSuite {
-  test("it should produce a stream unfolding a function") {
-    val f: Int => Option[(Int, Int)] = x => if (x < 5) Some((x * 2, x + 1)) else None
-    assert(unfold(0)(f).toList == List(0, 2, 4, 6, 8))
+class Es5_09TestSpec extends AbstractTestSpec with Es5_09 with SampleStreams {
+  describe("Es5.9") {
+    describe("from") {
+      it("should produce an infinite stream of integer starting from n") {
+        from(42).take(5) shouldBe Stream(42, 43, 44, 45, 46)
+      }
+    }
   }
 }

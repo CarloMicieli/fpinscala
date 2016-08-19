@@ -14,13 +14,16 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
-import Es5_09._
+import io.github.carlomicieli.AbstractTestSpec
 
-class Es5_09Suite extends FunSuite {
-  test("it should produce an infinite stream of integer starting from n") {
-    assert(from(42).take(100).toList == (42 until 142).toList)
+class Es5_10TestSpec extends AbstractTestSpec with Es5_10 with SampleStreams {
+  describe("Es5.10") {
+    describe("fibs") {
+      it("should produce a stream with the fibonacci numbers") {
+        fibs.take(10) shouldBe Stream.fromValues(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
+      }
+    }
   }
 }

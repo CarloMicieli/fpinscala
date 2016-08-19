@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
-import Es5_10._
-
-class Es5_10Suite extends FunSuite {
-  test("it should produce a stream with the fibonacci numbers") {
-    assert(fibs.take(10).toList == List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34))
+/**
+  * EXERCISE 5.9] Write a function that generates an infinite stream of integers, starting from n, then
+  *               n + 1, n + 2, and so on.
+  */
+trait Es5_09 {
+  def from(n: Int): Stream[Int] = {
+    Stream.cons(n, from(n + 1))
   }
 }

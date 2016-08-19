@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
 /**
   * EXERCISE 5.7] Implement `map`, `filter`, `append`, and `flatMap` using `foldRight`.
   *               The `append` method should be non-strict in its argument.
   */
-object Es5_07 {
+trait Es5_07 {
   def map[A, B](stream: Stream[A])(f: A => B): Stream[B] =
     stream.foldRight(Stream.empty[B])((a, b) => Stream.cons(f(a), b))
 

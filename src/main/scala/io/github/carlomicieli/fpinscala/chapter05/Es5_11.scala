@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
-import Es5_06._
-
-class Es5_06Suite extends FunSuite {
-  test("it should return None as head for empty streams") {
-    assert(headOption(Stream.empty[Int]) == None)
-  }
-
-  test("it should return Some value as head for non empty streams") {
-    assert(headOption(Stream.of(1, 2, 3)) == Some(1))
-    assert(headOption(Stream.from(42)) == Some(42))
+/**
+  * EXERCISE 5.11] Write a more general stream-building function called `unfold`. It takes an initial state,
+  *                and a function for producing both the next state and the next value in the generated
+  *                stream.
+  */
+trait Es5_11 {
+  def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] = {
+    f(z) match {
+      case None         => Stream.empty[A]
+      case Some((a, s)) => Stream.cons(a, unfold(s)(f))
+    }
   }
 }

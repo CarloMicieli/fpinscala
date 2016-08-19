@@ -179,4 +179,8 @@ object Stream {
   def fromRange(r: Range): Stream[Int] = {
     r.foldRight(Stream.empty[Int])((x, xs) => Stream.cons(x, xs))
   }
+
+  def fromValues[A](items: A*): Stream[A] = {
+    items.foldRight(Stream.empty[A])((x, xs) => Stream.cons(x, xs))
+  }
 }

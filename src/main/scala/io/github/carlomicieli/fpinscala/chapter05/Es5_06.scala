@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
 /**
-  * EXERCISE 5.9] Write a function that generates an infinite stream of integers, starting from n, then
-  *               n + 1, n + 2, and so on.
+  * EXERCISE 5.6] Hard: Implement `headOption` using `foldRight`.
   */
-object Es5_09 {
-  def from(n: Int): Stream[Int] = Stream.cons(n, from(n + 1))
+trait Es5_06 {
+  def headOption[A](stream: Stream[A]): Option[A] = {
+    val z: Option[A] = None
+    stream.foldRight(z)((a, b) => Some(a))
+  }
 }
