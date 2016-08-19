@@ -180,6 +180,8 @@ object Stream {
     r.foldRight(Stream.empty[Int])((x, xs) => Stream.cons(x, xs))
   }
 
+  def from(start: Int): Stream[Int] = enumFrom(start)(_ + 1)
+
   def fromValues[A](items: A*): Stream[A] = {
     items.foldRight(Stream.empty[A])((x, xs) => Stream.cons(x, xs))
   }

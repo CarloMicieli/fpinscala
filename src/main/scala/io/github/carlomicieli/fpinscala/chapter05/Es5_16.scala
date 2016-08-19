@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
 /**
   * EXERCISE 5.16] Hard: Generalize `tails` to the function `scanRight`, which is like a `foldRight` that
@@ -30,14 +30,14 @@ package fpinscala.exercises.chapter05
   *                elements always takes time linear in n. Can it be implemented using unfold? How, or
   *                why not? Could it be implemented using another function we’ve written?
   */
-object Es5_16 {
-
-  def scanRight[A, B](stream: Stream[A])(z: => B)(f: (A, => B) => B): Stream[B] = (z, stream) match {
-    case (b, Empty) => Stream.of(b)
-    case (b, Cons(h, t)) =>
-      val yss = scanRight(t())(z)(f)
-      val ys = yss.headOption.get
-      Stream.cons(f(h(), ys), yss)
+trait Es5_16 {
+  def scanRight[A, B](stream: Stream[A])(z: => B)(f: (A, => B) => B): Stream[B] = {
+    (z, stream) match {
+      case (b, Empty) => Stream(b)
+      case (b, Cons(h, t)) =>
+        val yss = scanRight(t())(z)(f)
+        val ys = yss.headOption.get
+        Stream.cons(f(h(), ys), yss)
+    }
   }
-
 }

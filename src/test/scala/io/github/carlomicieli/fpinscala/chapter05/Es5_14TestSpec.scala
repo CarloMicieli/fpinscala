@@ -14,14 +14,22 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
-import Es5_16._
+import io.github.carlomicieli.AbstractTestSpec
 
-class Es5_16Suite extends FunSuite {
-  test("it should fold a stream keeping intermediate results") {
-    val s = scanRight(Stream.of(1, 2, 3))(0)(_ + _)
-    assert(s.toList == List(6, 5, 3, 0))
+class Es5_14TestSpec extends AbstractTestSpec with Es5_14 with SampleStreams {
+  describe("Es5.14") {
+    describe("startsWith") {
+      it("should check whether a stream is prefix of the second") {
+        val s1 = Stream.from(1)
+        val s2 = Stream(1, 2, 3)
+        val s3 = Stream.from(42)
+
+        startsWith(s1, s2) shouldBe true
+        startsWith(s2, s3) shouldBe false
+        startsWith(s1, s3) shouldBe false
+      }
+    }
   }
 }

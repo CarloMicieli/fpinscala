@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter05
+package io.github.carlomicieli.fpinscala.chapter05
 
-import org.scalatest.FunSuite
-import Es5_14._
+import io.github.carlomicieli.AbstractTestSpec
 
-class Es5_14Suite extends FunSuite {
-  test("it should check whether a stream is prefix of the second") {
-    val s1 = Stream.from(1)
-    val s2 = Stream.of(1, 2, 3)
-    val s3 = Stream.from(42)
-
-    assert(startsWith(s1, s2))
-    assert(!startsWith(s2, s3))
-    assert(!startsWith(s1, s3))
+class Es5_15TestSpec extends AbstractTestSpec with Es5_15 with SampleStreams {
+  describe("Es5.15") {
+    describe("startsWith") {
+      it("should produce the tails from a stream") {
+        val s = Stream(1, 2, 3)
+        tails(s) shouldBe Stream(Stream(1, 2, 3), Stream(2, 3), Stream(3), Stream.empty)
+      }
+    }
   }
 }
