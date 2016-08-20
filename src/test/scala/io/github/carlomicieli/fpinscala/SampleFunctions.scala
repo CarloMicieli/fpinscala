@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package io.github.carlomicieli.fpinscala.chapter05
+package io.github.carlomicieli.fpinscala
 
-import io.github.carlomicieli.AbstractTestSpecLike
-import io.github.carlomicieli.fpinscala.SampleFunctions
+trait SampleFunctions {
+  val multiply: (Int, Int) => Int = _ * _
 
-trait Chapter5Spec extends AbstractTestSpecLike with SampleStreams with SampleFunctions {
+  val doubled: Int => Int = multiply(2, _: Int)
+
+  def lessThan(x: Int): Int => Boolean = _ < x
 }

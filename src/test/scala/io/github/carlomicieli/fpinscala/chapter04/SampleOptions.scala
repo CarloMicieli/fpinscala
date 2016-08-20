@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package io.github.carlomicieli.fpinscala.chapter05
+package io.github.carlomicieli.fpinscala.chapter04
 
-import io.github.carlomicieli.AbstractTestSpecLike
-import io.github.carlomicieli.fpinscala.SampleFunctions
+trait SampleOptions {
+  val some21: Option[Int] = Option.some(21)
 
-trait Chapter5Spec extends AbstractTestSpecLike with SampleStreams with SampleFunctions {
+  val some42: Option[Int] = Option.some(42)
+
+  val none: Option[Int] = Option.none
 }

@@ -17,8 +17,8 @@
 package io.github.carlomicieli.fpinscala.chapter04
 
 sealed trait Option[+A] extends Product with Serializable {
-  def isJust: Boolean
-  def isNone: Boolean = !isJust
+  def isSome: Boolean
+  def isNone: Boolean = !isSome
 
   def map[B](f: A => B): Option[B] = {
     this match {
@@ -58,13 +58,13 @@ sealed trait Option[+A] extends Product with Serializable {
 
 object Option {
   def none[A]: Option[A] = None
-  def just[A](x: A): Option[A] = Some(x)
+  def some[A](x: A): Option[A] = Some(x)
 }
 
 final case class Some[+A](get: A) extends Option[A] {
-  def isJust: Boolean = true
+  override def isSome: Boolean = true
 }
 
 case object None extends Option[Nothing] {
-  def isJust: Boolean = false
+  override def isSome: Boolean = false
 }

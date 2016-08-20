@@ -23,13 +23,13 @@ class Es4_03TestSpec extends AbstractTestSpec with Es4_03 {
   describe("Es4.3") {
     describe("map2()") {
       it("should map over two Option values") {
-        val some1 = just(40)
-        val some2 = just(2)
+        val some1 = some(40)
+        val some2 = some(2)
         val noneV = none[Int]
 
         val f = (x: Int, y: Int) => x + y
 
-        map2(some1, some2)(f) shouldBe just(42)
+        map2(some1, some2)(f) shouldBe some(42)
         map2(some1, noneV)(f) shouldBe noneV
         map2(noneV, some2)(f) shouldBe noneV
       }

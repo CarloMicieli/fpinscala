@@ -34,7 +34,7 @@ trait Es4_02 {
     if (xs.isEmpty) {
       none[Double]
     } else {
-      just(xs.sum / xs.length.toDouble)
+      some(xs.sum / xs.length.toDouble)
     }
   }
 }

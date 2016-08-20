@@ -23,6 +23,10 @@ class Es5_05TestSpec extends Chapter5Spec with Es5_05 {
         takeWhile(streamFrom1To100)(_ < 10) shouldBe Stream.fromRange(1 until 10)
       }
 
+      it("should return the empty stream when the head doesn't match the predicate") {
+        takeWhile(infiniteStream)(_ < 0) shouldBe emptyStream
+      }
+
       it("should work for infinite streams") {
         takeWhile(infiniteStream)(_ < 10) shouldBe Stream.fromRange(0 until 10)
       }

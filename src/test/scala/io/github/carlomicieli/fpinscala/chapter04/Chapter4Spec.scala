@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package io.github.carlomicieli.fpinscala.chapter05
+package io.github.carlomicieli.fpinscala.chapter04
 
 import io.github.carlomicieli.AbstractTestSpecLike
-import io.github.carlomicieli.fpinscala.SampleFunctions
 
-trait Chapter5Spec extends AbstractTestSpecLike with SampleStreams with SampleFunctions {
+trait Chapter4Spec extends AbstractTestSpecLike with SampleOptions {
 }

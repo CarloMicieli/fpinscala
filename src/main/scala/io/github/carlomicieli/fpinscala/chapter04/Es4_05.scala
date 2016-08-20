@@ -28,7 +28,7 @@ trait Es4_05 {
 
   def traverse[A, B](as: List[A])(f: A => Option[B]): Option[List[B]] = {
     val step = mapOpt(f) _
-    as.foldRight(Option.just(List.empty[B]))(step)
+    as.foldRight(Option.some(List.empty[B]))(step)
   }
 
   private def mapOpt[A, B](f: A => Option[B])(x: A, acc: Option[List[B]]): Option[List[B]] = {

@@ -26,6 +26,6 @@ package io.github.carlomicieli.fpinscala.chapter04
 trait Es4_04 extends Es4_03 {
   def sequence[A](a: List[Option[A]]): Option[List[A]] = {
     val step = (x: Option[A], xs: Option[List[A]]) => map2(x, xs)(_ :: _)
-    a.foldRight(Option.just(List.empty[A]))(step)
+    a.foldRight(Option.some(List.empty[A]))(step)
   }
 }

@@ -22,7 +22,7 @@ package object chapter04 {
   implicit def arbitraryOption[T](implicit a: Arbitrary[T]): Arbitrary[Option[T]] = Arbitrary {
     val genNone: Gen[Option[T]] = Gen.const(Option.none[T])
 
-    def genJust: Gen[Option[T]] = for { x <- a.arbitrary } yield Option.just(x)
+    def genJust: Gen[Option[T]] = for { x <- a.arbitrary } yield Option.some(x)
 
     Gen.oneOf(genNone, genJust)
   }

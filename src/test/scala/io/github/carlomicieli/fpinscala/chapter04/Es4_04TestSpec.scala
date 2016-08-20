@@ -23,12 +23,12 @@ class Es4_04TestSpec extends AbstractTestSpec with Es4_04 {
   describe("Es4.4") {
     describe("sequence()") {
       it("should combine a sequence of Some values") {
-        val l = List(just(1), just(2), just(3), just(4))
-        sequence(l) shouldBe just(List(1, 2, 3, 4))
+        val l = List(some(1), some(2), some(3), some(4))
+        sequence(l) shouldBe some(List(1, 2, 3, 4))
       }
 
       it("should combine a sequence of Option values") {
-        val l = List(just(1), just(2), none[Int], just(4))
+        val l = List(some(1), some(2), none[Int], some(4))
         sequence(l) shouldBe none[Int]
       }
     }

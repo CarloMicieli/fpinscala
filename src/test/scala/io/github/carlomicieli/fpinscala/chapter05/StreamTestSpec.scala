@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class StreamTestSpec extends AbstractTestSpec with SampleStreams {
+class StreamTestSpec extends Chapter5Spec {
   describe("A Stream") {
     describe("fromRange") {
       it("should build a stream from a range") {
@@ -27,6 +25,20 @@ class StreamTestSpec extends AbstractTestSpec with SampleStreams {
 
         Stream.fromRange(rangeIncl) shouldBe Stream(1, 2, 3, 4, 5)
         Stream.fromRange(rangeEscl) shouldBe Stream(1, 2, 3, 4)
+      }
+    }
+
+    describe("foreach") {
+      it("should execute the function for each stream element") {
+        var sum = 0
+        numbersStream.foreach(x => sum = sum + x)
+        sum shouldBe 28
+      }
+
+      it("should not run the function for empty streams") {
+        var sum = 0
+        emptyStream.foreach(x => sum = sum + x)
+        sum shouldBe 0
       }
     }
 
@@ -105,16 +117,16 @@ class StreamTestSpec extends AbstractTestSpec with SampleStreams {
 
     describe("equals") {
       it("should return true comparing two empty streams") {
-        (Stream.empty[Int] equals Stream.empty[Int]) shouldBe true
+        (emptyStream equals emptyStream) shouldBe true
       }
 
       it("should return true comparing two equal non empty streams") {
-        (Stream(1, 2, 3, 4, 5) equals Stream(1, 2, 3, 4, 5)) shouldBe true
+        (numbersStream equals numbersStream) shouldBe true
       }
 
       it("should return false comparing one empty stream with a non empty one") {
-        (Stream.empty equals Stream(1, 2, 3, 4, 5)) shouldBe false
-        (Stream(1, 2, 3, 4, 5) equals Stream.empty) shouldBe false
+        (emptyStream equals numbersStream) shouldBe false
+        (numbersStream equals emptyStream) shouldBe false
       }
     }
 

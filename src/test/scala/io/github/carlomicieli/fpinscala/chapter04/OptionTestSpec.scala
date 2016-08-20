@@ -20,6 +20,26 @@ import io.github.carlomicieli.AbstractTestSpec
 
 class OptionTestSpec extends AbstractTestSpec {
   describe("Option") {
+    describe("isNone") {
+      it("should return false for Some") {
+        Some(21).isNone shouldBe false
+      }
+
+      it("should return true for None values") {
+        Option.none[Int].isNone shouldBe true
+      }
+    }
+
+    describe("isJust") {
+      it("should return false for Some") {
+        Some(21).isSome shouldBe true
+      }
+
+      it("should return true for None values") {
+        Option.none[Int].isSome shouldBe false
+      }
+    }
+
     describe("map()") {
       it("should apply a function to Some values") {
         Some(21).map(_ * 2) shouldBe Some(42)

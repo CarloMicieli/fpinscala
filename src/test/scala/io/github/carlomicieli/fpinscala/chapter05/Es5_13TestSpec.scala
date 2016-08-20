@@ -17,18 +17,27 @@
 package io.github.carlomicieli.fpinscala.chapter05
 
 class Es5_13TestSpec extends Chapter5Spec with Es5_13 {
+
   describe("Es5.13") {
     describe("map") {
+      it("should return the empty stream for map over empty streams") {
+        map(emptyStream)(doubled) shouldBe emptyStream
+      }
+
       it("should implement map in terms of unfold for finite streams") {
-        map(streamFrom(1 until 5))(_ * 2) shouldBe Stream(2, 4, 6, 8)
+        map(streamFrom(1 until 5))(doubled) shouldBe Stream(2, 4, 6, 8)
       }
 
       it("should implement map in terms of unfold for infinite streams") {
-        map(Stream.from(1))(_ * 2).take(4) shouldBe Stream(2, 4, 6, 8)
+        map(infiniteStream)(_ * 2).take(4) shouldBe Stream(0, 2, 4, 6)
       }
     }
 
     describe("take") {
+      it("should work for empty streams too") {
+        take(emptyStream)(2) shouldBe emptyStream
+      }
+
       it("should implement take in terms of unfold for finite streams") {
         take(streamFrom(1 until 5))(3) shouldBe Stream(1, 2, 3)
       }
@@ -39,27 +48,39 @@ class Es5_13TestSpec extends Chapter5Spec with Es5_13 {
     }
 
     describe("takeWhile") {
+      it("should work for empty streams too") {
+        takeWhile(emptyStream)(lessThan(4)) shouldBe emptyStream
+      }
+
       it("should implement takeWhile in terms of unfold for finite stream") {
-        takeWhile(streamFrom(1 until 5))(_ < 4) shouldBe Stream(1, 2, 3)
+        takeWhile(streamFrom(1 until 5))(lessThan(4)) shouldBe Stream(1, 2, 3)
       }
 
       it("should implement takeWhile in terms of unfold for infinite stream") {
-        takeWhile(infiniteStream)(_ < 4) shouldBe Stream(0, 1, 2, 3)
+        takeWhile(infiniteStream)(lessThan(4)) shouldBe Stream(0, 1, 2, 3)
       }
     }
 
     describe("zipWith") {
+      it("should work for empty streams too") {
+        zipWith(emptyStream, emptyStream)(multiply) shouldBe Stream.empty[(Int, Int)]
+      }
+
       it("should implement zipWith in terms of unfold for finite streams") {
-        zipWith(streamFrom(1 until 5), streamFrom(1 until 5))(_ * _) shouldBe Stream(1, 4, 9, 16)
+        zipWith(streamFrom1to5, streamFrom1to5)(multiply) shouldBe Stream(1, 4, 9, 16, 25)
       }
 
       it("should implement zipWith in terms of unfold for infinite streams") {
-        zipWith(streamFrom(1 to 5), infiniteStream)(_ * _) shouldBe Stream(0, 2, 6, 12, 20)
-        zipWith(infiniteStream, streamFrom(1 to 5))(_ * _) shouldBe Stream(0, 2, 6, 12, 20)
+        zipWith(streamFrom1to5, infiniteStream)(multiply) shouldBe Stream(0, 2, 6, 12, 20)
+        zipWith(infiniteStream, streamFrom1to5)(multiply) shouldBe Stream(0, 2, 6, 12, 20)
       }
     }
 
     describe("zipAll") {
+      it("should zipAll elements from two empty streams") {
+        zipAll(emptyStream, emptyStream) shouldBe emptyStream
+      }
+
       it("should zipAll elements for two streams") {
         val s1 = Stream(1, 2)
         val s2 = Stream(1, 2, 3)
@@ -68,7 +89,7 @@ class Es5_13TestSpec extends Chapter5Spec with Es5_13 {
 
         val s3 = Stream.from(42)
         val s4 = Stream(1)
-        zipAll(s3, s4).take(3) shouldBe Stream((Some(42), Some(1)), (Some(43), None), (Some(44), None))
+        zipAll(s3, s4).take(3) shouldBe Stream.fromValues((Some(42), Some(1)), (Some(43), None), (Some(44), None))
 
       }
     }
