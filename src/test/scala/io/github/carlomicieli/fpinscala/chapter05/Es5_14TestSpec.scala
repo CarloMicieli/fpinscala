@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_14TestSpec extends AbstractTestSpec with Es5_14 with SampleStreams {
+class Es5_14TestSpec extends Chapter5Spec with Es5_14 {
   describe("Es5.14") {
     describe("startsWith") {
       it("should check whether a stream is prefix of the second") {

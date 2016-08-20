@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_07TestSpec extends AbstractTestSpec with Es5_07 with SampleStreams {
+class Es5_07TestSpec extends Chapter5Spec with Es5_07 {
   describe("Es5.7") {
     describe("map") {
       it("should implement map using foldRight") {

@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_11TestSpec extends AbstractTestSpec with Es5_11 with SampleStreams {
+class Es5_11TestSpec extends Chapter5Spec with Es5_11 {
   describe("Es5.11") {
     describe("unfold") {
       it("should produce a stream unfolding a function") {

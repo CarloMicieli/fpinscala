@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_08TestSpec extends AbstractTestSpec with Es5_08 with SampleStreams {
+class Es5_08TestSpec extends Chapter5Spec with Es5_08 {
   describe("Es5.8") {
     describe("constant") {
       it("should product an infinite stream of a given value") {

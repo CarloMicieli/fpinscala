@@ -16,13 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-class Es5_16TestSpec extends Chapter5Spec with Es5_16 {
-  describe("Es5.16") {
-    describe("scanRight") {
-      it("should fold a stream keeping intermediate results") {
-        val s = scanRight(Stream(1, 2, 3))(0)(_ + _)
-        s shouldBe Stream(6, 5, 3, 0)
-      }
-    }
-  }
+import io.github.carlomicieli.AbstractTestSpecLike
+
+trait Chapter5Spec extends AbstractTestSpecLike with SampleStreams {
 }

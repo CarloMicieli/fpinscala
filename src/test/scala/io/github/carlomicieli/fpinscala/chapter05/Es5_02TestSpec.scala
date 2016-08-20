@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_02TestSpec extends AbstractTestSpec with Es5_01 with Es5_02 with SampleStreams {
+class Es5_02TestSpec extends Chapter5Spec with Es5_01 with Es5_02 {
   describe("Es5.2") {
     describe("drop") {
       it("drop(0) should return the original stream") {

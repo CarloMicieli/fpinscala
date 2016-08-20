@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_05TestSpec extends AbstractTestSpec with Es5_05 with SampleStreams {
+class Es5_05TestSpec extends Chapter5Spec with Es5_05 {
   describe("Es5.5") {
     describe("takeWhile") {
       it("should take elements while they match predicate") {

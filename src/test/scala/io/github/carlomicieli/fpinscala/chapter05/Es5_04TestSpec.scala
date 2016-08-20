@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_04TestSpec extends AbstractTestSpec with Es5_04 with SampleStreams {
+class Es5_04TestSpec extends Chapter5Spec with Es5_04 {
   describe("Es5.4") {
     describe("forAll") {
       it("should return true when all elements match the predicate") {

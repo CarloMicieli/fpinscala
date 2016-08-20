@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_10TestSpec extends AbstractTestSpec with Es5_10 with SampleStreams {
+class Es5_10TestSpec extends Chapter5Spec with Es5_10 {
   describe("Es5.10") {
     describe("fibs") {
       it("should produce a stream with the fibonacci numbers") {

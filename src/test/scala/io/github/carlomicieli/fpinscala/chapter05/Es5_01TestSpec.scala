@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_01TestSpec extends AbstractTestSpec with Es5_01 {
+class Es5_01TestSpec extends Chapter5Spec with Es5_01 {
   describe("Es5.1") {
     describe("toList") {
       it("should produce the empty list from the empty stream") {

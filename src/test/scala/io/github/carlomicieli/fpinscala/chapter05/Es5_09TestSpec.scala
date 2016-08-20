@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_09TestSpec extends AbstractTestSpec with Es5_09 with SampleStreams {
+class Es5_09TestSpec extends Chapter5Spec with Es5_09 {
   describe("Es5.9") {
     describe("from") {
       it("should produce an infinite stream of integer starting from n") {

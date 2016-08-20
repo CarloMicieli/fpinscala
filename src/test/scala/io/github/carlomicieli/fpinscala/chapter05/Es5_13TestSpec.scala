@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_13TestSpec extends AbstractTestSpec with Es5_13 with SampleStreams {
+class Es5_13TestSpec extends Chapter5Spec with Es5_13 {
   describe("Es5.13") {
     describe("map") {
       it("should implement map in terms of unfold") {

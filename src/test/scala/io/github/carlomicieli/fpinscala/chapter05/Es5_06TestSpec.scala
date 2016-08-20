@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es5_06TestSpec extends AbstractTestSpec with Es5_06 with SampleStreams {
+class Es5_06TestSpec extends Chapter5Spec with Es5_06 {
   describe("Es5.6") {
     describe("headOption") {
       it("should return None as head for empty streams") {
