@@ -19,39 +19,47 @@ package io.github.carlomicieli.fpinscala.chapter05
 class Es5_07TestSpec extends Chapter5Spec with Es5_07 {
   describe("Es5.7") {
     describe("map") {
-      it("should implement map using foldRight") {
+      it("should implement map using foldRight for finite streams") {
         val f: Int => Int = _ * 2
-        val s = Stream(1, 2, 3, 4)
+        map(streamFrom(1 to 4))(f) shouldBe Stream(2, 4, 6, 8)
+      }
 
-        map(s)(f) shouldBe Stream(2, 4, 6, 8)
-        map(Stream.enumFrom(1)(_ + 1))(f).take(2) shouldBe Stream(2, 4)
+      it("should implement map using foldRight for infinite streams") {
+        val f: Int => Int = _ * 2
+        map(infiniteStream)(f).take(3) shouldBe Stream(0, 2, 4)
       }
     }
 
     describe("filter") {
-      it("should implement filter using foldRight") {
+      it("should implement filter using foldRight for finite streams") {
         val f: Int => Boolean = _ % 2 == 0
-        val s = Stream(1, 2, 3, 4)
+        filter(streamFrom(1 to 4))(f) shouldBe Stream(2, 4)
+      }
 
-        filter(s)(f) shouldBe Stream(2, 4)
-        filter(Stream.enumFrom(42)(_ + 1))(f).take(5) shouldBe Stream(42, 44, 46, 48, 50)
+      it("should implement filter using foldRight for infinite streams") {
+        val f: Int => Boolean = _ % 2 == 0
+        filter(infiniteStream)(f).take(5) shouldBe Stream(0, 2, 4, 6, 8)
       }
     }
 
     describe("flatMap") {
-      it("should implement flatMap using foldRight") {
-        val s1 = Stream(1, 2, 3, 4)
-        val s2 = Stream.enumFrom(5)(_ + 1)
-
+      it("should implement flatMap using foldRight for finite streams") {
         val f: Int => Stream[Int] = x => Stream(2 * x)
+        flatMap(streamFrom(1 to 4))(f) shouldBe Stream(2, 4, 6, 8)
+      }
 
-        flatMap(s1)(f) shouldBe Stream(2, 4, 6, 8)
-        // flatMap(s2)(f).take(5) shouldBe Stream(10, 12, 14, 16, 18)
+      it("should implement flatMap using foldRight for infinite streams") {
+        val f: Int => Stream[Int] = x => Stream(2 * x)
+        flatMap(infiniteStream)(f).take(5) shouldBe Stream(0, 2, 4, 6, 8)
       }
     }
 
     describe("append") {
-      it("should append two streams using foldRight") {
+      it("should append two streams using foldRight for finite streams") {
+        append(streamFrom(1 to 5), streamFrom(6 to 10)) shouldBe streamFrom(1 to 10)
+      }
+
+      it("should append two streams using foldRight for infinite streams") {
         val s1 = Stream(1, 2, 3, 4)
         val s2 = Stream.enumFrom(5)(_ + 1)
 

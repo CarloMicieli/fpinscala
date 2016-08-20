@@ -19,6 +19,8 @@ package io.github.carlomicieli.fpinscala.chapter05
 import io.github.carlomicieli.fpinscala.undefined
 
 trait SampleStreams {
+  def streamFrom(r: Range): Stream[Int] = Stream.fromRange(r)
+
   val emptyStream: Stream[Int] = Stream.empty[Int]
 
   val numbersStream: Stream[Int] = {

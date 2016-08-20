@@ -21,7 +21,6 @@ package io.github.carlomicieli.fpinscala.chapter05
   */
 trait Es5_06 {
   def headOption[A](stream: Stream[A]): Option[A] = {
-    val z: Option[A] = None
-    stream.foldRight(z)((a, b) => Some(a))
+    stream.foldRight(Option.empty[A])((a, _) => Some(a))
   }
 }

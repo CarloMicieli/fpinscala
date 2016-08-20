@@ -19,40 +19,48 @@ package io.github.carlomicieli.fpinscala.chapter05
 class Es5_13TestSpec extends Chapter5Spec with Es5_13 {
   describe("Es5.13") {
     describe("map") {
-      it("should implement map in terms of unfold") {
-        val s = Stream.fromRange(1 until 5)
-        map(s)(_ * 2) shouldBe Stream(2, 4, 6, 8)
+      it("should implement map in terms of unfold for finite streams") {
+        map(streamFrom(1 until 5))(_ * 2) shouldBe Stream(2, 4, 6, 8)
+      }
+
+      it("should implement map in terms of unfold for infinite streams") {
         map(Stream.from(1))(_ * 2).take(4) shouldBe Stream(2, 4, 6, 8)
       }
     }
 
     describe("take") {
-      it("should implement take in terms of unfold") {
-        val s = Stream.fromRange(1 until 5)
-        take(s)(3) shouldBe Stream(1, 2, 3)
-        take(Stream.from(1))(3) shouldBe Stream(1, 2, 3)
+      it("should implement take in terms of unfold for finite streams") {
+        take(streamFrom(1 until 5))(3) shouldBe Stream(1, 2, 3)
+      }
+
+      it("should implement take in terms of unfold for infinite streams") {
+        take(infiniteStream)(3) shouldBe Stream(0, 1, 2)
       }
     }
 
     describe("takeWhile") {
-      it("should implement takeWhile in terms of unfold") {
-        val s = Stream.fromRange(1 until 5)
-        takeWhile(s)(_ < 4) shouldBe Stream(1, 2, 3)
-        takeWhile(Stream.from(1))(_ < 4) shouldBe Stream(1, 2, 3)
+      it("should implement takeWhile in terms of unfold for finite stream") {
+        takeWhile(streamFrom(1 until 5))(_ < 4) shouldBe Stream(1, 2, 3)
+      }
+
+      it("should implement takeWhile in terms of unfold for infinite stream") {
+        takeWhile(infiniteStream)(_ < 4) shouldBe Stream(0, 1, 2, 3)
       }
     }
 
     describe("zipWith") {
-      it("should implement zipWith in terms of unfold") {
-        val s1 = Stream.fromRange(1 until 5)
-        val s2 = Stream.fromRange(1 until 5)
-        zipWith(s1, s2)(_ * _) shouldBe Stream(1, 4, 9, 16)
-        zipWith(s1, Stream.from(1))(_ * _) shouldBe Stream(1, 4, 9, 16)
+      it("should implement zipWith in terms of unfold for finite streams") {
+        zipWith(streamFrom(1 until 5), streamFrom(1 until 5))(_ * _) shouldBe Stream(1, 4, 9, 16)
+      }
+
+      it("should implement zipWith in terms of unfold for infinite streams") {
+        zipWith(streamFrom(1 to 5), infiniteStream)(_ * _) shouldBe Stream(0, 2, 6, 12, 20)
+        zipWith(infiniteStream, streamFrom(1 to 5))(_ * _) shouldBe Stream(0, 2, 6, 12, 20)
       }
     }
 
     describe("zipAll") {
-      ignore("should zipAll elements for two streams") {
+      it("should zipAll elements for two streams") {
         val s1 = Stream(1, 2)
         val s2 = Stream(1, 2, 3)
         zipAll(s1, s2) shouldBe Stream.fromValues((Some(1), Some(1)), (Some(2), Some(2)), (None, Some(3)))

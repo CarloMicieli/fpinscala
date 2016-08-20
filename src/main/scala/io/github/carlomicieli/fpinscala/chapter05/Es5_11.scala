@@ -22,8 +22,8 @@ package io.github.carlomicieli.fpinscala.chapter05
   *                stream.
   */
 trait Es5_11 {
-  def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] = {
-    f(z) match {
+  def unfold[A, S](initial: S)(f: S => Option[(A, S)]): Stream[A] = {
+    f(initial) match {
       case None         => Stream.empty[A]
       case Some((a, s)) => Stream.cons(a, unfold(s)(f))
     }

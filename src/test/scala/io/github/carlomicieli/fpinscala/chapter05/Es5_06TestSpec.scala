@@ -20,12 +20,15 @@ class Es5_06TestSpec extends Chapter5Spec with Es5_06 {
   describe("Es5.6") {
     describe("headOption") {
       it("should return None as head for empty streams") {
-        headOption(Stream.empty[Int]) shouldBe None
+        headOption(emptyStream) shouldBe None
       }
 
       it("should return Some value as head for non empty streams") {
-        headOption(Stream(1, 2, 3)) shouldBe Some(1)
-        headOption(Stream.enumFrom(42)(_ + 1)) shouldBe Some(42)
+        headOption(numbersStream) shouldBe Some(1)
+      }
+
+      it("should return the head from infinite streams") {
+        headOption(infiniteStream) shouldBe Some(0)
       }
     }
   }
