@@ -141,7 +141,7 @@ class StreamTestSpec extends Chapter5Spec {
 
       it("should produce StackOverflow when the stream is not small") {
         an[StackOverflowError] should be thrownBy {
-          Stream.positiveNumbers.take(25000).foldLeft(0)(_ + _)
+          Stream.positiveNumbers.take(50000).foldLeft(0)(_ + _)
         }
       }
     }
