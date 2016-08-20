@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_16TestSpec extends AbstractTestSpec with Es3_16 with SampleLists {
+class Es3_16TestSpec extends Chapter3Spec with Es3_16 {
   describe("Es3.16") {
     it("should add one to list elements") {
       addOne(List(41, 42, 43)) shouldBe List(42, 43, 44)

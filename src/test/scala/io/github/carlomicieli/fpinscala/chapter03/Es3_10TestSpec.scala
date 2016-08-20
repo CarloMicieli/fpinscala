@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_10TestSpec extends AbstractTestSpec with Es3_10 {
+class Es3_10TestSpec extends Chapter3Spec with Es3_10 {
   describe("Es3.10") {
     it("foldRight is not stack-safe: it should blow the stack with long lists") {
       val thrown = intercept[StackOverflowError] {

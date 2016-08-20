@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_04TestSpec extends AbstractTestSpec with Es3_04 with SampleLists {
+class Es3_04TestSpec extends Chapter3Spec with Es3_04 {
   describe("Es3.4: drop()") {
     it("should drop the first n elements from a list") {
       drop(list, 2) shouldBe List(3, 4)

@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_23TestSpec extends AbstractTestSpec with Es3_23 {
+class Es3_23TestSpec extends Chapter3Spec with Es3_23 {
   describe("Es3.23") {
     it("should apply a function to corresponding elements in two lists") {
       zipWith(List(1, 2, 3), List(4, 5, 6))(_ + _) shouldBe List(5, 7, 9)

@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_07TestSpec extends AbstractTestSpec with Es3_07 with SampleLists {
+class Es3_07TestSpec extends Chapter3Spec with Es3_07 {
   describe("product()") {
     it("should calculate the product") {
       val l1 = List(1, 2, 3, 4, 5, 6, 7)

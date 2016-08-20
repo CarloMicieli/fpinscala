@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_19TestSpec extends AbstractTestSpec with Es3_19 with SampleLists {
+class Es3_19TestSpec extends Chapter3Spec with Es3_19 {
   describe("Es3.19") {
     it("should filter out elements that don't match the predicate") {
       filter(List(1, 2, 3, 4, 5))(_ % 2 == 0) shouldBe List(2, 4)

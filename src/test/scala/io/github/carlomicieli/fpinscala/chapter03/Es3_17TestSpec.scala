@@ -16,13 +16,13 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_17TestSpec extends AbstractTestSpec with Es3_17 {
+class Es3_17TestSpec extends Chapter3Spec with Es3_17 {
   describe("Es3.17") {
-    it("should convert each list element to string") {
-      convert(List(42.0, 44.0)) shouldBe List("42.0", "44.0")
-      convert(List.empty[Double]) shouldBe List.empty[String]
+    describe("convert") {
+      it("should convert each list element to string") {
+        convert(List(42.0, 44.0)) shouldBe List("42.0", "44.0")
+        convert(List.empty[Double]) shouldBe List.empty[String]
+      }
     }
   }
 }

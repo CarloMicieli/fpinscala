@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_21TestSpec extends AbstractTestSpec with Es3_21 {
+class Es3_21TestSpec extends Chapter3Spec with Es3_21 {
   describe("Es3.21") {
     it("should implement filter with flatMap") {
       filter(List(1, 2, 3, 4, 5))(_ % 2 == 0) shouldBe List(2, 4)

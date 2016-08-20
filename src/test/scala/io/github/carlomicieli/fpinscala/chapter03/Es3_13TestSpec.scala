@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_13TestSpec extends AbstractTestSpec with Es3_13 with SampleLists {
+class Es3_13TestSpec extends Chapter3Spec with Es3_13 {
   describe("Es3.13") {
     describe("foldLeft via foldRight") {
       it("should work like a foldLeft function") {

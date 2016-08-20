@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_20TestSpec extends AbstractTestSpec with Es3_20 {
+class Es3_20TestSpec extends Chapter3Spec with Es3_20 {
   describe("Es3.20") {
     it("should apply a function to each list element and then flatten the result") {
       val f = (i: Int) => List(i, i + 10)

@@ -16,21 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-class Es3_11TestSpec extends Chapter3Spec with Es3_11 {
-  describe("Es3.11") {
-    it("should sum the list elements") {
-      sum(listFrom1to10) shouldBe 55
-      sum(List.empty[Double]) shouldBe 0.0
-    }
+import io.github.carlomicieli.AbstractTestSpecLike
 
-    it("should make the product of the list elements") {
-      product(listFrom1to10) shouldBe 3628800
-      product(List.empty[Double]) shouldBe 1.0
-    }
-
-    it("should find the list length") {
-      length(listFrom1to10) shouldBe 10
-      length(Nil) shouldBe 0
-    }
-  }
+trait Chapter3Spec extends AbstractTestSpecLike with SampleLists {
 }

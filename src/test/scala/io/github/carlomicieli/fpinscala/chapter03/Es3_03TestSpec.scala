@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_03TestSpec extends AbstractTestSpec with Es3_03 with SampleLists {
+class Es3_03TestSpec extends Chapter3Spec with Es3_03 {
   describe("Es3.3") {
     it("should replace the head of a list") {
       val NewHead = 42

@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_06TestSpec extends AbstractTestSpec with Es3_06 with SampleLists {
+class Es3_06TestSpec extends Chapter3Spec with Es3_06 {
   describe("init()") {
     it("should throw an exception when the list is empty") {
       the[NoSuchElementException] thrownBy {

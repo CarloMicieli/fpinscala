@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_24TestSpec extends AbstractTestSpec with Es3_24 {
+class Es3_24TestSpec extends Chapter3Spec with Es3_24 {
   describe("Es3.24") {
     it("should check whether a list is a subsequence") {
       val list = List(1, 2, 3, 4)

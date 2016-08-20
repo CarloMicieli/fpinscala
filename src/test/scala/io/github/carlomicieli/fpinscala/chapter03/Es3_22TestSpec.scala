@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_22TestSpec extends AbstractTestSpec with Es3_22 {
+class Es3_22TestSpec extends Chapter3Spec with Es3_22 {
   describe("Es3.22") {
     it("should sum the corresponding elements in two lists") {
       add(List(1, 2, 3), List(4, 5, 6)) shouldBe List(5, 7, 9)

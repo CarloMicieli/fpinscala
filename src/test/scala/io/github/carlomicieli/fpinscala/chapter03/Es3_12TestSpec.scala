@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_12TestSpec extends AbstractTestSpec with Es3_12 with SampleLists {
+class Es3_12TestSpec extends Chapter3Spec with Es3_12 {
   describe("Es3.12") {
     it("should reverse a list") {
       reverse(listFrom1to10) shouldBe List(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)

@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_05TestSpec extends AbstractTestSpec with Es3_05 with SampleLists {
+class Es3_05TestSpec extends Chapter3Spec with Es3_05 {
   describe("dropWhile()") {
     it("should return the empty list when working on the empty list") {
       dropWhile[Int](Nil)(_ > 0) shouldBe Nil

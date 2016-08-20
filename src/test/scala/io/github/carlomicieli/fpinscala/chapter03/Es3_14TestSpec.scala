@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_14TestSpec extends AbstractTestSpec with Es3_14 {
+class Es3_14TestSpec extends Chapter3Spec with Es3_14 {
   describe("Es3.14") {
     it("should append two lists") {
       val a = List(1, 2, 3)

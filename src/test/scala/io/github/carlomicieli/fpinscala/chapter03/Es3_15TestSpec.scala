@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_15TestSpec extends AbstractTestSpec with Es3_15 {
+class Es3_15TestSpec extends Chapter3Spec with Es3_15 {
   describe("Es3.15") {
     it("should concat a list of lists") {
       val list = List(List(1, 2), List(4), List(6, 10, 42))

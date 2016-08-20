@@ -16,16 +16,16 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
+class Es3_09TestSpec extends Chapter3Spec with Es3_09 {
+  describe("Es3.9") {
+    describe("length") {
+      it("should calculate the length of the empty list") {
+        length(emptyList) shouldBe 0
+      }
 
-class Es3_09TestSpec extends AbstractTestSpec with Es3_09 with SampleLists {
-  describe("Es3.9: length") {
-    it("should calculate the length of the empty list") {
-      length(emptyList) shouldBe 0
-    }
-
-    it("should calculate the length of a list") {
-      length(listFrom1to10) shouldBe 10
+      it("should calculate the length of a list") {
+        length(listFrom1to10) shouldBe 10
+      }
     }
   }
 }

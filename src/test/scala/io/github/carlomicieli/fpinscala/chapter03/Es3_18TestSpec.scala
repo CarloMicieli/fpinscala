@@ -16,9 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import io.github.carlomicieli.AbstractTestSpec
-
-class Es3_18TestSpec extends AbstractTestSpec with Es3_18 with SampleLists {
+class Es3_18TestSpec extends Chapter3Spec with Es3_18 {
   describe("Es3.18") {
     it("should apply a function to each element in the list") {
       map(List(1, 2, 3, 4))(_ * 2) shouldBe List(2, 4, 6, 8)
