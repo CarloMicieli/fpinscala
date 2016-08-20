@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
 trait RNG {
   def nextInt: (Int, RNG)

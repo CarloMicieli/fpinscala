@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
-import org.scalatest.FunSuite
-import Es6_01._
+import RNG._
 
-class Es6_01Suite extends FunSuite {
-  test("it should produce non negative random numbers") {
-    val rng = SimpleRNG(42)
-
-    val (n1, rng2) = nonNegativeInt(rng)
-    assert(n1 >= 0)
-
-    val (n2, _) = nonNegativeInt(rng)
-    assert(n2 >= 0)
+/**
+  * EXERCISE 6.6] Write the implementation of `map2` based on the following signature. This function
+  *               takes two actions, `ra` and `rb`, and a function `f` for combining their results,
+  *               and returns a new action that combines them.
+  */
+trait Es6_06 {
+  def map2[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = rng => {
+    val (a, rng2) = ra(rng)
+    val (b, rng3) = rb(rng2)
+    (f(a, b), rng3)
   }
 }

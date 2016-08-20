@@ -14,15 +14,16 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
-import org.scalatest.FunSuite
-import Es6_06._
+class Es6_05TestSpec extends Chapter6Spec with Es6_05 {
+  describe("Es6.5") {
+    it("should return double values") {
+      val (n1, rng) = double(simpleRNG)
+      n1 shouldBe 0.007524831689672932
 
-class Es6_06Suite extends FunSuite {
-  test("it should combine two random generators") {
-    val ((i, d), _) = map2(_.nextInt, _.nextDouble)((a, b) => (a, b))(SimpleRNG(42))
-    assert(i == 16159453)
-    assert(d == 0.5967354856416283)
+      val (n2, _) = double(rng)
+      n2 shouldBe 0.5967354856416283
+    }
   }
 }

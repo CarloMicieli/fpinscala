@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
-import RNG._
-
-/**
-  * EXERCISE 6.6] Write the implementation of `map2` based on the following signature. This function
-  *               takes two actions, `ra` and `rb`, and a function `f` for combining their results,
-  *               and returns a new action that combines them.
-  */
-object Es6_06 {
-  def map2[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = rng => {
-    val (a, rng2) = ra(rng)
-    val (b, rng3) = rb(rng2)
-    (f(a, b), rng3)
+class Es6_08TestSpec extends Chapter6Spec with Es6_08 {
+  describe("Es6.8") {
+    it("should produce non negative numbers") {
+      val (n, rng) = nonNegativeLessThan(100)(simpleRNG)
+      val (n2, _) = nonNegativeLessThan(100)(rng)
+      n shouldBe 53
+      n2 shouldBe 97
+    }
   }
 }

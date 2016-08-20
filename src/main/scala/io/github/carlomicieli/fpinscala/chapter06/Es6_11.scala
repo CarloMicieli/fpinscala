@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
 /**
   * EXERCISE 6.11] Hard: To gain experience with the use of `State`, implement a finite state automaton
@@ -23,7 +23,7 @@ package fpinscala.exercises.chapter06
   *                states: locked or unlocked. It also tracks how many candies are left and how many
   *                coins it contains.
   */
-object Es6_11 {
+trait Es6_11 {
   sealed trait Input
   case object Coin extends Input
   case object Turn extends Input
@@ -43,21 +43,25 @@ object Es6_11 {
   private val doNothing: MchState = mch => ((mch.coins, mch.candies), mch)
 
   private val addCoin: MchState = {
-    case mch @ Machine(true, ca, co) if !mch.outOfCandies => ((co + 1, ca), Machine(false, ca, co + 1))
+    case mch @ Machine(true, ca, co) if !mch.outOfCandies =>
+      ((co + 1, ca), Machine(false, ca, co + 1))
     case mch => doNothing(mch)
   }
 
   private val turnKnob: MchState = {
-    case mch @ Machine(false, ca, co) if !mch.outOfCandies => ((co, ca - 1), Machine(true, ca - 1, co))
+    case mch @ Machine(false, ca, co) if !mch.outOfCandies =>
+      ((co, ca - 1), Machine(true, ca - 1, co))
     case mch => doNothing(mch)
   }
 
-  def simulateMachine(inputs: List[Input]): State[Machine, (Int, Int)] = inputs match {
-    case List() => doNothing
-    case i :: is =>
-      mch => {
-        val (_, m) = run(i)(mch)
-        simulateMachine(is)(m)
-      }
+  def simulateMachine(inputs: List[Input]): State[Machine, (Int, Int)] = {
+    inputs match {
+      case List() => doNothing
+      case i :: is =>
+        mch => {
+          val (_, m) = run(i)(mch)
+          simulateMachine(is)(m)
+        }
+    }
   }
 }

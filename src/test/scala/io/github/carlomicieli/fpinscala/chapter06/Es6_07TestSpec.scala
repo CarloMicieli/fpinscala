@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
-import RNG._
+import io.github.carlomicieli.fpinscala.chapter06.RNG._
 
-/**
-  * EXERCISE 6.5] Use `map` to reimplement `double` in a more elegant way.
-  */
-object Es6_05 {
-  def double(rng: RNG): (Double, RNG) =
-    map(_.nextInt)(toDouble)(rng)
-
-  private def toDouble(n: Int): Double = n match {
-    case Int.MaxValue | Int.MinValue => 0.0
-    case i                           => math.abs(i) / Int.MaxValue.toDouble
+class Es6_07TestSpec extends Chapter6Spec with Es6_07 {
+  describe("Es6.7") {
+    it("should combine a sequence of random generators") {
+      val seq: List[Rand[Int]] = List.fill(10)(int)
+      val (xs, _) = sequence(seq)(simpleRNG)
+      xs shouldBe List(16159453, -1281479697, -340305902, -2015756020, 1770001318, -1934589059, 1015914512, -1163632441, -94901159, 1837487774)
+    }
   }
 }

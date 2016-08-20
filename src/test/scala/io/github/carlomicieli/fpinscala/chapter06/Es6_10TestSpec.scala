@@ -14,17 +14,12 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
-import org.scalatest.FunSuite
-import Es6_05._
-
-class Es6_05Suite extends FunSuite {
-  test("it should return double values") {
-    val (n1, rng) = double(SimpleRNG(42))
-    assert(n1 == 0.007524831689672932)
-
-    val (n2, _) = double(rng)
-    assert(n2 == 0.5967354856416283)
+class Es6_10TestSpec extends Chapter6Spec with Es6_10 {
+  describe("Es6.10") {
+    it("not_implemented_yet") {
+      1 should be(1)
+    }
   }
 }

@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
+import io.github.carlomicieli.fpinscala.chapter06.RNG._
 import org.scalatest.FunSuite
-import RNG._
 
 class RNGSuite extends FunSuite {
   test("it should produce pseudo-random numbers") {

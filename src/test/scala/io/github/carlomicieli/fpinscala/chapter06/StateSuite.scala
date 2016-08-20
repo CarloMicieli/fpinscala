@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
+import io.github.carlomicieli.fpinscala.chapter06.State._
 import org.scalatest.FunSuite
-import State._
 
 class StateSuite extends FunSuite {
   test("it should create the unit state") {

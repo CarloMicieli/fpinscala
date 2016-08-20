@@ -14,17 +14,22 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
-
-import RNG._
+package io.github.carlomicieli.fpinscala.chapter06
 
 /**
-  * EXERCISE 6.9] Reimplement `map` and `map2` in terms of `flatMap`. The fact that this is possible is what
-  *               we’re referring to when we say that `flatMap` is more powerful than `map` and `map2`.
+  * EXERCISE 6.1] Write a function that uses `RNG.nextInt` to generate a random integer between 0 and
+  *               `Int.maxValue` (inclusive). Make sure to handle the corner case when `nextInt` returns
+  *               `Int.MinValue`, which doesn't have a non-negative counterpart.
   */
-object Es6_09 {
-  def map[A, B](s: Rand[A])(f: A => B): Rand[B] = flatMap(s)(i => unit(f(i)))
+trait Es6_01 {
+  def nonNegativeInt(rng: RNG): (Int, RNG) = {
+    val (n1, rng2) = rng.nextInt
+    (abs2(n1), rng2)
+  }
 
-  def map2[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] =
-    flatMap(ra)(a => flatMap(rb)(b => unit(f(a, b))))
+  private def abs2(n: Int): Int = n match {
+    case Int.MinValue => 0
+    case _ if n >= 0  => n
+    case _ if n < 0   => math.abs(n)
+  }
 }

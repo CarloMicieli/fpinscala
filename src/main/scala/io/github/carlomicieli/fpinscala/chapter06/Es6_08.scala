@@ -14,15 +14,26 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
+
+import RNG._
 
 /**
-  * EXERCISE 6.1] Write a function that uses `RNG.nextInt` to generate a random integer between 0 and
-  *               `Int.maxValue` (inclusive). Make sure to handle the corner case when `nextInt` returns
-  *               `Int.MinValue`, which doesn't have a non-negative counterpart.
+  * EXERCISE 6.8] Implement `flatMap`, and then use it to implement `nonNegativeLessThan`.
   */
-object Es6_01 {
-  def nonNegativeInt(rng: RNG): (Int, RNG) = {
+trait Es6_08 {
+  def nonNegativeLessThan(n: Int): Rand[Int] = flatMap(nonNegativeInt) {
+    i =>
+      {
+        val mod = i % n
+        if (i + (n - 1) - mod >= 0)
+          unit(mod)
+        else
+          nonNegativeLessThan(n)
+      }
+  }
+
+  private def nonNegativeInt(rng: RNG): (Int, RNG) = {
     val (n1, rng2) = rng.nextInt
     (abs2(n1), rng2)
   }

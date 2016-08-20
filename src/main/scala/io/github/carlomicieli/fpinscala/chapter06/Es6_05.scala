@@ -14,15 +14,19 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
+
+import RNG._
 
 /**
-  * EXERCISE 6.2] Write a function to generate a `Double` between 0 and 1, not including 1. Note: You can
-  *               use `Int.MaxValue` to obtain the maximum positive integer value, and you can use
-  *               `x.toDouble` to convert an `x: Int` to a `Double`.
+  * EXERCISE 6.5] Use `map` to reimplement `double` in a more elegant way.
   */
-object Es6_02 {
-  def double(rng: RNG): (Double, RNG) = {
-    rng.nextDouble
+trait Es6_05 {
+  def double(rng: RNG): (Double, RNG) =
+    map(_.nextInt)(toDouble)(rng)
+
+  private def toDouble(n: Int): Double = n match {
+    case Int.MaxValue | Int.MinValue => 0.0
+    case i                           => math.abs(i) / Int.MaxValue.toDouble
   }
 }

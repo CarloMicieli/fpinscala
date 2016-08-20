@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
 /**
-  * EXERCISE 6.4] Write a function to generate a list of random integers.
+  * EXERCISE 6.2] Write a function to generate a `Double` between 0 and 1, not including 1. Note: You can
+  *               use `Int.MaxValue` to obtain the maximum positive integer value, and you can use
+  *               `x.toDouble` to convert an `x: Int` to a `Double`.
   */
-object Es6_04 {
-  def ints(count: Int)(rng: RNG): (List[Int], RNG) = {
-    def step(n: Int, p: (List[Int], RNG)): (List[Int], RNG) = {
-      val (xs, rng) = p
-      val (n, rng2) = rng.nextInt
-      (n :: xs, rng2)
-    }
-
-    (1 to count).toList.foldRight((List.empty[Int], rng))(step)
+trait Es6_02 {
+  def double(rng: RNG): (Double, RNG) = {
+    rng.nextDouble
   }
 }

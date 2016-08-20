@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
 import RNG._
 
@@ -25,7 +25,7 @@ import RNG._
   *               you can use the standard library function `List.fill(n)(x)` to make a list with `x`
   *               repeated `n` times.
   */
-object Es6_07 {
+trait Es6_07 {
   def sequence[A](fs: List[Rand[A]]): Rand[List[A]] =
     fs.foldRight(unit(List.empty[A]))(step)
 

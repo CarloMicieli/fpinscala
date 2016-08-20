@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter06
+package io.github.carlomicieli.fpinscala.chapter06
 
-/**
-  * EXERCISE 6.10] Generalize the functions `unit`, `map`, `map2`, `flatMap`, and `sequence`. Add them as methods
-  *                on the `State` case class where possible. Otherwise you should put them in a `State`
-  *                companion object.
-  */
-object Es6_10 {
+class Es6_02TestSpec extends Chapter6Spec with Es6_02 {
+  describe("Es6.2") {
+    it("should produce double number between 0 and 1") {
+      val (d, _) = double(simpleRNG)
+      d should (be >= 0.0 and be < 1.0)
+      d should equal(0.00752 +- 0.00001)
+    }
+  }
 }
