@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
-/**
-  * EXERCISE 7.3] Hard: Fix the implementation of map2 so that it respects the contract
-  *               of timeouts on Future.
-  */
-object Es7_03 {
+class Es7_08TestSpec extends Chapter7Spec {
+  describe("Es7.8") {
+    it("not_implemented_yet") {
+      1 shouldBe 1
+    }
+  }
 }

@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
-import org.scalatest.FunSuite
-
-class Es7_10Suite extends FunSuite {
-  test("not_implemented_yet") {
-    assert(1 == 1)
-  }
+/**
+  * EXERCISE 7.9] Hard: Show that any fixed-size thread pool can be made to deadlock given this implementation
+  *               of fork.
+  */
+trait Es7_09 {
 }

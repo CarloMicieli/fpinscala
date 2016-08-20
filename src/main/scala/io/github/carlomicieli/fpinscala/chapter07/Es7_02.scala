@@ -14,21 +14,11 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
-
-import Par._
+package io.github.carlomicieli.fpinscala.chapter07
 
 /**
-  * EXERCISE 7.6] Implement `parFilter`, which filters elements of a list in parallel.
+  * EXERCISE 7.2] Before continuing, try to come up with representations for `Par` that make it possible
+  *               to implement the functions of our API.
   */
-object Es7_06 {
-  def parFilter[A](as: List[A])(f: A => Boolean): Par[List[A]] = {
-    val len = as.length
-    if (len <= 1)
-      unit(as.filter(f))
-    else {
-      val (l, r) = as.splitAt(len / 2)
-      map2(fork(parFilter(l)(f)), fork(parFilter(r)(f)))(_ ++ _)
-    }
-  }
+trait Es7_02 {
 }

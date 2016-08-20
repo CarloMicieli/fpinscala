@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
 /**
-  * EXERCISE 7.13] Implement this new primitive chooser, and then use it to implement choice and
-  *                choiceN.
+  * EXERCISE 7.11] Implement choiceN and then choice in terms of choiceN.
   */
-object Es7_13 {
+trait Es7_11 {
 }

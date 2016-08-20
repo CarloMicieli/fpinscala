@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
-import Par._
-
-/**
-  * EXERCISE 7.12] There’s still something rather arbitrary about choiceN. The choice of List seems
-  *                overly specific. Why does it matter what sort of container we have? For instance, what
-  *                if, instead of a list of computations, we have a Map of them
-  */
-object Es7_12 {
-  def choiceMap[K, V](key: Par[K])(choices: Map[K, Par[V]]): Par[V] = ???
+class Es7_11TestSpec extends Chapter7Spec {
+  describe("Es7.11") {
+    it("not_implemented_yet") {
+      1 shouldBe 1
+    }
+  }
 }

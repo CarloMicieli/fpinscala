@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
-/**
-  * EXERCISE 7.14] Implement join. Can you see how to implement flatMap using join? And can you
-  *                implement join using flatMap?
-  */
-object Es7_14 {
+class Es7_03TestSpec extends Chapter7Spec {
+  describe("Es7.3") {
+    it("not_implemented_yet") {
+      1 shouldBe 1
+    }
+  }
 }
+

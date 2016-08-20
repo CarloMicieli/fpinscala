@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
 /**
-  * EXERCISE 7.2] Before continuing, try to come up with representations for `Par` that make it possible
-  *               to implement the functions of our API.
+  * EXERCISE 7.13] Implement this new primitive chooser, and then use it to implement choice and
+  *                choiceN.
   */
-object Es7_02 {
+trait Es7_13 {
 }

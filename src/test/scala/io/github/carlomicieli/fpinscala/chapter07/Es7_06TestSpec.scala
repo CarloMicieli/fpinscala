@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
-/**
-  * EXERCISE 7.10] Hard: Our non-blocking representation doesn’t currently handle errors at all. If at any
-  *                point our computation throws an exception, the run implementation’s latch never
-  *                counts down and the exception is simply swallowed. Can you fix that?
-  */
-object Es7_10 {
+class Es7_06TestSpec extends Chapter7Spec {
+  describe("Es7.6") {
+    it("not_implemented_yet") {
+      1 shouldBe 1
+    }
+  }
 }
+

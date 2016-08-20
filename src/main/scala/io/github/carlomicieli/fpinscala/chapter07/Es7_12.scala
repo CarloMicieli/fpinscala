@@ -14,18 +14,15 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
 import Par._
 
 /**
-  * EXERCISE 7.5] Hard: Write this function, called `sequence`. No additional primitives are required.
-  *               Do not call `run`.
+  * EXERCISE 7.12] There’s still something rather arbitrary about choiceN. The choice of List seems
+  *                overly specific. Why does it matter what sort of container we have? For instance, what
+  *                if, instead of a list of computations, we have a Map of them
   */
-object Es7_05 {
-  def sequence[A](ps: List[Par[A]]): Par[List[A]] =
-    ps.foldLeft(unit(List.empty[A]))(step)
-
-  private def step[A](as: Par[List[A]], a: Par[A]): Par[List[A]] =
-    Par.map2(a, as)(_ :: _)
+trait Es7_12 {
+  def choiceMap[K, V](key: Par[K])(choices: Map[K, Par[V]]): Par[V] = ???
 }

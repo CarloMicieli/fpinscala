@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
 /**
   * EXERCISE 7.7] Hard: Given `map(y)(id) == y`, it’s a free theorem that
@@ -25,5 +25,5 @@ package fpinscala.exercises.chapter07
   *               want to read the paper “Theorems for Free!” (http://mng.bz/Z9f1) to better understand
   *               the “trick” of free theorems.
   */
-object Es7_07 {
+trait Es7_07 {
 }

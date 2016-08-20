@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
-/**
-  * EXERCISE 7.9] Hard: Show that any fixed-size thread pool can be made to deadlock given this implementation
-  *               of fork.
-  */
-object Es7_09 {
+class Es7_05TestSpec extends Chapter7Spec {
+  describe("Es7.5") {
+    it("not_implemented_yet") {
+      1 shouldBe 1
+    }
+  }
 }

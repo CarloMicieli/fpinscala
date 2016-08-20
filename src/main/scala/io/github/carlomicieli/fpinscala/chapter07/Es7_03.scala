@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
-import org.scalatest.FunSuite
-
-class Es7_07Suite extends FunSuite {
-  test("not_implemented_yet") {
-    assert(1 == 1)
-  }
+/**
+  * EXERCISE 7.3] Hard: Fix the implementation of `map2` so that it respects the contract
+  *               of timeouts on Future.
+  */
+trait Es7_03 {
 }

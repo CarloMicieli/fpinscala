@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
-import org.scalatest.FunSuite
-
-class Es7_12Suite extends FunSuite {
-  test("not_implemented_yet") {
-    assert(1 == 1)
+class Es7_10TestSpec extends Chapter7Spec {
+  describe("Es7.10") {
+    it("not_implemented_yet") {
+      1 shouldBe 1
+    }
   }
 }

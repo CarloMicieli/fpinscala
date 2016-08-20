@@ -14,15 +14,11 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
-
-import Par._
+package io.github.carlomicieli.fpinscala.chapter07
 
 /**
-  * EXERCISE 7.4] This API already enables a rich set of operations. Here's a simple example: using
-  *               `lazyUnit`, write a function to convert any function `A => B` to one that evaluates
-  *               its result asynchronously.
+  * EXERCISE 7.14] Implement join. Can you see how to implement flatMap using join? And can you
+  *                implement join using flatMap?
   */
-object Es7_04 {
-  def asyncF[A, B](f: A => B): A => Par[B] = a => Par.lazyUnit(f(a))
+trait Es7_14 {
 }

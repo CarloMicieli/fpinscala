@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
-import org.scalatest.FunSuite
-
-class Es7_08Suite extends FunSuite {
-  test("not_implemented_yet") {
-    assert(1 == 1)
-  }
+/**
+  * EXERCISE 7.8] Hard: Take a look through the various static methods in Executors to get a feel for the
+  *               different implementations of ExecutorService that exist. Then, before continuing,
+  *               go back and revisit your implementation of fork and try to find a counterexample or
+  *               convince yourself that the law holds for your implementation.
+  */
+trait Es7_08 {
 }

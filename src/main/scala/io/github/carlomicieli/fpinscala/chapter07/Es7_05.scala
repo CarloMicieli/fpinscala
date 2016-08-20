@@ -14,10 +14,18 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
+
+import Par._
 
 /**
-  * EXERCISE 7.11] Implement choiceN and then choice in terms of choiceN.
+  * EXERCISE 7.5] Hard: Write this function, called `sequence`. No additional primitives are required.
+  *               Do not call `run`.
   */
-object Es7_11 {
+trait Es7_05 {
+  def sequence[A](ps: List[Par[A]]): Par[List[A]] =
+    ps.foldLeft(unit(List.empty[A]))(step)
+
+  private def step[A](as: Par[List[A]], a: Par[A]): Par[List[A]] =
+    Par.map2(a, as)(_ :: _)
 }

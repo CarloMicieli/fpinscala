@@ -14,12 +14,17 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
-import org.scalatest.FunSuite
+import Par._
 
-class Es7_11Suite extends FunSuite {
-  test("not_implemented_yet") {
-    assert(1 == 1)
+/**
+  * EXERCISE 7.1] `Par.map2` is a new higher-order function for combining the result of two parallel computations.
+  *               What is its signature? Give the most general signature possible (don’t
+  *               assume it works only for `Int`).
+  */
+trait Es7_01 {
+  def map2[A, B, C](a: Par[A], b: Par[B])(f: (A, B) => C): Par[C] = {
+    ???
   }
 }

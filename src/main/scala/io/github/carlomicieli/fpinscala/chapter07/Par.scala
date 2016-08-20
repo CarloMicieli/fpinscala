@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter07
+package io.github.carlomicieli.fpinscala.chapter07
 
 import java.util.concurrent.{ Callable, TimeUnit, ExecutorService, Future }
 
