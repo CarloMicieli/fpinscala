@@ -14,11 +14,25 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter08
+package io.github.carlomicieli.fpinscala.chapter08
 
-/**
-  * EXERCISE 8.2] What properties specify a function that finds the maximum of a `List[Int]`?
-  */
-object Es8_02 {
-  def maximum(xs: List[Int]): Int = xs.max
+import org.scalatest.{ FunSuite, Matchers }
+
+class Es8_03Suite extends FunSuite with Es8_03 with Matchers {
+  ignore("it should implement &&") {
+    val success = new Prop {
+      def check = Right(50)
+    }
+    val failure = new Prop {
+      def check = Left(("error", 42))
+    }
+
+    val p1 = success && success
+    p1.check should be(Right(100))
+
+    val p2 = success && failure
+    val p3 = failure && failure
+    p2.check should be(Left(("error", 42)))
+    p3.check should be(Left(("error", 42)))
+  }
 }

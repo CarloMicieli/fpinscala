@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter08
+package io.github.carlomicieli.fpinscala.chapter08
 
 trait Prop {
   import Prop._

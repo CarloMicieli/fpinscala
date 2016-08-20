@@ -16,7 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import fpinscala._
+import io.github.carlomicieli.fpinscala._
 
 /**
   * EXERCISE 3.3] Using the same idea, implement the function `setHead` for replacing the

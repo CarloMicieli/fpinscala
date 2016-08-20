@@ -14,43 +14,44 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter08
+package io.github.carlomicieli.fpinscala.chapter08
 
-import org.scalatest.{ Matchers, FunSuite }
 import org.scalatest.prop.PropertyChecks
-import Es8_01._
+import org.scalatest.{ FunSuite, Matchers }
 
-class Es8_01Suite extends FunSuite with PropertyChecks with Matchers {
+class Es8_02Suite extends FunSuite with Es8_02 with PropertyChecks with Matchers {
 
-  test("list sum") {
+  test("list max: contained in list") {
     forAll { (xs: List[Int]) =>
-      sum(xs) should be(xs.sum)
+      whenever(xs.nonEmpty) {
+        val max = maximum(xs)
+        xs.contains(max) should be(true)
+      }
     }
   }
 
-  test("list sum: reverse") {
+  test("list max: no element is bigger") {
     forAll { (xs: List[Int]) =>
-      sum(xs) should be(sum(xs.reverse))
+      whenever(xs.nonEmpty) {
+        val max = maximum(xs)
+        xs.exists(_ > max) should be(false)
+      }
     }
   }
 
-  test("list sum: concat") {
-    forAll { (xs: List[Int], ys: List[Int]) =>
-      sum(xs ::: ys) should be(sum(xs) + sum(ys))
+  test("list max: is the biggest element") {
+    forAll { (xs: List[Int]) =>
+      whenever(xs.nonEmpty) {
+        val max = maximum(xs)
+        xs.forall(_ <= max) should be(true)
+      }
     }
   }
 
-  test("list sum: cons") {
+  test("list max: cons") {
     forAll { (xs: List[Int], x: Int) =>
-      sum(x :: xs) should be(x + sum(xs))
-    }
-  }
-
-  ignore("list sum: summing the same element") {
-    forAll { (size: Int) =>
-      whenever(size >= 0) {
-        val xs = replicate(1, size)
-        sum(xs) should be(xs.size)
+      whenever(xs.nonEmpty) {
+        maximum(x :: xs) should be(math.max(x, maximum(xs)))
       }
     }
   }

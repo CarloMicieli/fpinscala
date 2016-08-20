@@ -14,6 +14,17 @@
  * limitations under the License.
  */
 
-package object fpinscala {
-  def error[A](err: String): A = throw new NoSuchElementException(err)
+package io.github.carlomicieli.fpinscala.chapter08
+
+/**
+  * EXERCISE 8.3] Assuming the following representation of `Prop`, implement `&&`
+  *               as a method of `Prop`.
+  *
+  * @example {{{
+  *  trait Prop {
+  *    def check: Boolean
+  *  }
+  * }}}
+  */
+trait Es8_03 {
 }

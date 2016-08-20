@@ -16,7 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-import fpinscala._
+import io.github.carlomicieli.fpinscala._
 
 /**
   * EXERCISE 3.2] Implement the function `tail` for removing the first element of a `List`. Note that the

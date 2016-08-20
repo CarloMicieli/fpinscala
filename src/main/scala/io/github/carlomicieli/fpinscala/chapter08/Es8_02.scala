@@ -14,17 +14,11 @@
  * limitations under the License.
  */
 
-package fpinscala.exercises.chapter08
+package io.github.carlomicieli.fpinscala.chapter08
 
 /**
-  * EXERCISE 8.3] Assuming the following representation of `Prop`, implement `&&`
-  *               as a method of `Prop`.
-  *
-  * @example {{{
-  *  trait Prop {
-  *    def check: Boolean
-  *  }
-  * }}}
+  * EXERCISE 8.2] What properties specify a function that finds the maximum of a `List[Int]`?
   */
-object Es8_03 {
+trait Es8_02 {
+  def maximum(xs: List[Int]): Int = xs.max
 }
