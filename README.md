@@ -1,7 +1,7 @@
 # Functional Programming in Scala
 
 [![Build Status](https://travis-ci.org/CarloMicieli/fpinscala.svg)](https://travis-ci.org/CarloMicieli/fpinscala)
-[![Coverage Status](https://coveralls.io/repos/CarloMicieli/fpinscala/badge.svg)](https://coveralls.io/r/CarloMicieli/fpinscala)
+[![Coverage Status](https://coveralls.io/repos/github/CarloMicieli/fpinscala/badge.svg?branch=master)](https://coveralls.io/github/CarloMicieli/fpinscala?branch=master)
 
 Examples and exercises from
 
