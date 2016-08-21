@@ -18,14 +18,20 @@ package io.github.carlomicieli.fpinscala.chapter03
 
 class Es3_10TestSpec extends Chapter3Spec with Es3_10 {
   describe("Es3.10") {
-    it("foldRight is not stack-safe: it should blow the stack with long lists") {
-      val thrown = intercept[StackOverflowError] {
-        blowTheStack()
+    describe("foldRight") {
+      it("is not stack-safe: it should blow the stack with long lists") {
+        val thrown = intercept[StackOverflowError] {
+          blowTheStack()
+        }
       }
-    }
 
-    it("foldLeft is tail call optimized: it won't blow the stack") {
-      stackSafeCount() shouldBe 500000500000L
+      it("is tail call optimized: it won't blow the stack") {
+        stackSafeCount() shouldBe 500000500000L
+      }
+
+      it("should return the initial value for the empty list") {
+        foldRight(emptyList, 42)((x, xs) => x + xs) shouldBe 42
+      }
     }
   }
 }

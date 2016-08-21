@@ -21,5 +21,17 @@ class Es3_01TestSpec extends Chapter3Spec with Es3_01 {
     it("should evaluate to 3") {
       apply(List(1, 2, 3, 4, 5)) shouldBe 3
     }
+
+    it("should evaluate to 42") {
+      apply(Nil) shouldBe 42
+    }
+
+    it("should evaluate to 1") {
+      apply(List(1, 2, 4, 5)) shouldBe 1
+    }
+
+    it("should evaluate to 18") {
+      apply(List(1, 9, 8)) shouldBe 18
+    }
   }
 }

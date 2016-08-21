@@ -22,15 +22,15 @@ import org.scalacheck.Gen
 
 class ListPropSpec extends AbstractPropSpec {
 
-  property("cons(): increase the list length by 1") {
+  property("cons: increase the list length by 1") {
     check(forAll { (x: Int, xs: List[Int]) =>
-      Cons(x, xs).length ?= xs.length + 1
+      List.cons(x, xs).length ?= xs.length + 1
     })
   }
 
-  property("cons(): new element should be the resulting list head") {
+  property("cons: new element should be the resulting list head") {
     check(forAll { (x: Int, xs: List[Int]) =>
-      Cons(x, xs).head ?= x
+      List.cons(x, xs).head ?= x
     })
   }
 
@@ -70,7 +70,7 @@ class ListPropSpec extends AbstractPropSpec {
     })
   }
 
-  property("max(): return the max value no matter what is the max position") {
+  property("max: return the max value no matter what is the max position") {
     check(forAll(nonEmptyNegativeList[Int], Gen.posNum[Int]) { (xs: List[Int], x: Int) =>
       val l1 = Cons(x, xs)
       val l2 = xs append List(x)
@@ -80,7 +80,7 @@ class ListPropSpec extends AbstractPropSpec {
     })
   }
 
-  property("max() returns a value that is actually the maximum value") {
+  property("max returns a value that is actually the maximum value") {
     check(forAll { (xs: List[Int]) =>
       xs.max match {
         case None    => xs.isEmpty
@@ -89,7 +89,7 @@ class ListPropSpec extends AbstractPropSpec {
     })
   }
 
-  property("max(): max of the two list max values is equals to the max for the two lists appended") {
+  property("max: max of the two list max values is equals to the max for the two lists appended") {
     check(forAll(nonEmptyList[Int], nonEmptyList[Int]) { (xs: List[Int], ys: List[Int]) =>
       val max1 = for {
         mx <- xs.max
@@ -97,6 +97,13 @@ class ListPropSpec extends AbstractPropSpec {
       } yield math.max(mx, my)
 
       (xs append ys).max ?= max1
+    })
+  }
+
+  property("exists: returns true whether the predicate matches") {
+    check(forAll { (xs: List[Int], y: Int, ys: List[Int]) =>
+      val list = xs append List.cons(y, ys)
+      list.exists(_ == y) ?= true
     })
   }
 
