@@ -28,14 +28,27 @@ object Par {
     def isDone: Boolean = true
   }
 
-  def unit[A](a: A): Par[A] = (es: ExecutorService) => UnitFuture(a)
-  def lazyUnit[A](a: => A): Par[A] = fork(unit(a))
-  def run[A](s: ExecutorService)(a: Par[A]): Future[A] = a(s)
-  def fork[A](a: => Par[A]): Par[A] =
-    (es: ExecutorService) => es.submit(new Callable[A] {
-      def call(): A = a(es).get
-    })
+  def apply[A](f: => A): Par[A] = lazyUnit(f)
 
+  // Creates a computation that immediately results in the value `a`
+  def unit[A](a: A): Par[A] = (es: ExecutorService) => UnitFuture(a)
+
+  // Wraps the expression a for concurrent evaluation by `run`.
+  def lazyUnit[A](a: => A): Par[A] = fork(unit(a))
+
+  // Fully evaluates a given `Par`, spawning parallel computations as requested by
+  // fork and extracting the resulting value
+  def run[A](s: ExecutorService)(a: Par[A]): Future[A] = a(s)
+
+  // It means that the given `Par` should be run in a separate logical thread
+  def fork[A](a: => Par[A]): Par[A] = {
+    (es: ExecutorService) =>
+      es.submit(new Callable[A] {
+        override def call(): A = a(es).get
+      })
+  }
+
+  // Combines the results of two parallel computations with a binary function
   def map2[A, B, C](a: Par[A], b: Par[B])(f: (A, B) => C): Par[C] = {
     (es: ExecutorService) =>
       {
@@ -45,20 +58,25 @@ object Par {
       }
   }
 
-  def asyncF[A, B](f: A => B): A => Par[B] = a => lazyUnit(f(a))
+  def asyncF[A, B](f: A => B): A => Par[B] = {
+    a => lazyUnit(f(a))
+  }
 
-  def sequence[A](ps: List[Par[A]]): Par[List[A]] =
+  def sequence[A](ps: List[Par[A]]): Par[List[A]] = {
     ps.foldLeft(unit(List.empty[A]))((as, a) => map2(a, as)(_ :: _))
+  }
 
-  def parMap[A, B](ps: List[A])(f: A => B): Par[List[B]] = fork {
-    val pars: List[Par[B]] = ps.map(asyncF(f))
-    sequence(pars)
+  def parMap[A, B](ps: List[A])(f: A => B): Par[List[B]] = {
+    fork {
+      val pars: List[Par[B]] = ps.map(asyncF(f))
+      sequence(pars)
+    }
   }
 
   def sum(seq: IndexedSeq[Int]): Par[Int] = {
-    if (seq.size <= 1)
+    if (seq.size <= 1) {
       unit(seq.headOption getOrElse 0)
-    else {
+    } else {
       val (l, r) = seq.splitAt(seq.length / 2)
       val lSum = sum(l)
       val rSum = sum(r)
