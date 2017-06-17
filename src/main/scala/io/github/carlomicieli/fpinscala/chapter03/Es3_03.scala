@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,8 @@ package io.github.carlomicieli.fpinscala.chapter03
 
 import io.github.carlomicieli.fpinscala._
 
-/**
-  * EXERCISE 3.3] Using the same idea, implement the function `setHead` for replacing the
-  *               first element of a `List` with a different value.
+/** EXERCISE 3.3] Using the same idea, implement the function `setHead` for replacing the
+  *              first element of a `List` with a different value.
   */
 trait Es3_03 {
   def setHead[A](newHead: A, xs: List[A]): List[A] = {

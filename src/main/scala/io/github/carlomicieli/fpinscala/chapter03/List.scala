@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,28 +19,24 @@ package io.github.carlomicieli.fpinscala.chapter03
 import scala.collection.immutable.{ List => SList }
 import io.github.carlomicieli.fpinscala._
 
-/**
-  * An immutable linked list. The list is either a constructed list or the empty list.
+/** An immutable linked list. The list is either a constructed list or the empty list.
   *
   * @tparam A
   */
 sealed trait List[+A] {
-  /**
-    * Selects the first element of this list.
+  /** Selects the first element of this list.
     *
     * @return
     */
   def head: A
 
-  /**
-    * Selects all elements except the first.
+  /** Selects all elements except the first.
     *
     * @return
     */
   def tail: List[A]
 
-  /**
-    * Checks whether this list is empty.
+  /** Checks whether this list is empty.
     *
     * @return
     */
@@ -67,7 +63,7 @@ sealed trait List[+A] {
     this match {
       case Nil => ()
       case Cons(x, xs) =>
-        val ignored = f(x)
+        val _ = f(x)
         xs foreach f
     }
   }

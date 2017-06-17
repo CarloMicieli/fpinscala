@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.12] Write `fibs`, `from`, `constant`, and `ones` in terms of `unfold`.
+/** EXERCISE 5.12] Write `fibs`, `from`, `constant`, and `ones` in terms of `unfold`.
   */
 trait Es5_12 extends Es5_11 {
   def fibs: Stream[Int] = {

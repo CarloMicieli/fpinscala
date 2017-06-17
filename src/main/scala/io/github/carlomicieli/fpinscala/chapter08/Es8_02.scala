@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter08
 
-/**
-  * EXERCISE 8.2] What properties specify a function that finds the maximum of a `List[Int]`?
+/** EXERCISE 8.2] What properties specify a function that finds the maximum of a `List[Int]`?
   */
 trait Es8_02 {
   def maximum(xs: List[Int]): Int = xs.max

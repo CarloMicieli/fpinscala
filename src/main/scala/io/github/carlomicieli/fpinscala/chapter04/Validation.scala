@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ sealed trait Validation[+E, +A] {
     ap2: Appendable[EE]): Validation[EE, AA] = {
     (this, x) match {
       case (Failure(y), Failure(z)) => Failure(ap2.append(y, z))
-      case (f1 @ Failure(y), _)     => f1
+      case (f1 @ Failure(_), _)     => f1
       case (_, f2 @ Failure(z))     => f2
       case (Success(y), Success(z)) => Success(ap1.append(y, z))
     }

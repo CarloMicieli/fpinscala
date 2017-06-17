@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter06
 
-/**
-  * EXERCISE 6.4] Write a function to generate a list of random integers.
+/** EXERCISE 6.4] Write a function to generate a list of random integers.
   */
 trait Es6_04 {
   def ints(count: Int)(rng: RNG): (List[Int], RNG) = {

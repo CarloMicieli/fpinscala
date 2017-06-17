@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 
 package io.github.carlomicieli.fpinscala.chapter04
 
-/**
-  * EXERCISE 4.6] Implement versions of `map`, `flatMap`, `orElse`, and `map2` on
-  *               `Either` that operate on the `Right` value.
+/** EXERCISE 4.6] Implement versions of `map`, `flatMap`, `orElse`, and `map2` on
+  *              `Either` that operate on the `Right` value.
   */
 trait Es4_06 {
 }

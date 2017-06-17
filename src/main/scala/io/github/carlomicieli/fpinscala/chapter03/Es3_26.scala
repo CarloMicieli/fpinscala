@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.26] Write a function `maximum` that returns the maximum element in a `Tree[Int]`.
-  *                (Note: In Scala, you can use `x.max(y)` or `x max y` to compute the maximum
-  *                of two integers `x` and `y`.)
+/** EXERCISE 3.26] Write a function `maximum` that returns the maximum element in a `Tree[Int]`.
+  *               (Note: In Scala, you can use `x.max(y)` or `x max y` to compute the maximum
+  *               of two integers `x` and `y`.)
   */
 trait Es3_26 {
   def maximum(t: Tree[Int]): Int = t match {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.15] Implement `tails` using `unfold`. For a given `Stream`, `tails` returns the `Stream`
-  *                of suffixes of the input sequence, starting with the original `Stream`. For example, given
-  *                `Stream(1,2,3)`, it would return `Stream(Stream(1,2,3), Stream(2,3), Stream(3), Stream())`.
+/** EXERCISE 5.15] Implement `tails` using `unfold`. For a given `Stream`, `tails` returns the `Stream`
+  *               of suffixes of the input sequence, starting with the original `Stream`. For example, given
+  *               `Stream(1,2,3)`, it would return `Stream(Stream(1,2,3), Stream(2,3), Stream(3), Stream())`.
   */
 trait Es5_15 extends Es5_11 {
   def tails[A](stream: Stream[A]): Stream[Stream[A]] =

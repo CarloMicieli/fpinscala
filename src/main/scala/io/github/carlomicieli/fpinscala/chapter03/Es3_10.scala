@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,10 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.10] Our implementation of `foldRight` is not tail-recursive and will result in a StackOverflowError
-  *                for large lists (we say it’s not stack-safe). Convince yourself that this is the
-  *                case, and then write another general list-recursion function, `foldLeft`, that is
-  *                tail-recursive, using the techniques we discussed in the previous chapter.
+/** EXERCISE 3.10] Our implementation of `foldRight` is not tail-recursive and will result in a StackOverflowError
+  *               for large lists (we say it’s not stack-safe). Convince yourself that this is the
+  *               case, and then write another general list-recursion function, `foldLeft`, that is
+  *               tail-recursive, using the techniques we discussed in the previous chapter.
   */
 trait Es3_10 {
   private val veryLongList = initList

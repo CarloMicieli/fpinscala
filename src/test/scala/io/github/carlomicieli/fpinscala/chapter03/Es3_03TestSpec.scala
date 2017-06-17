@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ class Es3_03TestSpec extends Chapter3Spec with Es3_03 {
     }
 
     it("should throw an exception for the empty list") {
-      val thrown = the[NoSuchElementException] thrownBy {
+      the[NoSuchElementException] thrownBy {
         setHead(42, List.empty[Int])
       } should have message "Nil.setHead: list is empty"
     }

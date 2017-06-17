@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter07
 
-/**
-  * EXERCISE 7.11] Implement choiceN and then choice in terms of choiceN.
+/** EXERCISE 7.11] Implement choiceN and then choice in terms of choiceN.
   */
 trait Es7_11 {
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.9] Compute the `length` of a list using `foldRight`.
+/** EXERCISE 3.9] Compute the `length` of a list using `foldRight`.
   */
 trait Es3_09 {
   def length[A](xs: List[A]): Int = {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.27] Write a function `depth` that returns the maximum path length from the root
-  *                of a tree to any leaf.
+/** EXERCISE 3.27] Write a function `depth` that returns the maximum path length from the root
+  *               of a tree to any leaf.
   */
 trait Es3_27 {
   def depth[A](t: Tree[A]): Int = t match {

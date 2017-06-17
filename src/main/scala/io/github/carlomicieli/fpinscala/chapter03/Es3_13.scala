@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,10 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.13] Can you write `foldLeft` in terms of `foldRight`? How about the other way
-  *                around? Implementing `foldRight` via `foldLeft` is useful because it lets us
-  *                implement `foldRight` tail-recursively, which means it works even for large
-  *                lists without overflowing the stack.
+/** EXERCISE 3.13] Can you write `foldLeft` in terms of `foldRight`? How about the other way
+  *               around? Implementing `foldRight` via `foldLeft` is useful because it lets us
+  *               implement `foldRight` tail-recursively, which means it works even for large
+  *               lists without overflowing the stack.
   */
 trait Es3_13 {
   def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {

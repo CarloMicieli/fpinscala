@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,7 @@ package io.github.carlomicieli.fpinscala.chapter07
 
 import Par._
 
-/**
-  * EXERCISE 7.6] Implement `parFilter`, which filters elements of a list in parallel.
+/** EXERCISE 7.6] Implement `parFilter`, which filters elements of a list in parallel.
   */
 trait Es7_06 {
   def parFilter[A](as: List[A])(f: A => Boolean): Par[List[A]] = {

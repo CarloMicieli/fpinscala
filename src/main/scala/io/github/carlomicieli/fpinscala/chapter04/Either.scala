@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter04
 
-/**
-  * Represents a value of one of two possible types (a disjoint union).
+/** Represents a value of one of two possible types (a disjoint union).
   * Instances of `Either` are either an instance of `Left` or `Right`.
   *
   * @tparam E

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ class Es2_1TestSpec extends AbstractTestSpec with Es2_1 {
     }
 
     it("should be undefined for negative numbers") {
-      val e = intercept[IllegalArgumentException] {
+      the[IllegalArgumentException] thrownBy {
         fib(-1)
       }
     }

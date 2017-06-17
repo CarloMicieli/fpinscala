@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.5] Implement `dropWhile`, which removes elements from the `List` prefix as long
-  *               as they match a predicate.
+/** EXERCISE 3.5] Implement `dropWhile`, which removes elements from the `List` prefix as long
+  *              as they match a predicate.
   */
 trait Es3_05 {
   @annotation.tailrec

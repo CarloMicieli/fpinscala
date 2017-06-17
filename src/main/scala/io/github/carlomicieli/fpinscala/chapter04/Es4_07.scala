@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 
 package io.github.carlomicieli.fpinscala.chapter04
 
-/**
-  * EXERCISE 4.7] Implement `sequence` and `traverse` for `Either`. These should return
-  *               the first error that's encountered, if there is one.
+/** EXERCISE 4.7] Implement `sequence` and `traverse` for `Either`. These should return
+  *             the first error that's encountered, if there is one.
   */
 trait Es4_07 {
   def sequence[E, A](es: List[Either[E, A]]): Either[E, List[A]] = traverse(es)(identity)
@@ -32,8 +31,8 @@ trait Es4_07 {
 
   private def step[E, A, B](f: A => Either[E, B])(x: A, acc: Either[E, List[B]]): Either[E, List[B]] = {
     (f(x), acc) match {
-      case (l @ Left(y), _)      => l
-      case (_, l @ Left(y))      => l
+      case (l @ Left(_), _)      => l
+      case (_, l @ Left(_))      => l
       case (Right(y), Right(ys)) => Right(y :: ys)
 
     }

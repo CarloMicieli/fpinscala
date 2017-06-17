@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,8 @@ package io.github.carlomicieli.fpinscala.chapter06
 
 import RNG._
 
-/**
-  * EXERCISE 6.9] Reimplement `map` and `map2` in terms of `flatMap`. The fact that this is possible is what
-  *               we’re referring to when we say that `flatMap` is more powerful than `map` and `map2`.
+/** EXERCISE 6.9] Reimplement `map` and `map2` in terms of `flatMap`. The fact that this is possible is what
+  *              we’re referring to when we say that `flatMap` is more powerful than `map` and `map2`.
   */
 trait Es6_09 {
   def map[A, B](s: Rand[A])(f: A => B): Rand[B] = flatMap(s)(i => unit(f(i)))

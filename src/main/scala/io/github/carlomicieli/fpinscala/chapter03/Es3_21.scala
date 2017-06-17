@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.21] Use `flatMap` to implement `filter`.
+/** EXERCISE 3.21] Use `flatMap` to implement `filter`.
   */
 trait Es3_21 extends Es3_20 {
   def filter[A](as: List[A])(p: A => Boolean): List[A] = {

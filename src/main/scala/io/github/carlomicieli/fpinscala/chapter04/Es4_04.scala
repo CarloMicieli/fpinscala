@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,11 @@
 
 package io.github.carlomicieli.fpinscala.chapter04
 
-/**
-  * EXERCISE 4.4] Write a function sequence that combines a list of `Option`s into one
-  *               `Option` containing a list of all the `Some` values in the original list.
-  *               If the original list contains `None` even once, the result of the function
-  *               should be `None`; otherwise the result should be `Some` with a list of
-  *               all the values.
+/** EXERCISE 4.4] Write a function sequence that combines a list of `Option`s into one
+  *              `Option` containing a list of all the `Some` values in the original list.
+  *              If the original list contains `None` even once, the result of the function
+  *              should be `None`; otherwise the result should be `Some` with a list of
+  *              all the values.
   */
 trait Es4_04 extends Es4_03 {
   def sequence[A](a: List[Option[A]]): Option[List[A]] = {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.9] Write a function that generates an infinite stream of integers, starting from n, then
-  *               n + 1, n + 2, and so on.
+/** EXERCISE 5.9] Write a function that generates an infinite stream of integers, starting from n, then
+  *              n + 1, n + 2, and so on.
   */
 trait Es5_09 {
   def from(n: Int): Stream[Int] = {

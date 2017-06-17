@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.11] Write a more general stream-building function called `unfold`. It takes an initial state,
-  *                and a function for producing both the next state and the next value in the generated
-  *                stream.
+/** EXERCISE 5.11] Write a more general stream-building function called `unfold`. It takes an initial state,
+  *               and a function for producing both the next state and the next value in the generated
+  *               stream.
   */
 trait Es5_11 {
   def unfold[A, S](initial: S)(f: S => Option[(A, S)]): Stream[A] = {

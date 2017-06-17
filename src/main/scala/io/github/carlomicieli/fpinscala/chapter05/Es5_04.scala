@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.4] Implement `forAll`, which checks that all elements in the `Stream` match a given predicate.
-  *               Your implementation should terminate the traversal as soon as it encounters a
-  *               non matching value.
+/** EXERCISE 5.4] Implement `forAll`, which checks that all elements in the `Stream` match a given predicate.
+  *              Your implementation should terminate the traversal as soon as it encounters a
+  *              non matching value.
   */
 trait Es5_04 {
   def forAll[A](s: Stream[A])(p: A => Boolean): Boolean = {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.2] Write the function `take(n)` for returning the first n elements of a `Stream`, and
-  *               `drop(n)` for skipping the first `n` elements of a `Stream`.
+/** EXERCISE 5.2] Write the function `take(n)` for returning the first n elements of a `Stream`, and
+  *              `drop(n)` for skipping the first `n` elements of a `Stream`.
   */
 trait Es5_02 {
   def take[A](s: Stream[A])(n: Int): Stream[A] = s take n

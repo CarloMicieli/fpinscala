@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ class Es3_10TestSpec extends Chapter3Spec with Es3_10 {
   describe("Es3.10") {
     describe("foldRight") {
       it("is not stack-safe: it should blow the stack with long lists") {
-        val thrown = intercept[StackOverflowError] {
+        the[StackOverflowError] thrownBy {
           blowTheStack()
         }
       }

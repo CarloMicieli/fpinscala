@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.16] Write a function that transforms a list of integers by adding 1 to each element.
-  *                (Reminder: this should be a pure function that returns a new `List`!)
+/** EXERCISE 3.16] Write a function that transforms a list of integers by adding 1 to each element.
+  *               (Reminder: this should be a pure function that returns a new `List`!)
   */
 trait Es3_16 {
   def addOne[A](as: List[A])(implicit num: Numeric[A]): List[A] = {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,7 @@ package io.github.carlomicieli.fpinscala.chapter06
 
 import RNG._
 
-/**
-  * EXERCISE 6.5] Use `map` to reimplement `double` in a more elegant way.
+/** EXERCISE 6.5] Use `map` to reimplement `double` in a more elegant way.
   */
 trait Es6_05 {
   def double(rng: RNG): (Double, RNG) =

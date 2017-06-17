@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,10 @@
 
 package io.github.carlomicieli.fpinscala.chapter02
 
-/**
-  * EXERCISE 2.3] Let’s look at another example, currying, which converts a
-  *               function `f` of two arguments into a function of one argument
-  *               that partially applies `f`. Here again there’s only one
-  *               implementation that compiles. Write this implementation.
+/** EXERCISE 2.3] Let’s look at another example, currying, which converts a
+  *              function `f` of two arguments into a function of one argument
+  *              that partially applies `f`. Here again there’s only one
+  *              implementation that compiles. Write this implementation.
   */
 trait Es2_3 {
   def curry[A, B, C](f: (A, B) => C): A => (B => C) = {

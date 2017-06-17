@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.14] Implement `append` in terms of either `foldLeft` or `foldRight`.
+/** EXERCISE 3.14] Implement `append` in terms of either `foldLeft` or `foldRight`.
   */
 trait Es3_14 {
   def append[A](as: List[A], bs: List[A]): List[A] = appendL(as, bs)

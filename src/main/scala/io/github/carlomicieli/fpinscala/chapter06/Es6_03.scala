@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 
 package io.github.carlomicieli.fpinscala.chapter06
 
-/**
-  * EXERCISE 6.3] Write functions to generate an `(Int, Double)` pair, a `(Double, Int)` pair, and a
-  *               `(Double, Double, Double)` 3-tuple. You should be able to reuse the functions you’ve
-  *               already written.
+/** EXERCISE 6.3] Write functions to generate an `(Int, Double)` pair, a `(Double, Int)` pair, and a
+  *              `(Double, Double, Double)` 3-tuple. You should be able to reuse the functions you’ve
+  *              already written.
   */
 trait Es6_03 {
   def intDouble(rng: RNG): ((Int, Double), RNG) = {

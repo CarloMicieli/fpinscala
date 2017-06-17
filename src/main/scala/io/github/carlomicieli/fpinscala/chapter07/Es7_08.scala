@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,10 @@
 
 package io.github.carlomicieli.fpinscala.chapter07
 
-/**
-  * EXERCISE 7.8] Hard: Take a look through the various static methods in Executors to get a feel for the
-  *               different implementations of ExecutorService that exist. Then, before continuing,
-  *               go back and revisit your implementation of fork and try to find a counterexample or
-  *               convince yourself that the law holds for your implementation.
+/** EXERCISE 7.8] Hard: Take a look through the various static methods in Executors to get a feel for the
+  *              different implementations of ExecutorService that exist. Then, before continuing,
+  *              go back and revisit your implementation of fork and try to find a counterexample or
+  *              convince yourself that the law holds for your implementation.
   */
 trait Es7_08 {
 }

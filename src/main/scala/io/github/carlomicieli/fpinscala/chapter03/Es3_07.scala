@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.7] Can `product`, implemented using `foldRight`, immediately halt the recursion and
-  *               return `0.0` if it encounters a `0.0`? Why or why not? Consider how any
-  *               short-circuiting might work if you call `foldRight` with a large list.
+/** EXERCISE 3.7] Can `product`, implemented using `foldRight`, immediately halt the recursion and
+  *              return `0.0` if it encounters a `0.0`? Why or why not? Consider how any
+  *              short-circuiting might work if you call `foldRight` with a large list.
   */
 trait Es3_07 {
   def product[A, B >: A](xs: List[A])(implicit num: Numeric[B]): B = {

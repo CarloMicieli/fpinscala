@@ -1,63 +1,63 @@
-import scalariform.formatter.preferences._
-import com.typesafe.sbt.SbtScalariform
-import com.typesafe.sbt.SbtScalariform.ScalariformKeys
 import de.heikoseeberger.sbtheader.HeaderPlugin
 import de.heikoseeberger.sbtheader.license._
+import scalariform.formatter.preferences._
+import scoverage.ScoverageKeys
+import com.typesafe.sbt.SbtScalariform
+import com.typesafe.sbt.SbtScalariform.ScalariformKeys
 
-name := "fpinscala"
+lazy val scalaVersions = Seq(scalac.`2.11.8`, scalac.`2.12.2`)
 
-version := "1.0.0-SNAPSHOT"
-
-scalaVersion := "2.11.8"
-
-homepage := Some(url("https://github.com/CarloMicieli/fpinscala"))
-
-scalacOptions ++= Seq(
-  "-target:jvm-1.8",
-  "-encoding", "UTF-8",
-  "-deprecation",
-  "-feature",
-  "-unchecked",
-  "-Xfatal-warnings",
-  "-Xlint",
-  "-Yno-adapted-args",
-  "-Ywarn-unused-import",
-  "-Ywarn-numeric-widen",
-  "-Ywarn-infer-any",
-  "-Ywarn-value-discard",
-  "-Ywarn-inaccessible",
-  "-Ywarn-dead-code",
-  "-J-Xss6M"
+lazy val commonSettings = Seq(
+  name := "fpinscala",
+  organization := "io.github.carlomicieli",
+  organizationName := "CarloMicieli",
+  organizationHomepage := Some(url("http://carlomicieli.github.io")),
+  //crossScalaVersions := scalaVersions,
+  scalaVersion := scalaVersions.head,
+  homepage := Some(url("https://github.com/CarloMicieli")),
+  licenses := Seq(("Apache License, Version 2.0", url("http://www.apache.org/licenses/LICENSE-2.0")))
 )
 
-scalacOptions in (Compile, console) --= Seq(
-  "-Xfatal-warnings",
-  "-Ywarn-dead-code",
-  "-Ywarn-unused-import"
+lazy val noPublishSettings = Seq(
+  publish := (),
+  publishLocal := (),
+  publishArtifact := false
 )
 
-libraryDependencies ++= Seq(
-  "org.scalatest"  %% "scalatest" % "3.0.0" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.13.2" % "test"
+lazy val automateHeaderPluginSettings = Seq(
+  HeaderPlugin.autoImport.headers := Map("scala" -> Apache2_0("2017", "CarloMicieli"))
 )
 
-initialCommands := """|import io.github.carlomicieli.fpinscala._
-                      |""".stripMargin
+lazy val scoverageSettings = Seq(
+  ScoverageKeys.coverageMinimum       := 60,
+  ScoverageKeys.coverageFailOnMinimum := false,
+  ScoverageKeys.coverageHighlighting  := true
+)
 
-// Scalariform settings
 lazy val scalaProject = (project in file("."))
+  .settings(commonSettings)
+  .settings(
+    scalacOptions ++= ScalacOptions.Default,
+    scalacOptions in (Compile, console) ~= ScalacOptions.ConsoleDefault,
+    scalacOptions in Test ~= ScalacOptions.TestDefault)
+  .settings(
+    SbtScalariform.scalariformSettings,
+    ScalariformKeys.preferences := ScalariformKeys.preferences.value
+      .setPreference(AlignSingleLineCaseStatements, true)
+      .setPreference(DoubleIndentClassDeclaration, true)
+      .setPreference(PlaceScaladocAsterisksBeneathSecondAsterisk, true)
+      .setPreference(MultilineScaladocCommentsStartOnFirstLine, true)
+      .setPreference(DanglingCloseParenthesis, Preserve))
+  .settings(automateHeaderPluginSettings: _*)
+  .settings(scoverageSettings: _*)
+  .settings(noPublishSettings)
+  .settings(libraryDependencies ++= Seq(
+    Library.ScalaCheck % Test,
+    Library.ScalaTest  % Test
+  ))
   .enablePlugins(SbtScalariform)
   .enablePlugins(AutomateHeaderPlugin)
-
-SbtScalariform.scalariformSettings
-
-// Header settings
-HeaderPlugin.autoImport.headers := Map("scala" -> Apache2_0("2016", "Carlo Micieli"))
-
-ScalariformKeys.preferences := ScalariformKeys.preferences.value
-  .setPreference(AlignSingleLineCaseStatements, true)
-  .setPreference(DoubleIndentClassDeclaration, true)
-  .setPreference(PlaceScaladocAsterisksBeneathSecondAsterisk, true)
-  .setPreference(PreserveDanglingCloseParenthesis, true)
+  .enablePlugins(GitVersioning)
+  .enablePlugins(GitBranchPrompt)
 
 fork in run := true

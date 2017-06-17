@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,11 @@
 
 package io.github.carlomicieli.fpinscala.chapter02
 
-/**
-  * EXERCISE 2.2] Implement `isSorted`, which checks whether an `Array[A]` is sorted according to a
-  *               given comparison function:
+/** EXERCISE 2.2] Implement `isSorted`, which checks whether an `Array[A]` is sorted according to a
+  *              given comparison function:
   *
   * {{{
-  *   def isSorted[A](as: Array[A], ordered: (A, A) => Boolean): Boolean
+  *  def isSorted[A](as: Array[A], ordered: (A, A) => Boolean): Boolean
   * }}}
   */
 trait Es2_2 {

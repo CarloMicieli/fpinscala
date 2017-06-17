@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter02
 
-/**
-  * EXERCISE 2.5] Implement the higher-order function that composes two functions.
+/** EXERCISE 2.5] Implement the higher-order function that composes two functions.
   */
 trait Es2_5 {
   def compose[A, B, C](f: B => C, g: A => B): A => C = {

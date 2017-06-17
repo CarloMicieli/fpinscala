@@ -1,15 +1,15 @@
 <scalastyle>
  <name>Scalastyle standard configuration</name>
- <check level="warning" class="org.scalastyle.file.FileTabChecker" enabled="true"/>
+ <check level="warning" class="org.scalastyle.file.FileTabChecker" enabled="true"></check>
  <check level="warning" class="org.scalastyle.file.FileLengthChecker" enabled="true">
   <parameters>
    <parameter name="maxFileLength"><![CDATA[800]]></parameter>
   </parameters>
  </check>
- <check level="warning" class="org.scalastyle.file.HeaderMatchesChecker" enabled="false"/>
- <check level="warning" class="org.scalastyle.scalariform.SpacesAfterPlusChecker" enabled="true"/>
- <check level="warning" class="org.scalastyle.file.WhitespaceEndOfLineChecker" enabled="true"/>
- <check level="warning" class="org.scalastyle.scalariform.SpacesBeforePlusChecker" enabled="true"/>
+ <check level="warning" class="org.scalastyle.file.HeaderMatchesChecker" enabled="false"></check>
+ <check level="warning" class="org.scalastyle.scalariform.SpacesAfterPlusChecker" enabled="true"></check>
+ <check level="warning" class="org.scalastyle.file.WhitespaceEndOfLineChecker" enabled="true"></check>
+ <check level="warning" class="org.scalastyle.scalariform.SpacesBeforePlusChecker" enabled="true"></check>
  <check level="warning" class="org.scalastyle.file.FileLineLengthChecker" enabled="true">
   <parameters>
    <parameter name="maxLineLength"><![CDATA[160]]></parameter>
@@ -31,7 +31,7 @@
    <parameter name="regex"><![CDATA[^[a-z][A-Za-z]*$]]></parameter>
   </parameters>
  </check>
- <check level="warning" class="org.scalastyle.scalariform.EqualsHashCodeChecker" enabled="true"/>
+ <check level="warning" class="org.scalastyle.scalariform.EqualsHashCodeChecker" enabled="true"></check>
  <check level="warning" class="org.scalastyle.scalariform.IllegalImportsChecker" enabled="true">
   <parameters>
    <parameter name="illegalImports"><![CDATA[sun._,java.awt._]]></parameter>
@@ -80,7 +80,7 @@
  </check>
  <check level="warning" class="org.scalastyle.scalariform.MethodLengthChecker" enabled="true">
   <parameters>
-   <parameter name="maxLength"><![CDATA[50]]></parameter>
+   <parameter name="maxLength"><![CDATA[75]]></parameter>
   </parameters>
  </check>
  <check level="warning" class="org.scalastyle.scalariform.MethodNamesChecker" enabled="true">
@@ -90,7 +90,7 @@
  </check>
  <check level="warning" class="org.scalastyle.scalariform.NumberOfMethodsInTypeChecker" enabled="true">
   <parameters>
-   <parameter name="maxMethods"><![CDATA[30]]></parameter>
+   <parameter name="maxMethods"><![CDATA[50]]></parameter>
   </parameters>
  </check>
  <check level="warning" class="org.scalastyle.scalariform.PublicMethodsHaveTypeChecker" enabled="true"></check>

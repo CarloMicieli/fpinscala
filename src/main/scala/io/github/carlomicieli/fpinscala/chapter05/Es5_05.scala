@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.5] Use `foldRight` to implement `takeWhile`.
+/** EXERCISE 5.5] Use `foldRight` to implement `takeWhile`.
   */
 trait Es5_05 {
   def takeWhile[A](stream: Stream[A])(p: A => Boolean): Stream[A] = {

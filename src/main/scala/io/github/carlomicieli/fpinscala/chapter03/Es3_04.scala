@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,16 @@
 
 package io.github.carlomicieli.fpinscala.chapter03
 
-/**
-  * EXERCISE 3.4] Generalize `tail` to the function `drop`, which removes the first n elements from
-  *               a list. Note that this function takes time proportional only to the number of
-  *               elements being dropped — we don't need to make a copy of the entire `List`.
+/** EXERCISE 3.4] Generalize `tail` to the function `drop`, which removes the first n elements from
+  *             a list. Note that this function takes time proportional only to the number of
+  *             elements being dropped — we don't need to make a copy of the entire `List`.
   */
 trait Es3_04 {
   @annotation.tailrec
   final def drop[A](l: List[A], n: Int): List[A] = {
     (l, n) match {
       case (_, i) if i <= 0 => l
-      case (Cons(x, xs), i) => drop(xs, i - 1)
+      case (Cons(_, xs), i) => drop(xs, i - 1)
       case (Nil, _)         => Nil
     }
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 
 package io.github.carlomicieli.fpinscala.chapter04
 
-/**
-  * EXERCISE 4.5] Implement this function. It’s straightforward to do using `map` and `sequence`, but try
+/** EXERCISE 4.5] Implement this function. It’s straightforward to do using `map` and `sequence`, but try
   * for a more efficient implementation that only looks at the list once. In fact, implement
   * `sequence` in terms of `traverse`.
   */

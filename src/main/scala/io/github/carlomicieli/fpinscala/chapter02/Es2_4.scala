@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 
 package io.github.carlomicieli.fpinscala.chapter02
 
-/**
-  * EXERCISE 2.4] Implement `unCurry`, which reverses the transformation of `curry`.
-  *               Note that since `=>` associates to the right, `A => (B => C)` can
-  *               be written as `A => B => C`.
+/** EXERCISE 2.4] Implement `unCurry`, which reverses the transformation of `curry`.
+  *              Note that since `=>` associates to the right, `A => (B => C)` can
+  *              be written as `A => B => C`.
   */
 trait Es2_4 {
   def unCurry[A, B, C](f: A => (B => C)): (A, B) => C = {

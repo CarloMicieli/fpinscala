@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,7 @@ package io.github.carlomicieli.fpinscala.chapter06
 
 import RNG._
 
-/**
-  * EXERCISE 6.8] Implement `flatMap`, and then use it to implement `nonNegativeLessThan`.
+/** EXERCISE 6.8] Implement `flatMap`, and then use it to implement `nonNegativeLessThan`.
   */
 trait Es6_08 {
   def nonNegativeLessThan(n: Int): Rand[Int] = flatMap(nonNegativeInt) {

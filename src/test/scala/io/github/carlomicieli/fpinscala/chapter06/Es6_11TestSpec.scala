@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ class Es6_11TestSpec extends Chapter6Spec with Es6_11 {
       val mch = Machine(true, 5, 10)
       val inputs = List(Coin, Turn, Coin, Turn, Coin, Turn, Coin, Turn)
 
-      val (a, mch2) = simulateMachine(inputs)(mch)
+      val (_, mch2) = simulateMachine(inputs)(mch)
 
       //TODO: check this
       //assert(a == (14, 1))
@@ -34,7 +34,7 @@ class Es6_11TestSpec extends Chapter6Spec with Es6_11 {
       val mch = Machine(true, 0, 10)
       val inputs = List(Coin, Turn)
 
-      val (a, mch2) = simulateMachine(inputs)(mch)
+      val (_, mch2) = simulateMachine(inputs)(mch)
 
       //TODO: check this
       //assert(a == (10, 0))

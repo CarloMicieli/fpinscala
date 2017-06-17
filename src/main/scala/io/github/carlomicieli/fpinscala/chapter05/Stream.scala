@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter05
 import Stream._
 
-/**
-  * A lazy list.
+/** A lazy list.
   * @tparam A the element type
   */
 sealed trait Stream[+A] {
@@ -61,7 +60,7 @@ sealed trait Stream[+A] {
 
   def foreach[U](f: A => U): Unit = {
     foldRight(())((a, b) => {
-      val discarded = f(a)
+      val _ = f(a)
       b
     })
   }

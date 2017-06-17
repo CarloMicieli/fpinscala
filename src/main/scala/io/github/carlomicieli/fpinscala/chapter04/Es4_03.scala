@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 
 package io.github.carlomicieli.fpinscala.chapter04
 
-/**
-  * EXERCISE 4.3] Write a generic function `map2` that combines two `Option`s values using a binary function.
-  *               If either `Option` value is `None`, then the return value is too.
+/** EXERCISE 4.3] Write a generic function `map2` that combines two `Option`s values using a binary function.
+  *              If either `Option` value is `None`, then the return value is too.
   */
 trait Es4_03 {
   def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] = {

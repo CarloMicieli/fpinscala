@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,9 @@ package io.github.carlomicieli.fpinscala.chapter07
 
 import Par._
 
-/**
-  * EXERCISE 7.1] `Par.map2` is a new higher-order function for combining the result of two parallel computations.
-  *               What is its signature? Give the most general signature possible (don’t
-  *               assume it works only for `Int`).
+/** EXERCISE 7.1] `Par.map2` is a new higher-order function for combining the result of two parallel computations.
+  *              What is its signature? Give the most general signature possible (don’t
+  *              assume it works only for `Int`).
   */
 trait Es7_01 {
   def map2[A, B, C](a: Par[A], b: Par[B])(f: (A, B) => C): Par[C] = {

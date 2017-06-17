@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 
 package io.github.carlomicieli.fpinscala.chapter05
 
-/**
-  * EXERCISE 5.14] Hard: Implement `startsWith` using functions you've written. It should check if one
-  *                `Stream` is a prefix of another. For instance, `Stream(1, 2, 3) startsWith Stream(1, 2)`
-  *                would be true.
+/** EXERCISE 5.14] Hard: Implement `startsWith` using functions you've written. It should check if one
+  *               `Stream` is a prefix of another. For instance, `Stream(1, 2, 3) startsWith Stream(1, 2)`
+  *               would be true.
   */
 trait Es5_14 {
   def startsWith[A](as: Stream[A], bs: Stream[A]): Boolean = {

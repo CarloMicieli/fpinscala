@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,13 @@
 
 package io.github.carlomicieli.fpinscala.chapter08
 
-/**
-  * EXERCISE 8.3] Assuming the following representation of `Prop`, implement `&&`
-  *               as a method of `Prop`.
+/** EXERCISE 8.3] Assuming the following representation of `Prop`, implement `&&`
+  *              as a method of `Prop`.
   *
   * @example {{{
-  *  trait Prop {
-  *    def check: Boolean
-  *  }
+  * trait Prop {
+  *   def check: Boolean
+  * }
   * }}}
   */
 trait Es8_03 {

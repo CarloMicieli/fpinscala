@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Carlo Micieli
+ * Copyright 2017 CarloMicieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,8 @@ package io.github.carlomicieli.fpinscala.chapter07
 
 import Par._
 
-/**
-  * EXERCISE 7.5] Hard: Write this function, called `sequence`. No additional primitives are required.
-  *               Do not call `run`.
+/** EXERCISE 7.5] Hard: Write this function, called `sequence`. No additional primitives are required.
+  *              Do not call `run`.
   */
 trait Es7_05 {
   def sequence[A](ps: List[Par[A]]): Par[List[A]] =
