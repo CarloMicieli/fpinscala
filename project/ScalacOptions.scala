@@ -1,6 +1,6 @@
 object ScalacOptions {
   val Default: Seq[String] = Seq(
-    "-J-Xss6M",
+    "-J-Xss128K",
     "-target:jvm-1.8",
     "-encoding", "UTF-8",
     "-unchecked",
