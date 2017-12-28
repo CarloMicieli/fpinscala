@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,12 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.8] See what happens when you pass `Nil` and `Cons` themselves to `foldRight`,
-  *              like this:
+  *             like this:
   * @example {{{
-  *        foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_))
+  *       foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_))
   * }}}
-  *              What do you think this says about the relationship between
-  *              `foldRight` and the data constructors of `List`?
+  *             What do you think this says about the relationship between
+  *             `foldRight` and the data constructors of `List`?
   */
 trait Es3_08 {
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter08
 
 /** EXERCISE 8.1] To get used to thinking about testing in this way, come up with properties
-  *              that specify the implementation of a `sum: List[Int] => Int` function.
+  *             that specify the implementation of a `sum: List[Int] => Int` function.
   */
 trait Es8_01 {
 

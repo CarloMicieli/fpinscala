@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 package io.github.carlomicieli.fpinscala.chapter05
 
 /** EXERCISE 5.13] Use `unfold` to implement `map`, `take`, `takeWhile`, `zipWith` (as in chapter 3), and
-  *               `zipAll`. The `zipAll` function should continue the traversal as long as either stream
-  *               has more elements—it uses `Option` to indicate whether each stream has been
-  *               exhausted.
+  *              `zipAll`. The `zipAll` function should continue the traversal as long as either stream
+  *              has more elements—it uses `Option` to indicate whether each stream has been
+  *              exhausted.
   */
 trait Es5_13 extends Es5_11 {
   def map[A, B](stream: Stream[A])(f: A => B): Stream[B] = {

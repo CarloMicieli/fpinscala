@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 package io.github.carlomicieli.fpinscala.chapter06
 
 /** EXERCISE 6.2] Write a function to generate a `Double` between 0 and 1, not including 1. Note: You can
-  *              use `Int.MaxValue` to obtain the maximum positive integer value, and you can use
-  *              `x.toDouble` to convert an `x: Int` to a `Double`.
+  *             use `Int.MaxValue` to obtain the maximum positive integer value, and you can use
+  *             `x.toDouble` to convert an `x: Int` to a `Double`.
   */
 trait Es6_02 {
   def double(rng: RNG): (Double, RNG) = {

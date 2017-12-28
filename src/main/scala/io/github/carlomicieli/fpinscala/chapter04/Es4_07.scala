@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter04
 
 /** EXERCISE 4.7] Implement `sequence` and `traverse` for `Either`. These should return
-  *             the first error that's encountered, if there is one.
+  *            the first error that's encountered, if there is one.
   */
 trait Es4_07 {
   def sequence[E, A](es: List[Either[E, A]]): Either[E, List[A]] = traverse(es)(identity)

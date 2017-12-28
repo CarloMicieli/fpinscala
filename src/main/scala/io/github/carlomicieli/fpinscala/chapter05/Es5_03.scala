@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter05
 
 /** EXERCISE 5.3] Write the function `takeWhile` for returning all starting elements of a `Stream` that
-  *              match the given predicate.
+  *             match the given predicate.
   */
 trait Es5_03 {
   def takeWhile[A](s: Stream[A])(p: A => Boolean): Stream[A] = {

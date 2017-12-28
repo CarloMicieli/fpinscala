@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ package io.github.carlomicieli.fpinscala.chapter06
 import RNG._
 
 /** EXERCISE 6.6] Write the implementation of `map2` based on the following signature. This function
-  *              takes two actions, `ra` and `rb`, and a function `f` for combining their results,
-  *              and returns a new action that combines them.
+  *             takes two actions, `ra` and `rb`, and a function `f` for combining their results,
+  *             and returns a new action that combines them.
   */
 trait Es6_06 {
   def map2[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = rng => {

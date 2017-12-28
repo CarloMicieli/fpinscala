@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 package io.github.carlomicieli.fpinscala.chapter06
 
 /** EXERCISE 6.1] Write a function that uses `RNG.nextInt` to generate a random integer between 0 and
-  *              `Int.maxValue` (inclusive). Make sure to handle the corner case when `nextInt` returns
-  *              `Int.MinValue`, which doesn't have a non-negative counterpart.
+  *             `Int.maxValue` (inclusive). Make sure to handle the corner case when `nextInt` returns
+  *             `Int.MinValue`, which doesn't have a non-negative counterpart.
   */
 trait Es6_01 {
   def nonNegativeInt(rng: RNG): (Int, RNG) = {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter05
 
 /** EXERCISE 5.8] Generalize `ones` slightly to the function `constant`, which returns an
-  *              infinite Stream of a given value.
+  *             infinite Stream of a given value.
   */
 trait Es5_08 {
   def constant[A](a: A): Stream[A] = {

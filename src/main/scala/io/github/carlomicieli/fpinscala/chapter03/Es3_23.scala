@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.23] Generalize the function you just wrote so that it's not specific to integers
-  *               or addition. Name your generalized function `zipWith`.
+  *              or addition. Name your generalized function `zipWith`.
   */
 trait Es3_23 {
   def zipWith[A, B](as: List[A], bs: List[A])(f: (A, A) => B): List[B] = {

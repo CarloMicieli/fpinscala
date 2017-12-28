@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.29] Generalize `size`, `maximum`, `depth`, and `map`, writing a new
-  *               function `fold` that abstracts over their similarities.
-  *               Implement them in terms of this more general function. Can
-  *               you draw an analogy between this fold function and the left and right
-  *               folds for List ?
+  *              function `fold` that abstracts over their similarities.
+  *              Implement them in terms of this more general function. Can
+  *              you draw an analogy between this fold function and the left and right
+  *              folds for List ?
   */
 trait Es3_29 {
   def fold[A, B](t: Tree[A])(f: (A) => B)(g: (B, B) => B): B = t match {

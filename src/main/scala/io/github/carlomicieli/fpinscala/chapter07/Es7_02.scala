@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter07
 
 /** EXERCISE 7.2] Before continuing, try to come up with representations for `Par` that make it possible
-  *              to implement the functions of our API.
+  *             to implement the functions of our API.
   */
 trait Es7_02 {
 }

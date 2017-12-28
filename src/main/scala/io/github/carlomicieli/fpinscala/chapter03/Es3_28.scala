@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.28] Write a function `map`, analogous to the method of the same name on `List`,
-  *               that modifies each element in a tree with a given function.
+  *              that modifies each element in a tree with a given function.
   */
 trait Es3_28 {
   def map[A, B](tree: Tree[A])(f: A => B): Tree[B] = tree match {

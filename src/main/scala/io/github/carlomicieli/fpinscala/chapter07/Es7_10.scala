@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 package io.github.carlomicieli.fpinscala.chapter07
 
 /** EXERCISE 7.10] Hard: Our non-blocking representation doesn’t currently handle errors at all. If at any
-  *               point our computation throws an exception, the run implementation’s latch never
-  *               counts down and the exception is simply swallowed. Can you fix that?
+  *              point our computation throws an exception, the run implementation’s latch never
+  *              counts down and the exception is simply swallowed. Can you fix that?
   */
 trait Es7_10 {
 }

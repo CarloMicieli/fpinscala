@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@
 package io.github.carlomicieli.fpinscala.chapter06
 
 /** EXERCISE 6.11] Hard: To gain experience with the use of `State`, implement a finite state automaton
-  *               that models a simple candy dispenser. The machine has two types of input: you can
-  *               insert a coin, or you can turn the knob to dispense candy. It can be in one of two
-  *               states: locked or unlocked. It also tracks how many candies are left and how many
-  *               coins it contains.
+  *              that models a simple candy dispenser. The machine has two types of input: you can
+  *              insert a coin, or you can turn the knob to dispense candy. It can be in one of two
+  *              states: locked or unlocked. It also tracks how many candies are left and how many
+  *              coins it contains.
   */
 trait Es6_11 {
   sealed trait Input

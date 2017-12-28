@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.17] Write a function that turns each value in a `List[Double]` into a `String`.
-  *               You can use the expression `d.toString` to convert some `d: Double`
-  *               to a `String`.
+  *              You can use the expression `d.toString` to convert some `d: Double`
+  *              to a `String`.
   */
 trait Es3_17 {
   def convert(as: List[Double]): List[String] = {

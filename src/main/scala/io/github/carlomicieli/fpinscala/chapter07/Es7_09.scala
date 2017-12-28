@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter07
 
 /** EXERCISE 7.9] Hard: Show that any fixed-size thread pool can be made to deadlock given this implementation
-  *              of fork.
+  *             of fork.
   */
 trait Es7_09 {
 }

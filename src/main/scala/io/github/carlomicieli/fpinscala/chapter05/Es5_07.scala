@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter05
 
 /** EXERCISE 5.7] Implement `map`, `filter`, `append`, and `flatMap` using `foldRight`.
-  *              The `append` method should be non-strict in its argument.
+  *             The `append` method should be non-strict in its argument.
   */
 trait Es5_07 {
   import Stream._

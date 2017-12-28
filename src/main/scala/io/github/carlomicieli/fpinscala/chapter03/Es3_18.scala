@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.18] Write a function `map` that generalizes modifying each element in a list while
-  *               maintaining the structure of the `list`.
+  *              maintaining the structure of the `list`.
   */
 trait Es3_18 {
   def map[A, B](as: List[A])(f: A => B): List[B] = {

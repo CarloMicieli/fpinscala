@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 package io.github.carlomicieli.fpinscala.chapter02
 
 /** EXERCISE 2.1] Write a recursive function to get the nth Fibonacci number (http://mng.bz/C29s).
-  *              The first two Fibonacci numbers are 0 and 1 . The nth number is always the sum of the
-  *              previous two—the sequence begins 0, 1, 1, 2, 3, 5 . Your definition should use a
-  *              local tail-recursive function.
+  *             The first two Fibonacci numbers are 0 and 1 . The nth number is always the sum of the
+  *             previous two—the sequence begins 0, 1, 1, 2, 3, 5 . Your definition should use a
+  *             local tail-recursive function.
   */
 trait Es2_1 {
   def fib(n: Int): BigInt = {

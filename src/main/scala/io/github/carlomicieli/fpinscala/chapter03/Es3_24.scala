@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,12 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.24] Hard: As an example, implement `hasSubsequence` for checking whether a `List`
-  *               contains another `List` as a subsequence. For instance, `List(1,2,3,4)` would have
-  *               `List(1,2)`, `List(2,3)`, and `List(4)` as subsequences, among others. You may have
-  *               some difficulty finding a concise purely functional implementation that is also
-  *               efficient. That's okay. Implement the function however comes most naturally.
+  *              contains another `List` as a subsequence. For instance, `List(1,2,3,4)` would have
+  *              `List(1,2)`, `List(2,3)`, and `List(4)` as subsequences, among others. You may have
+  *              some difficulty finding a concise purely functional implementation that is also
+  *              efficient. That's okay. Implement the function however comes most naturally.
   *
-  *               Note: Any two values `x` and `y` can be compared for equality in Scala using the expression `x == y`.
+  *              Note: Any two values `x` and `y` can be compared for equality in Scala using the expression `x == y`.
   */
 trait Es3_24 {
   def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean = {

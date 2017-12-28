@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.22] Write a function that accepts two lists and constructs a new list by adding
-  *               corresponding elements. For example, `List(1, 2, 3)` and `List(4, 5, 6)`
-  *               become `List(5, 7, 9)`.
+  *              corresponding elements. For example, `List(1, 2, 3)` and `List(4, 5, 6)`
+  *              become `List(5, 7, 9)`.
   */
 trait Es3_22 {
   def add(as: List[Int], bs: List[Int]): List[Int] = (as, bs) match {

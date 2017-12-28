@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter07
 
 /** EXERCISE 7.13] Implement this new primitive chooser, and then use it to implement choice and
-  *               choiceN.
+  *              choiceN.
   */
 trait Es7_13 {
 }

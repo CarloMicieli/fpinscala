@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter05
 
 /** EXERCISE 5.10] Write a function `fibs` that generates the infinite stream of Fibonacci numbers:
-  *                0, 1, 1, 2, 3, 5, 8, and so on.
+  *               0, 1, 1, 2, 3, 5, 8, and so on.
   */
 trait Es5_10 {
   def fibs: Stream[Int] = Stream(0, 1).append(nextFib(0, 1))

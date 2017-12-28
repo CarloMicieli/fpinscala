@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.15] Hard: Write a function that concatenates a list of lists into a single list.
-  *               Its runtime should be linear in the total length of all lists. Try to use
-  *               functions we have already defined.
+  *              Its runtime should be linear in the total length of all lists. Try to use
+  *              functions we have already defined.
   */
 trait Es3_15 {
   def concat[A](list: List[List[A]]): List[A] = {

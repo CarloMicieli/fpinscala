@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.12] Write a function that returns the reverse of a list (given `List(1,2,3)` it
-  *               returns `List(3,2,1)`). See if you can write it using a `fold`.
+  *              returns `List(3,2,1)`). See if you can write it using a `fold`.
   */
 trait Es3_12 {
   def reverse[A](as: List[A]): List[A] = {

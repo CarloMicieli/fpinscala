@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 package io.github.carlomicieli.fpinscala.chapter06
 
 /** EXERCISE 6.10] Generalize the functions `unit`, `map`, `map2`, `flatMap`, and `sequence`. Add them as methods
-  *               on the `State` case class where possible. Otherwise you should put them in a `State`
-  *               companion object.
+  *              on the `State` case class where possible. Otherwise you should put them in a `State`
+  *              companion object.
   */
 trait Es6_10 {
 }

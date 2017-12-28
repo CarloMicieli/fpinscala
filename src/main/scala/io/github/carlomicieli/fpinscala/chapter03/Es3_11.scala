@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package io.github.carlomicieli.fpinscala.chapter03
 
 /** EXERCISE 3.11] Write `sum`, `product`, and a function to compute the length of a
-  *               list using `foldLeft`.
+  *              list using `foldLeft`.
   */
 trait Es3_11 {
   def sum[A](as: List[A])(implicit num: Numeric[A]): A = {

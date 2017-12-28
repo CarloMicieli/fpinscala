@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 CarloMicieli
+ * Copyright 2017 Carlo Micieli
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package io.github.carlomicieli.fpinscala.chapter03
 import io.github.carlomicieli.fpinscala._
 
 /** EXERCISE 3.6] Implement a function, `init`, that returns a `List`
-  *              consisting of all but the last element of a `List`.
+  *             consisting of all but the last element of a `List`.
   */
 trait Es3_06 {
   def init[A](xs: List[A]): List[A] = {
