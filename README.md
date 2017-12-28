@@ -48,6 +48,7 @@ $ sbt test
 9. Parser combinators
     * Hutton, G. (2016). Programming in Haskell. Cambridge University Press.
     * Hutton, Graham, and Erik Meijer. "Monadic parser combinators." (1996).
+    * Scott Wlaschin. Understanding parser combinators: a deep dive. NDC Oslo (2016). [YouTube recording](https://www.youtube.com/watch?v=RDalzi7mhdY)
 10. Monoids
 11. Monads
 12. Applicative and traversable functors
