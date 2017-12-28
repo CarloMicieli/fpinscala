@@ -46,6 +46,8 @@ $ sbt test
     * Hughes, John. "QuickCheck testing for fun and profit." Practical Aspects of Declarative Languages. Springer Berlin Heidelberg, 2007. 1-32.
 
 9. Parser combinators
+    * Hutton, G. (2016). Programming in Haskell. Cambridge University Press.
+    * Hutton, Graham, and Erik Meijer. "Monadic parser combinators." (1996).
 10. Monoids
 11. Monads
 12. Applicative and traversable functors
@@ -62,3 +64,4 @@ Contributions via GitHub pull requests are gladly accepted from their original a
 ## License ##
 
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
+
